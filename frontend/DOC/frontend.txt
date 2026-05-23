@@ -1,0 +1,29 @@
+ 1. Theme Configuration:
+       * Created D:\GPj\960121-Final-WORK\frontend\src\theme\root.css with CSS variables for a consistent color palette
+         (primary, background, text, etc.).
+   2. UI Styling:
+       * Created D:\GPj\960121-Final-WORK\frontend\src\CSS\form.css containing modern, responsive styles for the
+         authentication forms, including shadow effects, transitions, and focused states.
+   3. React Components:
+       * Created D:\GPj\960121-Final-WORK\frontend\src\signin.jsx: A functional component with email and password
+         fields, state management, and basic validation.
+       * Created D:\GPj\960121-Final-WORK\frontend\src\signup.jsx: A comprehensive registration form with username,
+         email, password, and password confirmation fields.
+
+  Summary of Created Files:
+   - frontend/src/theme/root.css (Theme colors)
+   - frontend/src/CSS/form.css (UI Styles)
+   - frontend/src/signin.jsx (Sign-in Page)
+   - frontend/src/signup.jsx (Sign-up Page)
+------------------------------------------------------------------------------------------------------------------------
+   ติดตั้ง React Router และสร้าง Navbar ในไฟล์ App.jsx เพื่อเชื่อมต่อหน้าเข้าด้วยกัน
+   1. ติดตั้ง react-router-dom: เพื่อใช้จัดการการเปลี่ยนหน้า (Navigation) โดยไม่ต้องโหลดหน้าเว็บใหม่
+   2. สร้าง Navbar ใน App.jsx:
+       * ใช้คลาส Bootstrap navbar-dark bg-dark เพื่อให้ดูเป็นมืออาชีพ
+       * ใช้ <Link> จาก React Router แทนการใช้ <a> เพื่อให้การเปลี่ยนหน้าลื่นไหล
+       * มีปุ่ม Sign In (ข้อความธรรมดา) และปุ่ม Sign Up (ปุ่มสีฟ้า)
+   3. ตั้งค่า Routing:
+       * / : หน้าแรก (Welcome)
+       * /signin : แสดงหน้าเข้าสู่ระบบ
+       * /signup : แสดงหน้าสมัครสมาชิก
+   4. เพิ่ม Bootstrap JS: ในไฟล์ main.jsx เพื่อให้ปุ่ม Hamburger Menu (ในมือถือ) ทำงานได้
