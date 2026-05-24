@@ -1,43 +1,29 @@
-﻿import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+﻿import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
 import SignIn from "./signin";
 import SignUp from "./signup";
 import IndexPage from "./index";
-import Filter from "./filter"; // Import Component ใหม่ที่แยกออกมา
+import Filter from "./filter";
 import "./CSS/form.css";
 
-function App() {
-  const [showFilters, setShowFilters] = useState(false);
-  const [filters, setFilters] = useState({
-    search: "",
-    category: "All",
-    priceRange: 5000
-  });
-
-  const handleFilterChange = (e) => {
-    const { name, value } = e.target;
-    setFilters(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleResetFilters = () => {
-    setFilters({
-      search: "",
-      category: "All",
-      priceRange: 5000
-    });
-  };
+// สร้าง Component แยกเพื่อใช้ useLocation ได้ภายใน Router
+function Navigation({ searchInput, handleFilterChange, showFilters, setShowFilters, filters, handleResetFilters }) {
+  const location = useLocation();
+  
+  // เช็คว่าอยู่ที่หน้า signin หรือ signup หรือเปล่า
+  const isAuthPage = location.pathname === "/signin" || location.pathname === "/signup";
 
   return (
-    <Router>
-      <div style={{ minHeight: "100vh", backgroundColor: "var(--bg-color)" }}>
-        {/* Navbar */}
-        <nav className="navbar navbar-expand-lg custom-navbar shadow sticky-top">
-          <div className="container-fluid px-4">
-            <Link className="navbar-brand fw-bold me-auto d-flex align-items-center" to="/">
-              <span className="text-white fs-3">Born to </span>
-              <span className="fs-3 ms-1" style={{ color: "var(--navbar-hover)" }}>Do</span>
-            </Link>
+    <>
+      <nav className="navbar navbar-expand-lg custom-navbar shadow sticky-top">
+        <div className="container-fluid px-4">
+          <Link className="navbar-brand fw-bold me-auto d-flex align-items-center" to="/">
+            <span className="text-white fs-3">Born to </span>
+            <span className="fs-3 ms-1" style={{ color: "var(--navbar-hover)" }}>Do</span>
+          </Link>
 
+          {/* ซ่อนช่องค้นหาและปุ่ม Filter ถ้าเป็นหน้า Auth */}
+          {!isAuthPage && (
             <div className="d-flex mx-auto d-none d-lg-flex align-items-center" style={{ width: "50%", maxWidth: "700px" }}>
               <div className="input-group" style={{ height: "40px" }}>
                 <input 
@@ -45,7 +31,7 @@ function App() {
                   type="search" 
                   name="search"
                   placeholder="ค้นหาคอร์สเรียนที่คุณสนใจ..." 
-                  value={filters.search}
+                  value={searchInput}
                   onChange={handleFilterChange}
                   style={{ 
                     backgroundColor: "#121212", color: "white", border: "1px solid #303030", 
@@ -67,28 +53,78 @@ function App() {
                 </svg>
               </button>
             </div>
+          )}
 
-            <button className="navbar-toggler border-white ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-              <span className="navbar-toggler-icon" style={{ filter: "invert(1)" }}></span>
-            </button>
+          <button className="navbar-toggler border-white ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span className="navbar-toggler-icon" style={{ filter: "invert(1)" }}></span>
+          </button>
 
-            <div className="collapse navbar-collapse flex-grow-0" id="navbarNav">
-              <ul className="navbar-nav ms-auto align-items-center mt-3 mt-lg-0">
-                <li className="nav-item"><Link className="nav-link navbar-custom-btn mx-1" to="/signin">Sign In</Link></li>
-                <li className="nav-item mt-2 mt-lg-0"><Link className="nav-link navbar-custom-btn mx-1" to="/signup">Sign Up</Link></li>
-              </ul>
-            </div>
+          <div className="collapse navbar-collapse flex-grow-0" id="navbarNav">
+            <ul className="navbar-nav ms-auto align-items-center mt-3 mt-lg-0">
+              <li className="nav-item"><Link className="nav-link navbar-custom-btn mx-1" to="/signin">Sign In</Link></li>
+              <li className="nav-item mt-2 mt-lg-0"><Link className="nav-link navbar-custom-btn mx-1" to="/signup">Sign Up</Link></li>
+            </ul>
           </div>
-        </nav>
+        </div>
+      </nav>
 
-        {/* เรียกใช้งาน Component Filter ที่แยกออกมา */}
-        {showFilters && (
-          <Filter 
-            filters={filters} 
-            onFilterChange={handleFilterChange} 
-            onReset={handleResetFilters} 
-          />
-        )}
+      {/* ซ่อนแผง Filter ถ้าเป็นหน้า Auth หรือถ้าไม่ได้สั่งเปิดไว้ */}
+      {showFilters && !isAuthPage && (
+        <Filter 
+          filters={filters} 
+          onFilterChange={handleFilterChange} 
+          onReset={handleResetFilters} 
+        />
+      )}
+    </>
+  );
+}
+
+function App() {
+  const [showFilters, setShowFilters] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
+  const [filters, setFilters] = useState({
+    search: "",
+    category: "All",
+    priceRange: 5000
+  });
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setFilters(prev => ({ ...prev, search: searchInput }));
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [searchInput]);
+
+  const handleFilterChange = (e) => {
+    const { name, value } = e.target;
+    if (name === "search") {
+      setSearchInput(value);
+    } else {
+      setFilters(prev => ({ ...prev, [name]: value }));
+    }
+  };
+
+  const handleResetFilters = () => {
+    setSearchInput("");
+    setFilters({
+      search: "",
+      category: "All",
+      priceRange: 5000
+    });
+  };
+
+  return (
+    <Router>
+      <div style={{ minHeight: "100vh", backgroundColor: "var(--bg-color)" }}>
+        <Navigation 
+          searchInput={searchInput}
+          handleFilterChange={handleFilterChange}
+          showFilters={showFilters}
+          setShowFilters={setShowFilters}
+          filters={filters}
+          handleResetFilters={handleResetFilters}
+        />
 
         <div className="container-fluid">
           <Routes>
