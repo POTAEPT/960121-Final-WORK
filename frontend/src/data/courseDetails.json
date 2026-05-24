@@ -1,0 +1,1746 @@
+[
+  {
+    "id": 1,
+    "courseName": "React Basic for Beginners",
+    "fullDescription": "Dive into the world of React.js. This comprehensive course covers the core concepts of React, including components, props, state, and lifecycle methods. You will learn how to build dynamic and interactive user interfaces using modern React features like Hooks (useState, useEffect) and Context API. By the end of this course, you will be able to create full-fledged single-page applications from scratch.",
+    "instructorName": "John Doe",
+    "instructorImage": "https://i.pravatar.cc/150?u=1",
+    "curriculum": [
+      {
+        "chapter": "Getting Started",
+        "lessons": [
+          "Introduction to React",
+          "Installation and Setup",
+          "Hello World"
+        ]
+      },
+      {
+        "chapter": "Core Concepts",
+        "lessons": [
+          "JSX Explained",
+          "Components and Props",
+          "State and Lifecycle"
+        ]
+      },
+      {
+        "chapter": "Advanced Hooks",
+        "lessons": [
+          "useMemo and useCallback",
+          "Custom Hooks"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master React.js fundamentals",
+      "Build real-world projects",
+      "Understand modern frontend architecture"
+    ],
+    "requirements": [
+      "Basic knowledge of HTML and CSS",
+      "JavaScript ES6+ basics"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample1/0.jpg",
+    "maxSeats": 300,
+    "enrolled": 213,
+    "image": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&auto=format&fit=crop",
+    "price": 4040
+  },
+  {
+    "id": 2,
+    "courseName": "Mastering UI Design with Bootstrap",
+    "fullDescription": "Master the art of responsive web design with Bootstrap 5. This course teaches you how to leverage the power of the most popular CSS framework to create stunning, mobile-first websites. We will cover the grid system, typography, forms, buttons, and various components like navbars, modals, and carousels. You will also learn how to customize Bootstrap using Sass.",
+    "instructorName": "Jane Smith",
+    "instructorImage": "https://i.pravatar.cc/150?u=2",
+    "curriculum": [
+      {
+        "chapter": "Bootstrap Basics",
+        "lessons": [
+          "Introduction to Bootstrap",
+          "The Grid System",
+          "Layout Utilities"
+        ]
+      },
+      {
+        "chapter": "Components",
+        "lessons": [
+          "Buttons and Forms",
+          "Navigation Bars",
+          "Cards and Modals"
+        ]
+      }
+    ],
+    "benefits": [
+      "Create responsive designs quickly",
+      "Use pre-built UI components",
+      "Customize styles with Sass"
+    ],
+    "requirements": [
+      "Basic HTML and CSS"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample2/0.jpg",
+    "maxSeats": 280,
+    "enrolled": 175,
+    "image": "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?w=800&auto=format&fit=crop",
+    "price": 4983
+  },
+  {
+    "id": 3,
+    "courseName": "Fullstack Web Developer Bootcamp",
+    "fullDescription": "Become a full-stack web developer with this intensive bootcamp. We cover everything from the basics of HTML/CSS to advanced backend development with Node.js and MongoDB. You will learn how to build a complete web application, manage databases, implement authentication, and deploy your projects to the cloud. This course is designed for those who want to start a career in web development.",
+    "instructorName": "Michael Brown",
+    "instructorImage": "https://i.pravatar.cc/150?u=3",
+    "curriculum": [
+      {
+        "chapter": "Frontend Foundations",
+        "lessons": [
+          "HTML5 and CSS3",
+          "JavaScript Essentials",
+          "DOM Manipulation"
+        ]
+      },
+      {
+        "chapter": "Backend Development",
+        "lessons": [
+          "Node.js and Express",
+          "RESTful APIs",
+          "MongoDB and Mongoose"
+        ]
+      },
+      {
+        "chapter": "Deployment",
+        "lessons": [
+          "Heroku and Vercel",
+          "Git for Production"
+        ]
+      }
+    ],
+    "benefits": [
+      "Learn end-to-end development",
+      "Build a professional portfolio",
+      "Understand database management"
+    ],
+    "requirements": [
+      "No prior experience required, but basic computer skills are helpful"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample3/0.jpg",
+    "maxSeats": 196,
+    "enrolled": 124,
+    "image": "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=800&auto=format&fit=crop",
+    "price": 2474
+  },
+  {
+    "id": 4,
+    "courseName": "เธชเธญเธเนเธเนเธเธฒเธ Git เนเธฅเธฐ GitHub เนเธเธเธเธฑเธเธกเธทเธญเธ—เธณ",
+    "fullDescription": "Learn how to use Git and GitHub to manage your code and collaborate with others. This course takes a 'hand-holding' approach, guiding you through every step from installing Git to creating pull requests. You will learn about repositories, commits, branching, merging, and resolving conflicts. Essential for every developer working in a team environment.",
+    "instructorName": "Sarah Wilson",
+    "instructorImage": "https://i.pravatar.cc/150?u=4",
+    "curriculum": [
+      {
+        "chapter": "Git Basics",
+        "lessons": [
+          "Installing Git",
+          "Initializing Repositories",
+          "Committing Changes"
+        ]
+      },
+      {
+        "chapter": "GitHub Collaboration",
+        "lessons": [
+          "Creating GitHub Accounts",
+          "Pushing to Remote",
+          "Pull Requests"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master version control",
+      "Collaborate effectively on projects",
+      "Build an online presence on GitHub"
+    ],
+    "requirements": [
+      "Basic understanding of using a computer"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample4/0.jpg",
+    "maxSeats": 260,
+    "enrolled": 198,
+    "image": "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&auto=format&fit=crop",
+    "price": 2082
+  },
+  {
+    "id": 5,
+    "courseName": "Python for Data Science",
+    "fullDescription": "Unlock the power of data with Python. This course introduces you to the essential tools for data science, including NumPy for numerical computing, Pandas for data manipulation, and Matplotlib/Seaborn for data visualization. You will learn how to clean data, perform exploratory data analysis, and build basic machine learning models using Scikit-Learn.",
+    "instructorName": "David Lee",
+    "instructorImage": "https://i.pravatar.cc/150?u=5",
+    "curriculum": [
+      {
+        "chapter": "Python for Data",
+        "lessons": [
+          "NumPy Basics",
+          "Pandas DataFrames",
+          "Data Cleaning"
+        ]
+      },
+      {
+        "chapter": "Visualization",
+        "lessons": [
+          "Matplotlib Plots",
+          "Seaborn Charts"
+        ]
+      }
+    ],
+    "benefits": [
+      "Analyze large datasets",
+      "Visualize complex information",
+      "Kickstart your career in Data Science"
+    ],
+    "requirements": [
+      "Basic Python programming"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample5/0.jpg",
+    "maxSeats": 365,
+    "enrolled": 326,
+    "image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop",
+    "price": 4744
+  },
+  {
+    "id": 6,
+    "courseName": "Advanced JavaScript (ES6+)",
+    "fullDescription": "This is a comprehensive course on Advanced JavaScript (ES6+). It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 6",
+    "instructorImage": "https://i.pravatar.cc/150?u=6",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of Advanced JavaScript (ES6+)",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master Advanced JavaScript (ES6+)",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample6/0.jpg",
+    "maxSeats": 227,
+    "enrolled": 147,
+    "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop",
+    "price": 4890
+  },
+  {
+    "id": 7,
+    "courseName": "Node.js Backend Development",
+    "fullDescription": "This is a comprehensive course on Node.js Backend Development. It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 7",
+    "instructorImage": "https://i.pravatar.cc/150?u=7",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of Node.js Backend Development",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master Node.js Backend Development",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample7/0.jpg",
+    "maxSeats": 491,
+    "enrolled": 401,
+    "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&auto=format&fit=crop",
+    "price": 331
+  },
+  {
+    "id": 8,
+    "courseName": "Vue.js Fundamentals",
+    "fullDescription": "This is a comprehensive course on Vue.js Fundamentals. It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 8",
+    "instructorImage": "https://i.pravatar.cc/150?u=8",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of Vue.js Fundamentals",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master Vue.js Fundamentals",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample8/0.jpg",
+    "maxSeats": 452,
+    "enrolled": 286,
+    "image": "https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=800&auto=format&fit=crop",
+    "price": 2980
+  },
+  {
+    "id": 9,
+    "courseName": "Docker & Kubernetes for Beginners",
+    "fullDescription": "This is a comprehensive course on Docker & Kubernetes for Beginners. It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 9",
+    "instructorImage": "https://i.pravatar.cc/150?u=9",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of Docker & Kubernetes for Beginners",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master Docker & Kubernetes for Beginners",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample9/0.jpg",
+    "maxSeats": 452,
+    "enrolled": 391,
+    "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop",
+    "price": 3178
+  },
+  {
+    "id": 10,
+    "courseName": "Machine Learning with Python",
+    "fullDescription": "This is a comprehensive course on Machine Learning with Python. It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 10",
+    "instructorImage": "https://i.pravatar.cc/150?u=10",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of Machine Learning with Python",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master Machine Learning with Python",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample10/0.jpg",
+    "maxSeats": 166,
+    "enrolled": 148,
+    "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
+    "price": 4062
+  },
+  {
+    "id": 11,
+    "courseName": "UI/UX Design Principles",
+    "fullDescription": "This is a comprehensive course on UI/UX Design Principles. It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 11",
+    "instructorImage": "https://i.pravatar.cc/150?u=11",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of UI/UX Design Principles",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master UI/UX Design Principles",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample11/0.jpg",
+    "maxSeats": 496,
+    "enrolled": 408,
+    "image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop",
+    "price": 2779
+  },
+  {
+    "id": 12,
+    "courseName": "Mobile App Dev with Flutter",
+    "fullDescription": "This is a comprehensive course on Mobile App Dev with Flutter. It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 12",
+    "instructorImage": "https://i.pravatar.cc/150?u=12",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of Mobile App Dev with Flutter",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master Mobile App Dev with Flutter",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample12/0.jpg",
+    "maxSeats": 126,
+    "enrolled": 108,
+    "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop",
+    "price": 843
+  },
+  {
+    "id": 13,
+    "courseName": "Swift for iOS Development",
+    "fullDescription": "This is a comprehensive course on Swift for iOS Development. It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 13",
+    "instructorImage": "https://i.pravatar.cc/150?u=13",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of Swift for iOS Development",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master Swift for iOS Development",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample13/0.jpg",
+    "maxSeats": 430,
+    "enrolled": 272,
+    "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&auto=format&fit=crop",
+    "price": 4670
+  },
+  {
+    "id": 14,
+    "courseName": "Android App Dev with Kotlin",
+    "fullDescription": "This is a comprehensive course on Android App Dev with Kotlin. It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 14",
+    "instructorImage": "https://i.pravatar.cc/150?u=14",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of Android App Dev with Kotlin",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master Android App Dev with Kotlin",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample14/0.jpg",
+    "maxSeats": 293,
+    "enrolled": 237,
+    "image": "https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=800&auto=format&fit=crop",
+    "price": 2249
+  },
+  {
+    "id": 15,
+    "courseName": "Cyber Security Essentials",
+    "fullDescription": "This is a comprehensive course on Cyber Security Essentials. It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 15",
+    "instructorImage": "https://i.pravatar.cc/150?u=15",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of Cyber Security Essentials",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master Cyber Security Essentials",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample15/0.jpg",
+    "maxSeats": 202,
+    "enrolled": 121,
+    "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop",
+    "price": 1693
+  },
+  {
+    "id": 16,
+    "courseName": "AWS Cloud Practitioner",
+    "fullDescription": "This is a comprehensive course on AWS Cloud Practitioner. It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 16",
+    "instructorImage": "https://i.pravatar.cc/150?u=16",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of AWS Cloud Practitioner",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master AWS Cloud Practitioner",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample16/0.jpg",
+    "maxSeats": 396,
+    "enrolled": 268,
+    "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
+    "price": 3365
+  },
+  {
+    "id": 17,
+    "courseName": "Database Management with PostgreSQL",
+    "fullDescription": "This is a comprehensive course on Database Management with PostgreSQL. It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 17",
+    "instructorImage": "https://i.pravatar.cc/150?u=17",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of Database Management with PostgreSQL",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master Database Management with PostgreSQL",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample17/0.jpg",
+    "maxSeats": 217,
+    "enrolled": 159,
+    "image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop",
+    "price": 4164
+  },
+  {
+    "id": 18,
+    "courseName": "GraphQL API Development",
+    "fullDescription": "This is a comprehensive course on GraphQL API Development. It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 18",
+    "instructorImage": "https://i.pravatar.cc/150?u=18",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of GraphQL API Development",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master GraphQL API Development",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample18/0.jpg",
+    "maxSeats": 86,
+    "enrolled": 67,
+    "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop",
+    "price": 710
+  },
+  {
+    "id": 19,
+    "courseName": "TypeScript in Depth",
+    "fullDescription": "This is a comprehensive course on TypeScript in Depth. It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 19",
+    "instructorImage": "https://i.pravatar.cc/150?u=19",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of TypeScript in Depth",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master TypeScript in Depth",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample19/0.jpg",
+    "maxSeats": 349,
+    "enrolled": 274,
+    "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&auto=format&fit=crop",
+    "price": 851
+  },
+  {
+    "id": 20,
+    "courseName": "Next.js - The React Framework",
+    "fullDescription": "This is a comprehensive course on Next.js - The React Framework. It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 20",
+    "instructorImage": "https://i.pravatar.cc/150?u=20",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of Next.js - The React Framework",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master Next.js - The React Framework",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample20/0.jpg",
+    "maxSeats": 299,
+    "enrolled": 264,
+    "image": "https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=800&auto=format&fit=crop",
+    "price": 4478
+  },
+  {
+    "id": 21,
+    "courseName": "PHP & Laravel Mastery",
+    "fullDescription": "This is a comprehensive course on PHP & Laravel Mastery. It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 21",
+    "instructorImage": "https://i.pravatar.cc/150?u=21",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of PHP & Laravel Mastery",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master PHP & Laravel Mastery",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample21/0.jpg",
+    "maxSeats": 326,
+    "enrolled": 249,
+    "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop",
+    "price": 1748
+  },
+  {
+    "id": 22,
+    "courseName": "Java Programming for Beginners",
+    "fullDescription": "This is a comprehensive course on Java Programming for Beginners. It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 22",
+    "instructorImage": "https://i.pravatar.cc/150?u=22",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of Java Programming for Beginners",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master Java Programming for Beginners",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample22/0.jpg",
+    "maxSeats": 492,
+    "enrolled": 400,
+    "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
+    "price": 499
+  },
+  {
+    "id": 23,
+    "courseName": "C# and .NET Core Development",
+    "fullDescription": "This is a comprehensive course on C# and .NET Core Development. It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 23",
+    "instructorImage": "https://i.pravatar.cc/150?u=23",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of C# and .NET Core Development",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master C# and .NET Core Development",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample23/0.jpg",
+    "maxSeats": 151,
+    "enrolled": 118,
+    "image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop",
+    "price": 2399
+  },
+  {
+    "id": 24,
+    "courseName": "Go Programming Language",
+    "fullDescription": "This is a comprehensive course on Go Programming Language. It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 24",
+    "instructorImage": "https://i.pravatar.cc/150?u=24",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of Go Programming Language",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master Go Programming Language",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample24/0.jpg",
+    "maxSeats": 91,
+    "enrolled": 71,
+    "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop",
+    "price": 3700
+  },
+  {
+    "id": 25,
+    "courseName": "Data Visualization with Tableau",
+    "fullDescription": "This is a comprehensive course on Data Visualization with Tableau. It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 25",
+    "instructorImage": "https://i.pravatar.cc/150?u=25",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of Data Visualization with Tableau",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master Data Visualization with Tableau",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample25/0.jpg",
+    "maxSeats": 165,
+    "enrolled": 132,
+    "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&auto=format&fit=crop",
+    "price": 1577
+  },
+  {
+    "id": 26,
+    "courseName": "Deep Learning with TensorFlow",
+    "fullDescription": "This is a comprehensive course on Deep Learning with TensorFlow. It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 26",
+    "instructorImage": "https://i.pravatar.cc/150?u=26",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of Deep Learning with TensorFlow",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master Deep Learning with TensorFlow",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample26/0.jpg",
+    "maxSeats": 201,
+    "enrolled": 169,
+    "image": "https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=800&auto=format&fit=crop",
+    "price": 2885
+  },
+  {
+    "id": 27,
+    "courseName": "Natural Language Processing (NLP)",
+    "fullDescription": "This is a comprehensive course on Natural Language Processing (NLP). It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 27",
+    "instructorImage": "https://i.pravatar.cc/150?u=27",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of Natural Language Processing (NLP)",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master Natural Language Processing (NLP)",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample27/0.jpg",
+    "maxSeats": 148,
+    "enrolled": 91,
+    "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop",
+    "price": 3041
+  },
+  {
+    "id": 28,
+    "courseName": "Blockchain & Smart Contracts",
+    "fullDescription": "This is a comprehensive course on Blockchain & Smart Contracts. It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 28",
+    "instructorImage": "https://i.pravatar.cc/150?u=28",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of Blockchain & Smart Contracts",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master Blockchain & Smart Contracts",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample28/0.jpg",
+    "maxSeats": 235,
+    "enrolled": 143,
+    "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
+    "price": 512
+  },
+  {
+    "id": 29,
+    "courseName": "Game Development with Unity",
+    "fullDescription": "This is a comprehensive course on Game Development with Unity. It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 29",
+    "instructorImage": "https://i.pravatar.cc/150?u=29",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of Game Development with Unity",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master Game Development with Unity",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample29/0.jpg",
+    "maxSeats": 327,
+    "enrolled": 221,
+    "image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop",
+    "price": 1595
+  },
+  {
+    "id": 30,
+    "courseName": "SEO & Digital Marketing for Devs",
+    "fullDescription": "This is a comprehensive course on SEO & Digital Marketing for Devs. It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 30",
+    "instructorImage": "https://i.pravatar.cc/150?u=30",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of SEO & Digital Marketing for Devs",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master SEO & Digital Marketing for Devs",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample30/0.jpg",
+    "maxSeats": 247,
+    "enrolled": 211,
+    "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop",
+    "price": 1927
+  },
+  {
+    "id": 31,
+    "courseName": "Microservices Architecture",
+    "fullDescription": "This is a comprehensive course on Microservices Architecture. It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 31",
+    "instructorImage": "https://i.pravatar.cc/150?u=31",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of Microservices Architecture",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master Microservices Architecture",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample31/0.jpg",
+    "maxSeats": 447,
+    "enrolled": 305,
+    "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&auto=format&fit=crop",
+    "price": 1058
+  },
+  {
+    "id": 32,
+    "courseName": "Testing & Quality Assurance",
+    "fullDescription": "This is a comprehensive course on Testing & Quality Assurance. It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 32",
+    "instructorImage": "https://i.pravatar.cc/150?u=32",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of Testing & Quality Assurance",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master Testing & Quality Assurance",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample32/0.jpg",
+    "maxSeats": 422,
+    "enrolled": 275,
+    "image": "https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=800&auto=format&fit=crop",
+    "price": 226
+  },
+  {
+    "id": 33,
+    "courseName": "Figma for Web Designers",
+    "fullDescription": "This is a comprehensive course on Figma for Web Designers. It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 33",
+    "instructorImage": "https://i.pravatar.cc/150?u=33",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of Figma for Web Designers",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master Figma for Web Designers",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample33/0.jpg",
+    "maxSeats": 97,
+    "enrolled": 72,
+    "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop",
+    "price": 1472
+  },
+  {
+    "id": 34,
+    "courseName": "Linux System Administration",
+    "fullDescription": "This is a comprehensive course on Linux System Administration. It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 34",
+    "instructorImage": "https://i.pravatar.cc/150?u=34",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of Linux System Administration",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master Linux System Administration",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample34/0.jpg",
+    "maxSeats": 381,
+    "enrolled": 296,
+    "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
+    "price": 993
+  },
+  {
+    "id": 35,
+    "courseName": "Redis for Real-time Apps",
+    "fullDescription": "This is a comprehensive course on Redis for Real-time Apps. It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 35",
+    "instructorImage": "https://i.pravatar.cc/150?u=35",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of Redis for Real-time Apps",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master Redis for Real-time Apps",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample35/0.jpg",
+    "maxSeats": 54,
+    "enrolled": 33,
+    "image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop",
+    "price": 3159
+  },
+  {
+    "id": 36,
+    "courseName": "Rust Programming Mastery",
+    "fullDescription": "This is a comprehensive course on Rust Programming Mastery. It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 36",
+    "instructorImage": "https://i.pravatar.cc/150?u=36",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of Rust Programming Mastery",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master Rust Programming Mastery",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample36/0.jpg",
+    "maxSeats": 70,
+    "enrolled": 59,
+    "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop",
+    "price": 650
+  },
+  {
+    "id": 37,
+    "courseName": "Django Web Framework",
+    "fullDescription": "This is a comprehensive course on Django Web Framework. It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 37",
+    "instructorImage": "https://i.pravatar.cc/150?u=37",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of Django Web Framework",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master Django Web Framework",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample37/0.jpg",
+    "maxSeats": 126,
+    "enrolled": 93,
+    "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&auto=format&fit=crop",
+    "price": 850
+  },
+  {
+    "id": 38,
+    "courseName": "Excel for Data Analysts",
+    "fullDescription": "This is a comprehensive course on Excel for Data Analysts. It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 38",
+    "instructorImage": "https://i.pravatar.cc/150?u=38",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of Excel for Data Analysts",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master Excel for Data Analysts",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample38/0.jpg",
+    "maxSeats": 309,
+    "enrolled": 256,
+    "image": "https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=800&auto=format&fit=crop",
+    "price": 524
+  },
+  {
+    "id": 39,
+    "courseName": "Power BI Professional",
+    "fullDescription": "This is a comprehensive course on Power BI Professional. It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 39",
+    "instructorImage": "https://i.pravatar.cc/150?u=39",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of Power BI Professional",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master Power BI Professional",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample39/0.jpg",
+    "maxSeats": 55,
+    "enrolled": 37,
+    "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop",
+    "price": 2534
+  },
+  {
+    "id": 40,
+    "courseName": "DevOps CI/CD Pipelines",
+    "fullDescription": "This is a comprehensive course on DevOps CI/CD Pipelines. It provides in-depth knowledge and practical skills required to excel in this field. You will learn through hands-on projects and expert guidance. Covered topics include advanced techniques, best practices, and real-world applications.",
+    "instructorName": "Instructor 40",
+    "instructorImage": "https://i.pravatar.cc/150?u=40",
+    "curriculum": [
+      {
+        "chapter": "Introduction",
+        "lessons": [
+          "Overview of DevOps CI/CD Pipelines",
+          "Key Concepts"
+        ]
+      },
+      {
+        "chapter": "Core Modules",
+        "lessons": [
+          "In-depth Analysis",
+          "Practical Workshop"
+        ]
+      },
+      {
+        "chapter": "Conclusion",
+        "lessons": [
+          "Advanced Topics",
+          "Final Project"
+        ]
+      }
+    ],
+    "benefits": [
+      "Master DevOps CI/CD Pipelines",
+      "Gain practical experience",
+      "Certificate of completion"
+    ],
+    "requirements": [
+      "Basic understanding of the subject",
+      "Internet access"
+    ],
+    "videoPreviewUrl": "https://img.youtube.com/vi/sample40/0.jpg",
+    "maxSeats": 166,
+    "enrolled": 131,
+    "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
+    "price": 3123
+  }
+]

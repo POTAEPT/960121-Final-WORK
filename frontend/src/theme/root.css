@@ -1,20 +1,32 @@
 ﻿:root {
+  /* Existing Colors */
   --primary-color: #dc3545;
   --primary-hover: #bb2d3b;
   --bg-color: #0f0f0f;
   --form-bg: #212121;
   --text-color: #ffffff;
-  --text-muted: #BEBEBE;
-  --border-color: #3d3d3d;
+  --text-muted: #E0E0E0;
+  --border-color: #444444;
   --error-color: #dc3545;
   --success-color: #198754;
   --navbar-bg: #dc3545;
   --navbar-text: #ffffff;
   --navbar-hover: #ffc107;
+  --accent-yellow: #ffc107;
+  --card-border: #3d3d3d;
+  --input-bg: #121212;
+  --breadcrumb-active: #eeeeee;
+
+  /* Cart Specific Colors */
+  --cart-badge-bg: #ffc107;
+  --cart-badge-text: #000000;
+  --cart-dropdown-bg: #1a1a1a;
+  --cart-item-hover: #2a2a2a;
 }
 
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
   margin: 0;
+  font-family: "Inter", sans-serif;
 }

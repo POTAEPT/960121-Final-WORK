@@ -12,7 +12,9 @@
       "การดึงข้อมูลจาก API (useEffect)"
     ],
     "category": "Programming",
-    "price": 4040
+    "price": 4040,
+    "maxSeats": 300,
+    "enrolled": 213
   },
   {
     "id": 2,
@@ -27,7 +29,9 @@
       "การทำเว็บไซต์ให้รองรับมือถือ (Responsive Layout)"
     ],
     "category": "Programming",
-    "price": 4983
+    "price": 4983,
+    "maxSeats": 280,
+    "enrolled": 175
   },
   {
     "id": 3,
@@ -42,7 +46,9 @@
       "การทำเว็บขึ้นระบบจริง (Deployment)"
     ],
     "category": "Programming",
-    "price": 2474
+    "price": 2474,
+    "maxSeats": 196,
+    "enrolled": 124
   },
   {
     "id": 4,
@@ -57,7 +63,9 @@
       "การทำงานร่วมกันเป็นทีมผ่าน GitHub"
     ],
     "category": "Programming",
-    "price": 2082
+    "price": 2082,
+    "maxSeats": 260,
+    "enrolled": 198
   },
   {
     "id": 5,
@@ -72,7 +80,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Programming",
-    "price": 4744
+    "price": 4744,
+    "maxSeats": 365,
+    "enrolled": 326
   },
   {
     "id": 6,
@@ -87,7 +97,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Programming",
-    "price": 4890
+    "price": 4890,
+    "maxSeats": 227,
+    "enrolled": 147
   },
   {
     "id": 7,
@@ -102,7 +114,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Programming",
-    "price": 331
+    "price": 331,
+    "maxSeats": 491,
+    "enrolled": 401
   },
   {
     "id": 8,
@@ -117,7 +131,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Programming",
-    "price": 2980
+    "price": 2980,
+    "maxSeats": 452,
+    "enrolled": 286
   },
   {
     "id": 9,
@@ -132,7 +148,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Programming",
-    "price": 3178
+    "price": 3178,
+    "maxSeats": 452,
+    "enrolled": 391
   },
   {
     "id": 10,
@@ -147,7 +165,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Programming",
-    "price": 4062
+    "price": 4062,
+    "maxSeats": 166,
+    "enrolled": 148
   },
   {
     "id": 11,
@@ -162,7 +182,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Design",
-    "price": 2779
+    "price": 2779,
+    "maxSeats": 496,
+    "enrolled": 408
   },
   {
     "id": 12,
@@ -177,7 +199,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Design",
-    "price": 843
+    "price": 843,
+    "maxSeats": 126,
+    "enrolled": 108
   },
   {
     "id": 13,
@@ -192,7 +216,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Design",
-    "price": 4670
+    "price": 4670,
+    "maxSeats": 430,
+    "enrolled": 272
   },
   {
     "id": 14,
@@ -207,7 +233,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Design",
-    "price": 2249
+    "price": 2249,
+    "maxSeats": 293,
+    "enrolled": 237
   },
   {
     "id": 15,
@@ -222,7 +250,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Design",
-    "price": 1693
+    "price": 1693,
+    "maxSeats": 202,
+    "enrolled": 121
   },
   {
     "id": 16,
@@ -237,7 +267,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Design",
-    "price": 3365
+    "price": 3365,
+    "maxSeats": 396,
+    "enrolled": 268
   },
   {
     "id": 17,
@@ -252,7 +284,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Design",
-    "price": 4164
+    "price": 4164,
+    "maxSeats": 217,
+    "enrolled": 159
   },
   {
     "id": 18,
@@ -267,7 +301,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Design",
-    "price": 710
+    "price": 710,
+    "maxSeats": 86,
+    "enrolled": 67
   },
   {
     "id": 19,
@@ -282,7 +318,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Design",
-    "price": 851
+    "price": 851,
+    "maxSeats": 349,
+    "enrolled": 274
   },
   {
     "id": 20,
@@ -297,7 +335,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Design",
-    "price": 4478
+    "price": 4478,
+    "maxSeats": 299,
+    "enrolled": 264
   },
   {
     "id": 21,
@@ -312,7 +352,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Marketing",
-    "price": 1748
+    "price": 1748,
+    "maxSeats": 326,
+    "enrolled": 249
   },
   {
     "id": 22,
@@ -327,7 +369,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Marketing",
-    "price": 499
+    "price": 499,
+    "maxSeats": 492,
+    "enrolled": 400
   },
   {
     "id": 23,
@@ -342,7 +386,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Marketing",
-    "price": 2399
+    "price": 2399,
+    "maxSeats": 151,
+    "enrolled": 118
   },
   {
     "id": 24,
@@ -357,7 +403,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Marketing",
-    "price": 3700
+    "price": 3700,
+    "maxSeats": 91,
+    "enrolled": 71
   },
   {
     "id": 25,
@@ -372,7 +420,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Marketing",
-    "price": 1577
+    "price": 1577,
+    "maxSeats": 165,
+    "enrolled": 132
   },
   {
     "id": 26,
@@ -387,7 +437,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Marketing",
-    "price": 2885
+    "price": 2885,
+    "maxSeats": 201,
+    "enrolled": 169
   },
   {
     "id": 27,
@@ -402,7 +454,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Marketing",
-    "price": 3041
+    "price": 3041,
+    "maxSeats": 148,
+    "enrolled": 91
   },
   {
     "id": 28,
@@ -417,7 +471,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Marketing",
-    "price": 512
+    "price": 512,
+    "maxSeats": 235,
+    "enrolled": 143
   },
   {
     "id": 29,
@@ -432,7 +488,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Marketing",
-    "price": 1595
+    "price": 1595,
+    "maxSeats": 327,
+    "enrolled": 221
   },
   {
     "id": 30,
@@ -447,7 +505,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Marketing",
-    "price": 1927
+    "price": 1927,
+    "maxSeats": 247,
+    "enrolled": 211
   },
   {
     "id": 31,
@@ -462,7 +522,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Data Science",
-    "price": 1058
+    "price": 1058,
+    "maxSeats": 447,
+    "enrolled": 305
   },
   {
     "id": 32,
@@ -477,7 +539,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Data Science",
-    "price": 226
+    "price": 226,
+    "maxSeats": 422,
+    "enrolled": 275
   },
   {
     "id": 33,
@@ -492,7 +556,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Data Science",
-    "price": 1472
+    "price": 1472,
+    "maxSeats": 97,
+    "enrolled": 72
   },
   {
     "id": 34,
@@ -507,7 +573,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Data Science",
-    "price": 993
+    "price": 993,
+    "maxSeats": 381,
+    "enrolled": 296
   },
   {
     "id": 35,
@@ -522,7 +590,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Data Science",
-    "price": 3159
+    "price": 3159,
+    "maxSeats": 54,
+    "enrolled": 33
   },
   {
     "id": 36,
@@ -537,7 +607,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Data Science",
-    "price": 650
+    "price": 650,
+    "maxSeats": 70,
+    "enrolled": 59
   },
   {
     "id": 37,
@@ -552,7 +624,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Data Science",
-    "price": 850
+    "price": 850,
+    "maxSeats": 126,
+    "enrolled": 93
   },
   {
     "id": 38,
@@ -567,7 +641,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Data Science",
-    "price": 524
+    "price": 524,
+    "maxSeats": 309,
+    "enrolled": 256
   },
   {
     "id": 39,
@@ -582,7 +658,9 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Data Science",
-    "price": 2534
+    "price": 2534,
+    "maxSeats": 55,
+    "enrolled": 37
   },
   {
     "id": 40,
@@ -597,6 +675,8 @@
       "สรุปเนื้อหาและแนวทางการต่อยอด"
     ],
     "category": "Data Science",
-    "price": 3123
+    "price": 3123,
+    "maxSeats": 166,
+    "enrolled": 131
   }
 ]

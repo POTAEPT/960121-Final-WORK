@@ -1,0 +1,46 @@
+﻿@import "../theme/root.css";
+
+.course-detail-container {
+  color: var(--text-color);
+}
+
+.course-detail-title {
+  color: var(--text-color);
+  font-weight: 800;
+}
+
+.course-detail-desc {
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.benefit-item {
+  color: var(--text-muted);
+}
+
+.curriculum-card {
+  background-color: var(--form-bg) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.curriculum-header {
+  color: var(--text-color) !important;
+}
+
+.lesson-item {
+  color: var(--text-muted) !important;
+  border-color: var(--border-color) !important;
+}
+
+.instructor-name {
+  color: var(--text-color);
+}
+
+.course-price {
+  color: var(--accent-yellow) !important;
+}
+
+.enroll-card {
+  background-color: var(--form-bg) !important;
+  border: 1px solid var(--border-color) !important;
+}
