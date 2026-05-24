@@ -14,7 +14,6 @@ function Navigation({ searchInput, handleFilterChange, showFilters, setShowFilte
   const location = useLocation();
   const [isCartOpen, setIsCartOpen] = useState(false);
   
-  // ตรวจสอบว่าเป็นหน้า Auth หรือไม่
   const isAuthPage = location.pathname === "/signin" || location.pathname === "/signup";
   const isDetailPage = location.pathname.startsWith("/course/");
   const isCheckoutPage = location.pathname === "/checkout";
@@ -28,10 +27,8 @@ function Navigation({ searchInput, handleFilterChange, showFilters, setShowFilte
             <span className="fs-3 ms-1" style={{ color: "var(--navbar-hover)" }}>Do</span>
           </Link>
 
-          {/* ถ้าไม่ใช่หน้า Auth ให้แสดงส่วนควบคุมทั้งหมด */}
           {!isAuthPage && (
             <>
-              {/* ช่องค้นหาและปุ่ม Filter (แสดงเฉพาะหน้า Home) */}
               {!isDetailPage && !isCheckoutPage && (
                 <div className="d-flex mx-auto d-none d-lg-flex align-items-center" style={{ width: "40%", maxWidth: "600px" }}>
                   <div className="input-group" style={{ height: "40px" }}>
@@ -47,7 +44,6 @@ function Navigation({ searchInput, handleFilterChange, showFilters, setShowFilte
               )}
 
               <div className="d-flex align-items-center">
-                {/* ตะกร้าสินค้า */}
                 <div className="cart-icon-wrapper me-3" onClick={() => setIsCartOpen(!isCartOpen)}>
                   <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" viewBox="0 0 16 16">
                     <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
@@ -55,13 +51,9 @@ function Navigation({ searchInput, handleFilterChange, showFilters, setShowFilte
                   {cartItems.length > 0 && <span className="cart-badge">{cartItems.length}</span>}
                   <Cart cartItems={cartItems} removeFromCart={removeFromCart} isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
                 </div>
-
-                {/* ปุ่ม Hamburger (มือถือ) */}
                 <button className="navbar-toggler border-white ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                   <span className="navbar-toggler-icon" style={{ filter: "invert(1)" }}></span>
                 </button>
-
-                {/* ปุ่ม Sign In / Sign Up */}
                 <div className="collapse navbar-collapse flex-grow-0" id="navbarNav">
                   <ul className="navbar-nav ms-auto align-items-center mt-3 mt-lg-0">
                     <li className="nav-item"><Link className="nav-link navbar-custom-btn mx-1" to="/signin">Sign In</Link></li>
@@ -73,7 +65,6 @@ function Navigation({ searchInput, handleFilterChange, showFilters, setShowFilte
           )}
         </div>
       </nav>
-
       {showFilters && !isAuthPage && !isDetailPage && !isCheckoutPage && (
         <Filter filters={filters} onFilterChange={handleFilterChange} onReset={handleResetFilters} />
       )}
@@ -84,8 +75,19 @@ function Navigation({ searchInput, handleFilterChange, showFilters, setShowFilte
 function App() {
   const [showFilters, setShowFilters] = useState(false);
   const [searchInput, setSearchInput] = useState("");
-  const [cartItems, setCartItems] = useState([]);
+  
+  // 1. ดึงข้อมูลจาก localStorage ตอนเริ่มต้น (ถ้ามี)
+  const [cartItems, setCartItems] = useState(() => {
+    const savedCart = localStorage.getItem("bornToDoCart");
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
+
   const [filters, setFilters] = useState({ search: "", category: "All", priceRange: 5000 });
+
+  // 2. บันทึกข้อมูลลง localStorage ทุกครั้งที่ cartItems เปลี่ยนแปลง
+  useEffect(() => {
+    localStorage.setItem("bornToDoCart", JSON.stringify(cartItems));
+  }, [cartItems]);
 
   useEffect(() => {
     const timer = setTimeout(() => setFilters(prev => ({ ...prev, search: searchInput })), 500);
