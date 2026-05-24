@@ -1,0 +1,602 @@
+[
+  {
+    "id": 1,
+    "courseName": "React Basic for Beginners",
+    "students": 150,
+    "classDate": "15 มิถุนายน 2026",
+    "image": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&auto=format&fit=crop",
+    "contents": [
+      "ทำความรู้จักกับ React และการติดตั้ง Vite",
+      "พื้นฐาน Component, JSX และ Props",
+      "การจัดการ State ด้วย useState",
+      "การดึงข้อมูลจาก API (useEffect)"
+    ],
+    "category": "Programming",
+    "price": 4040
+  },
+  {
+    "id": 2,
+    "courseName": "Mastering UI Design with Bootstrap",
+    "students": 85,
+    "classDate": "20 มิถุนายน 2026",
+    "image": "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?w=800&auto=format&fit=crop",
+    "contents": [
+      "ระบบ Grid 12 คอลัมน์",
+      "การใช้งาน Components หลัก (Card, Navbar, Modal)",
+      "การปรับแต่งสี (Theming) แบบ Custom",
+      "การทำเว็บไซต์ให้รองรับมือถือ (Responsive Layout)"
+    ],
+    "category": "Programming",
+    "price": 4983
+  },
+  {
+    "id": 3,
+    "courseName": "Fullstack Web Developer Bootcamp",
+    "students": 320,
+    "classDate": "1 กรกฎาคม 2026",
+    "image": "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=800&auto=format&fit=crop",
+    "contents": [
+      "ออกแบบ Frontend ด้วย React",
+      "สร้าง Backend API ด้วย Node.js & Express",
+      "จัดการฐานข้อมูลด้วย MongoDB",
+      "การทำเว็บขึ้นระบบจริง (Deployment)"
+    ],
+    "category": "Programming",
+    "price": 2474
+  },
+  {
+    "id": 4,
+    "courseName": "สอนใช้งาน Git และ GitHub แบบจับมือทำ",
+    "students": 210,
+    "classDate": "10 กรกฎาคม 2026",
+    "image": "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&auto=format&fit=crop",
+    "contents": [
+      "คำสั่ง Git พื้นฐาน (add, commit, push)",
+      "การแยก Branch และการ Merge",
+      "การแก้ไขปัญหา Code ชนกัน (Merge Conflict)",
+      "การทำงานร่วมกันเป็นทีมผ่าน GitHub"
+    ],
+    "category": "Programming",
+    "price": 2082
+  },
+  {
+    "id": 5,
+    "courseName": "Python for Data Science",
+    "students": 324,
+    "classDate": "4 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ Python",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Programming",
+    "price": 4744
+  },
+  {
+    "id": 6,
+    "courseName": "Advanced JavaScript (ES6+)",
+    "students": 415,
+    "classDate": "19 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ JavaScript",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Programming",
+    "price": 4890
+  },
+  {
+    "id": 7,
+    "courseName": "Node.js Backend Development",
+    "students": 133,
+    "classDate": "21 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ Backend",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Programming",
+    "price": 331
+  },
+  {
+    "id": 8,
+    "courseName": "Vue.js Fundamentals",
+    "students": 241,
+    "classDate": "20 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ Frontend",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Programming",
+    "price": 2980
+  },
+  {
+    "id": 9,
+    "courseName": "Docker & Kubernetes for Beginners",
+    "students": 271,
+    "classDate": "19 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ DevOps",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Programming",
+    "price": 3178
+  },
+  {
+    "id": 10,
+    "courseName": "Machine Learning with Python",
+    "students": 207,
+    "classDate": "1 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ AI",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Programming",
+    "price": 4062
+  },
+  {
+    "id": 11,
+    "courseName": "UI/UX Design Principles",
+    "students": 125,
+    "classDate": "16 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ Design",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Design",
+    "price": 2779
+  },
+  {
+    "id": 12,
+    "courseName": "Mobile App Dev with Flutter",
+    "students": 383,
+    "classDate": "9 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ Mobile",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Design",
+    "price": 843
+  },
+  {
+    "id": 13,
+    "courseName": "Swift for iOS Development",
+    "students": 283,
+    "classDate": "1 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ Mobile",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Design",
+    "price": 4670
+  },
+  {
+    "id": 14,
+    "courseName": "Android App Dev with Kotlin",
+    "students": 139,
+    "classDate": "14 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ Mobile",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Design",
+    "price": 2249
+  },
+  {
+    "id": 15,
+    "courseName": "Cyber Security Essentials",
+    "students": 295,
+    "classDate": "23 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ Security",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Design",
+    "price": 1693
+  },
+  {
+    "id": 16,
+    "courseName": "AWS Cloud Practitioner",
+    "students": 341,
+    "classDate": "5 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ Cloud",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Design",
+    "price": 3365
+  },
+  {
+    "id": 17,
+    "courseName": "Database Management with PostgreSQL",
+    "students": 65,
+    "classDate": "12 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ Database",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Design",
+    "price": 4164
+  },
+  {
+    "id": 18,
+    "courseName": "GraphQL API Development",
+    "students": 109,
+    "classDate": "12 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ Backend",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Design",
+    "price": 710
+  },
+  {
+    "id": 19,
+    "courseName": "TypeScript in Depth",
+    "students": 55,
+    "classDate": "27 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ JavaScript",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Design",
+    "price": 851
+  },
+  {
+    "id": 20,
+    "courseName": "Next.js - The React Framework",
+    "students": 143,
+    "classDate": "13 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ Frontend",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Design",
+    "price": 4478
+  },
+  {
+    "id": 21,
+    "courseName": "PHP & Laravel Mastery",
+    "students": 387,
+    "classDate": "15 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ Backend",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Marketing",
+    "price": 1748
+  },
+  {
+    "id": 22,
+    "courseName": "Java Programming for Beginners",
+    "students": 99,
+    "classDate": "18 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ Programming",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Marketing",
+    "price": 499
+  },
+  {
+    "id": 23,
+    "courseName": "C# and .NET Core Development",
+    "students": 114,
+    "classDate": "15 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ Programming",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Marketing",
+    "price": 2399
+  },
+  {
+    "id": 24,
+    "courseName": "Go Programming Language",
+    "students": 393,
+    "classDate": "2 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ Programming",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Marketing",
+    "price": 3700
+  },
+  {
+    "id": 25,
+    "courseName": "Data Visualization with Tableau",
+    "students": 230,
+    "classDate": "21 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ Data",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Marketing",
+    "price": 1577
+  },
+  {
+    "id": 26,
+    "courseName": "Deep Learning with TensorFlow",
+    "students": 71,
+    "classDate": "23 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ AI",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Marketing",
+    "price": 2885
+  },
+  {
+    "id": 27,
+    "courseName": "Natural Language Processing (NLP)",
+    "students": 318,
+    "classDate": "28 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ AI",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Marketing",
+    "price": 3041
+  },
+  {
+    "id": 28,
+    "courseName": "Blockchain & Smart Contracts",
+    "students": 265,
+    "classDate": "6 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ Web3",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Marketing",
+    "price": 512
+  },
+  {
+    "id": 29,
+    "courseName": "Game Development with Unity",
+    "students": 134,
+    "classDate": "22 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ Game",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Marketing",
+    "price": 1595
+  },
+  {
+    "id": 30,
+    "courseName": "SEO & Digital Marketing for Devs",
+    "students": 424,
+    "classDate": "27 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ Marketing",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Marketing",
+    "price": 1927
+  },
+  {
+    "id": 31,
+    "courseName": "Microservices Architecture",
+    "students": 438,
+    "classDate": "12 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ Architecture",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Data Science",
+    "price": 1058
+  },
+  {
+    "id": 32,
+    "courseName": "Testing & Quality Assurance",
+    "students": 142,
+    "classDate": "23 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ Testing",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Data Science",
+    "price": 226
+  },
+  {
+    "id": 33,
+    "courseName": "Figma for Web Designers",
+    "students": 219,
+    "classDate": "19 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ Design",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Data Science",
+    "price": 1472
+  },
+  {
+    "id": 34,
+    "courseName": "Linux System Administration",
+    "students": 374,
+    "classDate": "10 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ System",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Data Science",
+    "price": 993
+  },
+  {
+    "id": 35,
+    "courseName": "Redis for Real-time Apps",
+    "students": 330,
+    "classDate": "27 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ Database",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Data Science",
+    "price": 3159
+  },
+  {
+    "id": 36,
+    "courseName": "Rust Programming Mastery",
+    "students": 70,
+    "classDate": "13 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ Programming",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Data Science",
+    "price": 650
+  },
+  {
+    "id": 37,
+    "courseName": "Django Web Framework",
+    "students": 59,
+    "classDate": "25 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ Backend",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Data Science",
+    "price": 850
+  },
+  {
+    "id": 38,
+    "courseName": "Excel for Data Analysts",
+    "students": 345,
+    "classDate": "11 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ Data",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Data Science",
+    "price": 524
+  },
+  {
+    "id": 39,
+    "courseName": "Power BI Professional",
+    "students": 425,
+    "classDate": "6 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ Data",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Data Science",
+    "price": 2534
+  },
+  {
+    "id": 40,
+    "courseName": "DevOps CI/CD Pipelines",
+    "students": 327,
+    "classDate": "27 สิงหาคม 2026",
+    "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
+    "contents": [
+      "แนะนำเบื้องต้นเกี่ยวกับ DevOps",
+      "การตั้งค่าสภาพแวดล้อมและเครื่องมือ",
+      "Workshop ภาคปฏิบัติ: สร้างโปรเจกต์จริง",
+      "สรุปเนื้อหาและแนวทางการต่อยอด"
+    ],
+    "category": "Data Science",
+    "price": 3123
+  }
+]

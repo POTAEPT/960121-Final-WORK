@@ -1,0 +1,47 @@
+ 1. Theme Configuration:
+       * Created D:\GPj\960121-Final-WORK\frontend\src\theme\root.css with CSS variables for a consistent color palette
+         (primary, background, text, etc.).
+   2. UI Styling:
+       * Created D:\GPj\960121-Final-WORK\frontend\src\CSS\form.css containing modern, responsive styles for the
+         authentication forms, including shadow effects, transitions, and focused states.
+   3. React Components:
+       * Created D:\GPj\960121-Final-WORK\frontend\src\signin.jsx: A functional component with email and password
+         fields, state management, and basic validation.
+       * Created D:\GPj\960121-Final-WORK\frontend\src\signup.jsx: A comprehensive registration form with username,
+         email, password, and password confirmation fields.
+
+  Summary of Created Files:
+   - frontend/src/theme/root.css (Theme colors)
+   - frontend/src/CSS/form.css (UI Styles)
+   - frontend/src/signin.jsx (Sign-in Page)
+   - frontend/src/signup.jsx (Sign-up Page)
+
+----------------------------------------------------------------------------------------------------------------------
+
+ src/index.jsx ให้ใช้ฟังก์ชัน fetch() ในการดึงข้อมูลจากไฟล์ courses.json มาแสดงผล
+ สิ่งที่เปลี่ยนแปลงในโค้ด:
+   1. ใช้ useState และ useEffect: สร้าง State สำหรับเก็บข้อมูลคอร์ส (courses) และสถานะการโหลดข้อมูล (loading)
+   2. ฟังก์ชัน fetch(): เรียกใช้ fetch("/src/data/courses.json") เพื่อดึงข้อมูลแบบ Asynchronous (เหมือนการดึงข้อมูลจาก Server จริง)
+   3. ระบบ Loading: เพิ่มการแสดงผล Loading Spinner (วงล้อหมุนสีแดง) ในขณะที่รอกำลังโหลดข้อมูล เพื่อให้ User Experience ดูดีขึ้น
+   4. Error Handling: มีการเช็ค response.ok และ catch error เพื่อความปลอดภัยของระบบ
+
+----------------------------------------------------------------------------------------------------------------------
+
+Filter (ตัวกรองข้อมูล) ให้สมบูรณ์ทั้งในส่วนของ UI และระบบการทำงาน (Logic)
+1. อัปเดตข้อมูล (courses.json): เพิ่มหมวดหมู่ (Programming, Design, Marketing, Data Science) และราคาสุ่ม (0 - 5,000 บาท)
+      ให้กับทั้ง 40 คอร์สเรียบร้อยครับ
+   2. เพิ่มปุ่ม Filter บน Navbar:
+       * สร้างไอคอนรูปกรวยกรองข้อมูลข้างช่อง Search
+       * เมื่อกดแล้วจะมีแถบตัวกรองขยายลงมา (Filter Panel)
+   3. สร้างส่วน Filter Panel:
+       * หมวดหมู่: เลือกดูเฉพาะคอร์สที่สนใจได้
+       * ราคา: สไลด์เพื่อปรับช่วงราคาที่ต้องการ (Price Range)
+       * ปุ่มล้างค่า: สำหรับรีเซ็ตตัวกรองทั้งหมดกลับเป็นค่าเริ่มต้น
+   4. ระบบการกรองข้อมูล (Real-time Filtering):
+       * หน้าเว็บจะอัปเดตรายการคอร์สทันทีที่คุณพิมพ์ค้นหา เลือกหมวดหมู่ หรือปรับราคา
+       * มีการแสดงจำนวนคอร์สที่พบ (เช่น "คอร์สเรียนที่ตรงตามเงื่อนไข (12)")
+   5. ปรับปรุง UI ของ Course Card:
+       * เพิ่ม Badge แสดงหมวดหมู่ (มุมซ้ายบน) และป้ายราคา (มุมขวาล่าง) บนรูปภาพเพื่อให้ดูข้อมูลได้ง่ายขึ้น
+
+----------------------------------------------------------------------------------------------------------------------
+
