@@ -1,6 +1,6 @@
-@import "../theme/root.css";
+﻿@import "../theme/root.css";
 
-/* Global Overrides for Bootstrap to use our Red Theme */
+/* Global Overrides for Bootstrap */
 .btn-primary {
   background-color: var(--primary-color) !important;
   border-color: var(--primary-color) !important;
@@ -15,23 +15,29 @@
   color: var(--primary-color) !important;
 }
 
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
 /* Navbar Custom Styling */
 .custom-navbar {
   background-color: var(--navbar-bg) !important;
-  padding: 0.8rem 0;
+  padding: 0.3rem 0;
+  min-height: 56px;
 }
 
 .custom-navbar .navbar-brand {
   color: var(--navbar-text) !important;
+  font-size: 1.25rem !important;
 }
 
-/* Make both Navbar buttons look the same */
 .navbar-custom-btn {
   background-color: white !important;
   color: var(--primary-color) !important;
   font-weight: bold;
   border-radius: 20px;
-  padding: 6px 20px !important;
+  padding: 4px 16px !important;
+  font-size: 0.9rem;
   text-decoration: none !important;
   display: inline-block;
   transition: all 0.2s ease-in-out;
@@ -48,35 +54,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 90vh;
+  min-height: calc(100vh - 56px);
+  background-color: var(--bg-color);
 }
 
-.custom-navbar {
-  background-color: var(--navbar-bg) !important;
-  padding: 0.3rem 0;
-  /* ลดตัวเลขนี้ลง (เดิม 0.8rem) เพื่อให้ Navbar บางลง */
-  min-height: 56px;
-  /* ควบคุมความสูง */
+/* Dark mode inputs */
+.custom-input {
+  background-color: #333 !important;
+  color: white !important;
+  border: 1px solid var(--border-color) !important;
 }
 
-.custom-navbar .navbar-brand {
-  color: var(--navbar-text) !important;
-  font-size: 1.25rem !important;
-  /* ลดขนาดโลโก้ลงนิดนึง */
-}
-
-/* Make both Navbar buttons look the same */
-.navbar-custom-btn {
-  background-color: white !important;
-  color: var(--primary-color) !important;
-  font-weight: bold;
-  border-radius: 20px;
-  padding: 4px 16px !important;
-  /* ลดขนาดกรอบปุ่ม (เดิม 6px 20px) */
-  font-size: 0.9rem;
-  /* ลดขนาดตัวหนังสือในปุ่ม */
-  text-decoration: none !important;
-  display: inline-block;
-  transition: all 0.2s ease-in-out;
-  border: 2px solid white !important;
+.custom-input:focus {
+  background-color: #444 !important;
+  color: white !important;
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25) !important;
 }

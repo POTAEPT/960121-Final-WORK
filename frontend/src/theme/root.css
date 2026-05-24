@@ -1,22 +1,20 @@
- :root {
-   --primary-color: #dc3545;
-   --primary-hover: #bb2d3b;
-   --bg-color: #0f0f0f;
-   /* พื้นหลังสีดำ */
-   --form-bg: #212121;
-   /* พื้นหลังการ์ดสีเทาเข้ม */
-   --text-color: #ffffff;
-   /* ตัวอักษรสีขาว */
-   --text-muted: #aaaaaa;
-   --border-color: #3d3d3d;
-   --error-color: #dc3545;
-   --success-color: #198754;
-   --navbar-bg: #dc3545;
-   --navbar-text: #ffffff;
-   --navbar-hover: #ffc107;
- }
+﻿:root {
+  --primary-color: #dc3545;
+  --primary-hover: #bb2d3b;
+  --bg-color: #0f0f0f;
+  --form-bg: #212121;
+  --text-color: #ffffff;
+  --text-muted: #BEBEBE;
+  --border-color: #3d3d3d;
+  --error-color: #dc3545;
+  --success-color: #198754;
+  --navbar-bg: #dc3545;
+  --navbar-text: #ffffff;
+  --navbar-hover: #ffc107;
+}
 
- body {
-   background-color: var(--bg-color);
-   color: var(--text-color);
- }
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+}
