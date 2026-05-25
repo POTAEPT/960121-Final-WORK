@@ -33,6 +33,7 @@ const CartPage = () => {
       }
     }
 
+    clearCart();
     setResults(res);
     setBookingStatus('done');
     setLoading(false);

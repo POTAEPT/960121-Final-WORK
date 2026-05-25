@@ -1,12 +1,15 @@
-﻿import React, { useState, useEffect, useRef } from "react";
+﻿import React, { useState, useEffect, useCallback } from "react";
 import { useCart } from "./CartContext";
-import { classes as classesApi } from "./api";
+import { useAuth } from "./AuthContext";
+import { classes as classesApi, bookings as bookingsApi } from "./api";
 
 const Index = ({ filters }) => {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [addedIds, setAddedIds] = useState(new Set());
+  const [bookedIds, setBookedIds] = useState(new Set());
   const { addItem } = useCart();
-  const listRef = useRef(null);
+  const { user } = useAuth();
 
   useEffect(() => {
     setLoading(true);
@@ -24,20 +27,19 @@ const Index = ({ filters }) => {
   }, [filters]);
 
   useEffect(() => {
-    const el = listRef.current;
-    if (!el) return;
+    if (!user) { setBookedIds(new Set()); return; }
+    bookingsApi.getAll()
+      .then((data) => setBookedIds(new Set(data.bookings.map(b => b.class_id))))
+      .catch(() => {});
+  }, [user]);
 
-    const handleClick = (e) => {
-      const btn = e.target.closest('[data-add-cart]');
-      if (!btn) return;
-      const classId = Number(btn.dataset.classId);
-      const course = courses.find(c => c.id === classId);
-      if (course) addItem(course);
-    };
-
-    el.addEventListener('click', handleClick);
-    return () => el.removeEventListener('click', handleClick);
-  }, [courses, addItem]);
+  const handleAddToCart = useCallback((course) => {
+    addItem(course);
+    setAddedIds(prev => new Set(prev).add(course.id));
+    setTimeout(() => {
+      setAddedIds(prev => { const next = new Set(prev); next.delete(course.id); return next; });
+    }, 1500);
+  }, [addItem]);
 
   if (loading) return <div className="text-center mt-5 text-white"><div className="spinner-border text-danger"></div></div>;
 
@@ -47,13 +49,15 @@ const Index = ({ filters }) => {
         <h4 className="text-white fw-bold">คลาสเรียนที่ตรงตามเงื่อนไข ({courses.length})</h4>
       </div>
 
-      <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4" ref={listRef}>
+      <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
         {courses.map((course) => {
           const contents = (() => {
             try { return typeof course.contents === 'string' ? JSON.parse(course.contents) : (course.contents || []); }
             catch { return []; }
           })();
-          const available = course.available_seats ?? course.max_capacity;
+          const available = Number(course.available_seats);
+          const isFull = available <= 0;
+          const isBooked = bookedIds.has(course.id);
 
           return (
             <div className="col" key={course.id}>
@@ -75,23 +79,26 @@ const Index = ({ filters }) => {
                 <div className="card-body d-flex flex-column">
                   <h6 className="text-white fw-bold mb-2 text-truncate-2" style={{ minHeight: "2.8rem" }}>{course.name}</h6>
                   <div className="d-flex justify-content-between mb-2 small" style={{ color: "#BEBEBE" }}>
-                    <span>👨‍🏫 {course.instructor}</span>
-                    <span>📅 {course.schedule}</span>
+                    <span><i className="bi bi-person-badge me-1"></i>{course.instructor}</span>
+                    <span><i className="bi bi-calendar-event me-1"></i>{course.schedule}</span>
                   </div>
                   <div className="d-flex justify-content-between mb-2 small" style={{ color: "#BEBEBE" }}>
-                    <span>⏱ {course.duration} นาที</span>
-                    <span>{available}/{course.max_capacity} ที่นั่ง</span>
+                    <span><i className="bi bi-clock me-1"></i>{course.duration} นาที</span>
+                    <span>
+                      {isFull ? <span className="text-danger fw-bold">เต็ม</span> : `${available}/${course.max_capacity} ที่นั่ง`}
+                      {isBooked && <span className="badge bg-success ms-2">จองแล้ว</span>}
+                    </span>
                   </div>
                   <ul className="ps-3 mb-3 flex-grow-1 small" style={{ color: "#BEBEBE" }}>
                     {contents.slice(0, 3).map((item, index) => <li key={index}>{item}</li>)}
                   </ul>
                   <button
-                    className="btn btn-primary w-100 fw-bold mt-auto"
+                    className={`btn w-100 fw-bold mt-auto ${isBooked ? 'btn-secondary' : isFull ? 'btn-secondary' : addedIds.has(course.id) ? 'btn-success' : 'btn-primary'}`}
                     style={{ borderRadius: "10px" }}
-                    data-add-cart="true"
-                    data-class-id={course.id}
+                    onClick={() => handleAddToCart(course)}
+                    disabled={isBooked || isFull || addedIds.has(course.id)}
                   >
-                    จองที่นั่ง
+                    {isBooked ? 'จองแล้ว' : isFull ? 'เต็ม' : addedIds.has(course.id) ? <><i className="bi bi-check-lg me-1"></i>เพิ่มแล้ว</> : 'จองที่นั่ง'}
                   </button>
                 </div>
               </div>

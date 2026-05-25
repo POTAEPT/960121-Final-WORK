@@ -22,10 +22,10 @@ const Filter = ({ filters, onFilterChange, onReset }) => {
                 }}
               >
                 <option value="All">ทุกหมวดหมู่</option>
-                <option value="Programming">Programming</option>
-                <option value="Design">Design</option>
-                <option value="Marketing">Marketing</option>
-                <option value="Data Science">Data Science</option>
+                <option value="โยคะ">โยคะ</option>
+                <option value="พิลาทิส">พิลาทิส</option>
+                <option value="เวทเทรนนิ่ง">เวทเทรนนิ่ง</option>
+                <option value="คาร์ดิโอ">คาร์ดิโอ</option>
               </select>
             </div>
           </div>
