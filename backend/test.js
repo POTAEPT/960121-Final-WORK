@@ -95,14 +95,14 @@ describe('GET /api/classes', () => {
   });
 
   it('should filter by category', async () => {
-    const res = await fetch(`${baseUrl}/api/classes?category=โยคะ`);
+    const res = await fetch(`${baseUrl}/api/classes?category=Programming`);
     const data = await res.json();
     assert.strictEqual(res.status, 200);
-    data.classes.forEach(c => assert.strictEqual(c.category, 'โยคะ'));
+    data.classes.forEach(c => assert.strictEqual(c.category, 'Programming'));
   });
 
   it('should filter by search', async () => {
-    const res = await fetch(`${baseUrl}/api/classes?search=โยคะ`);
+    const res = await fetch(`${baseUrl}/api/classes?search=React`);
     const data = await res.json();
     assert.strictEqual(res.status, 200);
     assert.ok(data.classes.length > 0);
