@@ -8,6 +8,7 @@ import IndexPage from "./index";
 import Filter from "./filter";
 import CartPage from "./cart";
 import BookingsPage from "./bookings";
+import CourseDetail from "./CourseDetail";
 import "./CSS/form.css";
 import "./CSS/cart.css";
 
@@ -24,7 +25,7 @@ function Navigation({ searchInput, handleFilterChange, showFilters, setShowFilte
     <>
       <nav className="navbar navbar-expand-lg custom-navbar shadow sticky-top">
         <div className="container-fluid px-4">
-          <Link className="navbar-brand fw-bold me-auto d-flex align-items-center" to="/" onClick={() => setIsCartOpen(false)}>
+          <Link className="navbar-brand fw-bold me-auto d-flex align-items-center" to="/" onClick={() => {}}>
             <span className="text-white fs-3">Born to </span>
             <span className="fs-3 ms-1" style={{ color: "var(--navbar-hover)" }}>Do</span>
           </Link>
@@ -183,6 +184,7 @@ function AppContent() {
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/cart" element={<CartPage />} />
+            <Route path="/course/:id" element={<CourseDetail addToCart={addToCart} />} />
             <Route path="/bookings" element={<BookingsPage />} />
           </Routes>
         </div>

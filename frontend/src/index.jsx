@@ -2,6 +2,8 @@
 import { useCart } from "./CartContext";
 import { useAuth } from "./AuthContext";
 import { classes as classesApi, bookings as bookingsApi } from "./api";
+import Loading from "./components/Loading";
+import ErrorMessage from "./components/ErrorMessage";
 
 const Index = ({ filters, addToCart }) => {
   const [courses, setCourses] = useState([]);
@@ -41,18 +43,7 @@ const Index = ({ filters, addToCart }) => {
     }, 1500);
   }, [addItem]);
 
-    const actionButton = e.target.closest("[data-action='add-to-cart']");
-    if (actionButton) {
-      if (course.maxSeats - course.enrolled > 0) {
-        addToCart(course);
-      }
-    } else {
-      navigate(`/course/${courseId}`);
-    }
-  };
-
   if (loading) return <Loading message="กำลังค้นหาคอร์สเรียนที่เหมาะสำหรับคุณ..." />;
-  if (error) return <ErrorMessage message={error} />;
 
   return (
     <div className="container-fluid mt-4 px-4 pb-5">
