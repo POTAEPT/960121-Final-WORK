@@ -29,7 +29,7 @@ const Index = ({ filters, addToCart }) => {
 
   const filteredCourses = useMemo(() => {
     return courses.filter(course => {
-      const matchSearch = course.courseName?.toLowerCase().includes(filters.search.toLowerCase());
+      const matchSearch = (course.courseName ?? "").toLowerCase().includes(filters.search.toLowerCase());
       const matchCategory = filters.category === "All" || course.category === filters.category;
       const matchPrice = (course.price || 0) <= filters.priceRange;
       return matchSearch && matchCategory && matchPrice;
