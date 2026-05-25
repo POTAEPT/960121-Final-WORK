@@ -9,6 +9,7 @@ import Filter from "./filter";
 import CartPage from "./cart";
 import BookingsPage from "./bookings";
 import "./CSS/form.css";
+import "./CSS/cart.css";
 
 function Navigation({ searchInput, handleFilterChange, showFilters, setShowFilters, filters, handleResetFilters }) {
   const location = useLocation();
@@ -16,12 +17,14 @@ function Navigation({ searchInput, handleFilterChange, showFilters, setShowFilte
   const { count } = useCart();
 
   const isAuthPage = location.pathname === "/signin" || location.pathname === "/signup";
+  const isDetailPage = location.pathname.startsWith("/course/");
+  const isCheckoutPage = location.pathname === "/checkout";
 
   return (
     <>
       <nav className="navbar navbar-expand-lg custom-navbar shadow sticky-top">
         <div className="container-fluid px-4">
-          <Link className="navbar-brand fw-bold me-auto d-flex align-items-center" to="/">
+          <Link className="navbar-brand fw-bold me-auto d-flex align-items-center" to="/" onClick={() => setIsCartOpen(false)}>
             <span className="text-white fs-3">Born to </span>
             <span className="fs-3 ms-1" style={{ color: "var(--navbar-hover)" }}>Do</span>
           </Link>
@@ -44,6 +47,12 @@ function Navigation({ searchInput, handleFilterChange, showFilters, setShowFilte
                 <button className="btn btn-dark border-secondary px-3" style={{ borderLeft: "none", backgroundColor: "#222" }}>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#888" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg>
                 </button>
+                <div className="collapse navbar-collapse flex-grow-0" id="navbarNav">
+                  <ul className="navbar-nav ms-auto align-items-center mt-3 mt-lg-0">
+                    <li className="nav-item"><Link className="nav-link navbar-custom-btn mx-1" to="/signin">Sign In</Link></li>
+                    <li className="nav-item mt-2 mt-lg-0"><Link className="nav-link navbar-custom-btn mx-1" to="/signup">Sign Up</Link></li>
+                  </ul>
+                </div>
               </div>
 
               <button
@@ -117,35 +126,42 @@ function Navigation({ searchInput, handleFilterChange, showFilters, setShowFilte
 function AppContent() {
   const [showFilters, setShowFilters] = useState(false);
   const [searchInput, setSearchInput] = useState("");
-  const [filters, setFilters] = useState({
-    search: "",
-    category: "All",
-    priceRange: 5000
+  
+  // 1. ดึงข้อมูลจาก localStorage ตอนเริ่มต้น (ถ้ามี)
+  const [cartItems, setCartItems] = useState(() => {
+    const savedCart = localStorage.getItem("bornToDoCart");
+    return savedCart ? JSON.parse(savedCart) : [];
   });
 
+  const [filters, setFilters] = useState({ search: "", category: "All", priceRange: 5000 });
+
+  // 2. บันทึกข้อมูลลง localStorage ทุกครั้งที่ cartItems เปลี่ยนแปลง
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setFilters(prev => ({ ...prev, search: searchInput }));
-    }, 500);
+    localStorage.setItem("bornToDoCart", JSON.stringify(cartItems));
+  }, [cartItems]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setFilters(prev => ({ ...prev, search: searchInput })), 500);
     return () => clearTimeout(timer);
   }, [searchInput]);
 
+  const addToCart = (course) => {
+    if (!cartItems.find(item => item.id === course.id)) {
+      setCartItems([...cartItems, course]);
+    }
+  };
+
+  const removeFromCart = (id) => setCartItems(cartItems.filter(item => item.id !== id));
+
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
-    if (name === "search") {
-      setSearchInput(value);
-    } else {
-      setFilters(prev => ({ ...prev, [name]: value }));
-    }
+    if (name === "search") setSearchInput(value);
+    else setFilters(prev => ({ ...prev, [name]: value }));
   };
 
   const handleResetFilters = () => {
     setSearchInput("");
-    setFilters({
-      search: "",
-      category: "All",
-      priceRange: 5000
-    });
+    setFilters({ search: "", category: "All", priceRange: 5000 });
   };
 
   return (
@@ -158,11 +174,12 @@ function AppContent() {
           setShowFilters={setShowFilters}
           filters={filters}
           handleResetFilters={handleResetFilters}
+          cartItems={cartItems}
+          removeFromCart={removeFromCart}
         />
-
         <div className="container-fluid">
           <Routes>
-            <Route path="/" element={<IndexPage filters={filters} />} />
+            <Route path="/" element={<IndexPage filters={filters} addToCart={addToCart} />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/cart" element={<CartPage />} />

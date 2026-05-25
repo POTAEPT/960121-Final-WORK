@@ -3,7 +3,7 @@ import { useCart } from "./CartContext";
 import { useAuth } from "./AuthContext";
 import { classes as classesApi, bookings as bookingsApi } from "./api";
 
-const Index = ({ filters }) => {
+const Index = ({ filters, addToCart }) => {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [addedIds, setAddedIds] = useState(new Set());
@@ -41,7 +41,18 @@ const Index = ({ filters }) => {
     }, 1500);
   }, [addItem]);
 
-  if (loading) return <div className="text-center mt-5 text-white"><div className="spinner-border text-danger"></div></div>;
+    const actionButton = e.target.closest("[data-action='add-to-cart']");
+    if (actionButton) {
+      if (course.maxSeats - course.enrolled > 0) {
+        addToCart(course);
+      }
+    } else {
+      navigate(`/course/${courseId}`);
+    }
+  };
+
+  if (loading) return <Loading message="กำลังค้นหาคอร์สเรียนที่เหมาะสำหรับคุณ..." />;
+  if (error) return <ErrorMessage message={error} />;
 
   return (
     <div className="container-fluid mt-4 px-4 pb-5">

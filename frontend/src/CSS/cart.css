@@ -1,0 +1,130 @@
+﻿@import "../theme/root.css";
+
+.cart-icon-wrapper {
+  position: relative;
+  cursor: pointer;
+  padding: 5px;
+  /* มั่นใจว่าตัวคลุมไอคอนไม่ตัดเนื้อหาที่ล้นออกมา */
+  overflow: visible !important; 
+}
+
+.cart-badge {
+  position: absolute;
+  top: -2px;
+  right: -5px;
+  background-color: var(--cart-badge-bg);
+  color: var(--cart-badge-text);
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+  border: 2px solid var(--navbar-bg);
+  z-index: 10;
+}
+
+.cart-dropdown {
+  position: absolute;
+  top: 55px;
+  right: 0;
+  width: 350px;
+  background-color: var(--cart-dropdown-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+  /* บังคับให้อยู่หน้าสุดของหน้าจอ */
+  z-index: 9999 !important; 
+  overflow: hidden;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.cart-header {
+  padding: 18px;
+  border-bottom: 1px solid var(--border-color);
+  font-weight: 800;
+  color: var(--text-color);
+  background-color: #111;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-items-list {
+  max-height: 400px;
+  overflow-y: auto;
+  background-color: var(--cart-dropdown-bg);
+}
+
+.cart-item {
+  padding: 15px;
+  border-bottom: 1px solid #333;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+
+.cart-item:hover {
+  background-color: var(--cart-item-hover);
+}
+
+.cart-item-img {
+  width: 60px;
+  height: 40px;
+  border-radius: 4px;
+  object-fit: cover;
+  margin-right: 15px;
+  border: 1px solid #444;
+}
+
+.cart-item-info {
+  flex-grow: 1;
+}
+
+.cart-item-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 3px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cart-item-price {
+  font-size: 0.85rem;
+  color: var(--accent-yellow);
+  font-weight: bold;
+}
+
+.remove-cart-item {
+  color: #888;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-cart-item:hover {
+  background-color: rgba(220, 53, 69, 0.2);
+  color: var(--primary-color);
+}
+
+.cart-footer {
+  padding: 18px;
+  background-color: #111;
+  border-top: 1px solid var(--border-color);
+}
+
+.empty-cart-msg {
+  padding: 50px 20px;
+  text-align: center;
+  color: var(--text-muted);
+}
