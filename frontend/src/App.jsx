@@ -1,16 +1,20 @@
 ﻿import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
+import { AuthProvider, useAuth } from "./AuthContext";
+import { CartProvider, useCart } from "./CartContext";
 import SignIn from "./signin";
 import SignUp from "./signup";
 import IndexPage from "./index";
 import Filter from "./filter";
+import CartPage from "./cart";
+import BookingsPage from "./bookings";
 import "./CSS/form.css";
 
-// สร้าง Component แยกเพื่อใช้ useLocation ได้ภายใน Router
 function Navigation({ searchInput, handleFilterChange, showFilters, setShowFilters, filters, handleResetFilters }) {
   const location = useLocation();
-  
-  // เช็คว่าอยู่ที่หน้า signin หรือ signup หรือเปล่า
+  const { user, logout } = useAuth();
+  const { count } = useCart();
+
   const isAuthPage = location.pathname === "/signin" || location.pathname === "/signup";
 
   return (
@@ -22,19 +26,18 @@ function Navigation({ searchInput, handleFilterChange, showFilters, setShowFilte
             <span className="fs-3 ms-1" style={{ color: "var(--navbar-hover)" }}>Do</span>
           </Link>
 
-          {/* ซ่อนช่องค้นหาและปุ่ม Filter ถ้าเป็นหน้า Auth */}
           {!isAuthPage && (
             <div className="d-flex mx-auto d-none d-lg-flex align-items-center" style={{ width: "50%", maxWidth: "700px" }}>
               <div className="input-group" style={{ height: "40px" }}>
-                <input 
-                  className="form-control" 
-                  type="search" 
+                <input
+                  className="form-control"
+                  type="search"
                   name="search"
-                  placeholder="ค้นหาคอร์สเรียนที่คุณสนใจ..." 
+                  placeholder="ค้นหาคอร์สเรียนที่คุณสนใจ..."
                   value={searchInput}
                   onChange={handleFilterChange}
-                  style={{ 
-                    backgroundColor: "#121212", color: "white", border: "1px solid #303030", 
+                  style={{
+                    backgroundColor: "#121212", color: "white", border: "1px solid #303030",
                     borderTopLeftRadius: "40px", borderBottomLeftRadius: "40px", paddingLeft: "25px"
                   }}
                 />
@@ -42,8 +45,8 @@ function Navigation({ searchInput, handleFilterChange, showFilters, setShowFilte
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#888" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg>
                 </button>
               </div>
-              
-              <button 
+
+              <button
                 className={`btn ms-2 d-flex align-items-center justify-content-center ${showFilters ? "btn-primary" : "btn-outline-secondary"}`}
                 onClick={() => setShowFilters(!showFilters)}
                 style={{ borderRadius: "50%", width: "40px", height: "40px", padding: 0 }}
@@ -61,26 +64,57 @@ function Navigation({ searchInput, handleFilterChange, showFilters, setShowFilte
 
           <div className="collapse navbar-collapse flex-grow-0" id="navbarNav">
             <ul className="navbar-nav ms-auto align-items-center mt-3 mt-lg-0">
-              <li className="nav-item"><Link className="nav-link navbar-custom-btn mx-1" to="/signin">Sign In</Link></li>
-              <li className="nav-item mt-2 mt-lg-0"><Link className="nav-link navbar-custom-btn mx-1" to="/signup">Sign Up</Link></li>
+
+              <li className="nav-item">
+                <Link className="nav-link navbar-custom-btn mx-1 position-relative" to="/cart">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                  </svg>
+                  {count > 0 && (
+                    <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style={{ fontSize: "0.6rem" }}>
+                      {count}
+                    </span>
+                  )}
+                </Link>
+              </li>
+
+              {user ? (
+                <>
+                  <li className="nav-item">
+                    <Link className="nav-link navbar-custom-btn mx-1" to="/bookings">My Bookings</Link>
+                  </li>
+                  <li className="nav-item dropdown mt-2 mt-lg-0">
+                    <button className="nav-link navbar-custom-btn mx-1 dropdown-toggle" data-bs-toggle="dropdown">
+                      {user.name}
+                    </button>
+                    <ul className="dropdown-menu dropdown-menu-end">
+                      <li><button className="dropdown-item" onClick={logout}>Sign Out</button></li>
+                    </ul>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li className="nav-item"><Link className="nav-link navbar-custom-btn mx-1" to="/signin">Sign In</Link></li>
+                  <li className="nav-item mt-2 mt-lg-0"><Link className="nav-link navbar-custom-btn mx-1" to="/signup">Sign Up</Link></li>
+                </>
+              )}
             </ul>
           </div>
         </div>
       </nav>
 
-      {/* ซ่อนแผง Filter ถ้าเป็นหน้า Auth หรือถ้าไม่ได้สั่งเปิดไว้ */}
       {showFilters && !isAuthPage && (
-        <Filter 
-          filters={filters} 
-          onFilterChange={handleFilterChange} 
-          onReset={handleResetFilters} 
+        <Filter
+          filters={filters}
+          onFilterChange={handleFilterChange}
+          onReset={handleResetFilters}
         />
       )}
     </>
   );
 }
 
-function App() {
+function AppContent() {
   const [showFilters, setShowFilters] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const [filters, setFilters] = useState({
@@ -117,7 +151,7 @@ function App() {
   return (
     <Router>
       <div style={{ minHeight: "100vh", backgroundColor: "var(--bg-color)" }}>
-        <Navigation 
+        <Navigation
           searchInput={searchInput}
           handleFilterChange={handleFilterChange}
           showFilters={showFilters}
@@ -131,10 +165,22 @@ function App() {
             <Route path="/" element={<IndexPage filters={filters} />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/bookings" element={<BookingsPage />} />
           </Routes>
         </div>
       </div>
     </Router>
+  );
+}
+
+function App() {
+  return (
+    <AuthProvider>
+      <CartProvider>
+        <AppContent />
+      </CartProvider>
+    </AuthProvider>
   );
 }
 
