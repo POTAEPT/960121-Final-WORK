@@ -19,25 +19,22 @@ const CourseDetail = ({ addToCart }) => {
   }, [searchTerm]);
 
   useEffect(() => {
-    const fetchDetail = async () => {
-      setLoading(true);
-      try {
-        // ✅ ดึงข้อมูลคอร์สตาม ID จาก Backend เท่านั้น
-        const res = await fetch(`http://localhost:8080/api/classes/${id}`);
+    setLoading(true);
+    fetch("/src/data/courseDetails.json")
+      .then(res => {
         if (!res.ok) throw new Error("ไม่สามารถเข้าถึงฐานข้อมูลรายละเอียดคอร์สได้");
-        
-        const payload = await res.json();
-        const found = payload.data;
-        
+        return res.json();
+      })
+      .then(data => {
+        const found = data.find(c => c.id === parseInt(id));
         if (!found) throw new Error("ขออภัย! ไม่พบคอร์สเรียนที่คุณกำลังค้นหา");
         setCourse(found);
-      } catch (err) {
-        setError(err.message || "ไม่พบข้อมูลคอร์สเรียนนี้ในระบบ");
-      } finally {
         setLoading(false);
-      }
-    };
-    fetchDetail();
+      })
+      .catch(err => {
+        setError(err.message);
+        setLoading(false);
+      });
   }, [id]);
 
   if (loading) return <Loading message="กำลังเตรียมเนื้อหาบทเรียนที่เข้มข้นสำหรับคุณ..." />;     
@@ -48,11 +45,8 @@ const CourseDetail = ({ addToCart }) => {
     chap.lessons?.some(l => l.toLowerCase().includes(debouncedSearch.toLowerCase()))
   ) || [];
 
-  // ✅ ดึงเฉพาะข้อมูลจาก Backend
-  const max = course.max_capacity || 1;
-  const enr = course.current_bookings || 0;
-  const title = course.title || "Untitled Course";
-
+  const max = course.maxSeats || 1;
+  const enr = course.enrolled || 0;
   const seatsLeft = Math.max(0, max - enr);
   const percentFull = Math.min(100, (enr / max) * 100);
   const isNearFull = percentFull >= 85;
@@ -61,7 +55,7 @@ const CourseDetail = ({ addToCart }) => {
     if (seatsLeft <= 0) return;
     addToCart({
       id: course.id,
-      courseName: title,
+      courseName: course.courseName,
       image: course.image,
       price: course.price || 0
     });
@@ -75,12 +69,12 @@ const CourseDetail = ({ addToCart }) => {
           <nav aria-label="breadcrumb" className="mb-4">
             <ol className="breadcrumb">
               <li className="breadcrumb-item"><Link to="/" className="text-danger text-decoration-none">Home</Link></li>
-              <li className="breadcrumb-item active text-white">{title}</li>
+              <li className="breadcrumb-item active text-white">{course.courseName}</li>
             </ol>
           </nav>
 
           <div className="d-flex align-items-center mb-3">
-            <h1 className="course-detail-title mb-0 display-5 fw-bold text-white">{title}</h1>
+            <h1 className="course-detail-title mb-0 display-5 fw-bold text-white">{course.courseName}</h1>
             {enr > 200 && <span className="badge bg-primary ms-3 py-2 px-3 rounded-pill shadow-sm"><i className="bi bi-star-fill me-1"></i> คอร์สยอดนิยม</span>}
           </div>
           <p className="lead mb-4 course-detail-desc text-light opacity-75">{course.fullDescription}</p>
