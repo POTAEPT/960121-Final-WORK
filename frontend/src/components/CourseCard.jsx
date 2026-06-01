@@ -23,13 +23,13 @@ const CourseCard = ({ course }) => {
         
         {isVeryPopular && (
           <div className="position-absolute bottom-0 start-0 bg-primary text-white px-2 py-1 m-2 rounded-pill small fw-bold shadow-lg" style={{ fontSize: "0.7rem", backgroundColor: "rgba(13, 110, 253, 0.9)" }}>
-            ⭐ ทางเลือกยอดนิยม
+            <i className="bi bi-star-fill me-1"></i> ทางเลือกยอดนิยม
           </div>
         )}
 
         {percentFull >= 80 && (
           <div className="position-absolute top-0 end-0 bg-warning text-dark px-2 py-1 m-2 rounded small fw-bold shadow-lg hot-label">
-            🔥 HOT
+            <i className="bi bi-fire me-1"></i> HOT
           </div>
         )}
       </div>
@@ -40,9 +40,7 @@ const CourseCard = ({ course }) => {
         <div className="mb-3">
           <div className="d-flex justify-content-between mb-2 small align-items-center">
             <div className={`enrolled-badge ${isNearFull ? "near-full" : ""}`} style={{ color: "white" }}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" className="bi bi-people-fill me-2" viewBox="0 0 16 16">
-                <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
-              </svg>
+              <i className="bi bi-people-fill me-2"></i>
               <span className="text-white">ลงทะเบียนแล้ว {enrolled} / {max} คน</span>
             </div>
             <span className={`fw-bold ${isNearFull ? "text-danger" : "text-white"}`}>{Math.round(percentFull)}%</span>

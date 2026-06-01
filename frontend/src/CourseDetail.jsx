@@ -75,7 +75,7 @@ const CourseDetail = ({ addToCart }) => {
 
           <div className="d-flex align-items-center mb-3">
             <h1 className="course-detail-title mb-0 display-5 fw-bold text-white">{course.courseName}</h1>
-            {enr > 200 && <span className="badge bg-primary ms-3 py-2 px-3 rounded-pill shadow-sm">⭐ คอร์สยอดนิยม</span>}
+            {enr > 200 && <span className="badge bg-primary ms-3 py-2 px-3 rounded-pill shadow-sm"><i className="bi bi-star-fill me-1"></i> คอร์สยอดนิยม</span>}
           </div>
           <p className="lead mb-4 course-detail-desc text-light opacity-75">{course.fullDescription}</p>
 
@@ -84,7 +84,7 @@ const CourseDetail = ({ addToCart }) => {
             <div className="row row-cols-1 row-cols-md-2 g-3">
               {course.benefits?.map((b, i) => (
                 <div className="col d-flex align-items-start benefit-item" key={i}>
-                  <span className="text-danger me-2">✔</span>
+                  <i className="bi bi-check-circle-fill text-danger me-2"></i>
                   <span className="text-light opacity-75">{b}</span>
                 </div>
               ))}
@@ -102,7 +102,7 @@ const CourseDetail = ({ addToCart }) => {
                 onChange={(e) => setSearchTerm(e.target.value)}
                 style={{ borderRadius: "20px 0 0 20px" }}
               />
-              <span className="input-group-text bg-black border-secondary border-start-0 text-secondary" style={{ borderRadius: "0 20px 20px 0" }}>🔍</span>
+              <span className="input-group-text bg-black border-secondary border-start-0 text-secondary" style={{ borderRadius: "0 20px 20px 0" }}><i className="bi bi-search"></i></span>
             </div>
           </div>
 
@@ -115,7 +115,7 @@ const CourseDetail = ({ addToCart }) => {
                 <ul className="list-group list-group-flush">
                   {chap.lessons?.map((lesson, li) => (
                     <li className="list-group-item bg-transparent lesson-item py-3 ps-4 border-secondary text-light opacity-75" key={li}>
-                      <span className="text-danger me-3">▶</span> {lesson}
+                      <i className="bi bi-play-circle-fill text-danger me-3"></i> {lesson}
                     </li>
                   ))}
                 </ul>
@@ -132,11 +132,6 @@ const CourseDetail = ({ addToCart }) => {
           <div className="card shadow-lg enroll-card overflow-hidden sticky-top" style={{ top: "100px", border: "1px solid #333", backgroundColor: "var(--form-bg)", borderRadius: "20px" }}>
             <div className="position-relative">
               <img src={course.image} className="w-100" style={{ aspectRatio: "16/9", objectFit: "cover" }} alt="Preview" />
-              <div className="position-absolute top-50 start-50 translate-middle">
-                 <div className="bg-danger text-white rounded-circle d-flex align-items-center justify-content-center shadow-lg hover-scale" style={{ width: "65px", height: "65px", cursor: "pointer" }}>    
-                   <span style={{ fontSize: "2rem", marginLeft: "4px" }}>▶</span>
-                 </div>
-              </div>
             </div>
             <div className="card-body p-4">
               <div className="d-flex align-items-center mb-4 border-bottom border-secondary pb-3">
@@ -150,8 +145,8 @@ const CourseDetail = ({ addToCart }) => {
               <div className="p-3 mb-4 rounded-4 bg-black border border-secondary shadow-inner">
                 <div className="d-flex justify-content-between mb-2 align-items-center">
                   <span className="text-muted small">ยอดผู้ลงทะเบียน</span>
-                  <div className={`enrolled-badge ${isNearFull ? "near-full" : ""}`} style={{ fontSize: "0.8rem" }}>
-                    ลงทะเบียนแล้ว {enr} / {max} คน
+                  <div className={`enrolled-badge ${isNearFull ? "near-full" : ""}`} style={{ fontSize: "0.8rem", color: "white" }}>
+                    <span className="text-white">ลงทะเบียนแล้ว {enr} / {max} คน</span>
                   </div>
                 </div>
                 <div className="progress mb-2 shadow-sm" style={{ height: "10px", backgroundColor: "#111", borderRadius: "10px" }}>
@@ -161,7 +156,7 @@ const CourseDetail = ({ addToCart }) => {
                   ></div>
                 </div>
                 <div className="text-center text-muted mt-2 fw-bold" style={{ fontSize: "0.8rem" }}>    
-                  {seatsLeft > 0 ? `🔥 คอร์สนี้เหลืออีกเพียง ${seatsLeft} ที่นั่ง!` : "คอร์สนี้เต็มแล้ว!"}
+                  {seatsLeft > 0 ? <><i className="bi bi-fire text-danger me-1"></i> เหลืออีกเพียง {seatsLeft} ที่นั่ง!</> : "คอร์สนี้เต็มแล้ว!"}
                 </div>
               </div>
 
@@ -178,8 +173,8 @@ const CourseDetail = ({ addToCart }) => {
               </button>
 
               <div className="text-center small text-muted">
-                <div className="mb-1 text-light opacity-75"><span className="text-success me-1">✔</span> เข้าเรียนได้ตลอดชีพ</div>
-                <div className="text-light opacity-75"><span className="text-success me-1">✔</span> รับใบประกาศนียบัตร</div>       
+                <div className="mb-1 text-light opacity-75"><i className="bi bi-check-lg text-success me-1"></i> เข้าเรียนได้ตลอดชีพ</div>
+                <div className="text-light opacity-75"><i className="bi bi-check-lg text-success me-1"></i> รับใบประกาศนียบัตร</div>       
               </div>
             </div>
           </div>
