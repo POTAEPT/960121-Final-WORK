@@ -50,48 +50,48 @@ const CheckoutForm = () => {
         <button className="btn btn-outline-light btn-sm me-3" onClick={() => navigate(-1)} style={{ borderRadius: "50%", width: "32px", height: "32px", padding: 0 }}>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path fillRule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/></svg>
         </button>
-        <h2 className="fw-bold mb-0">ข้อมูลการชำระเงินและจองที่นั่ง</h2>
+        <h2 className="fw-bold mb-0 text-white">ข้อมูลการชำระเงินและจองที่นั่ง</h2>
       </div>
 
       <div className="row g-4">
         <div className="col-lg-8">
           <div className="card bg-dark border-secondary p-4 shadow-lg" style={{ borderRadius: "20px", border: "1px solid rgba(255,255,255,0.1)" }}>
-            <h5 className="mb-4 fw-bold d-flex align-items-center">
+            <h5 className="mb-4 fw-bold d-flex align-items-center text-white">
               <span className="bg-primary rounded-circle d-flex align-items-center justify-content-center me-2" style={{ width: "24px", height: "24px", fontSize: "14px" }}>1</span>
               ข้อมูลส่วนตัวผู้จอง
             </h5>
             <form onSubmit={handleSubmit}>
               <div className="row g-3 mb-4">
                 <div className="col-md-6">
-                  <label className="form-label text-secondary small fw-bold">ชื่อ</label>
-                  <input type="text" name="firstName" className="form-control bg-dark text-white border-secondary py-2" required placeholder="สมชาย" onChange={handleChange} style={{ borderRadius: "10px", borderColor: "#444" }} />
+                  <label className="form-label text-light small fw-bold">ชื่อ</label>
+                  <input type="text" name="firstName" className="form-control bg-dark text-white border-secondary py-2" required placeholder="สมชาย" onChange={handleChange} style={{ borderRadius: "10px", borderColor: "#555" }} />
                 </div>
                 <div className="col-md-6">
-                  <label className="form-label text-secondary small fw-bold">นามสกุล</label>
-                  <input type="text" name="lastName" className="form-control bg-dark text-white border-secondary py-2" required placeholder="ใจดี" onChange={handleChange} style={{ borderRadius: "10px", borderColor: "#444" }} />
+                  <label className="form-label text-light small fw-bold">นามสกุล</label>
+                  <input type="text" name="lastName" className="form-control bg-dark text-white border-secondary py-2" required placeholder="ใจดี" onChange={handleChange} style={{ borderRadius: "10px", borderColor: "#555" }} />
                 </div>
               </div>
               <div className="row g-3 mb-4">
                 <div className="col-md-6">
-                  <label className="form-label text-secondary small fw-bold">อีเมล</label>
-                  <input type="email" name="email" className="form-control bg-dark text-white border-secondary py-2" required placeholder="somchai@example.com" onChange={handleChange} style={{ borderRadius: "10px", borderColor: "#444" }} />
+                  <label className="form-label text-light small fw-bold">อีเมล</label>
+                  <input type="email" name="email" className="form-control bg-dark text-white border-secondary py-2" required placeholder="somchai@example.com" onChange={handleChange} style={{ borderRadius: "10px", borderColor: "#555" }} />
                 </div>
                 <div className="col-md-6">
-                  <label className="form-label text-secondary small fw-bold">เบอร์โทรศัพท์</label>
-                  <input type="tel" name="phone" className="form-control bg-dark text-white border-secondary py-2" required placeholder="081-234-5678" onChange={handleChange} style={{ borderRadius: "10px", borderColor: "#444" }} />
+                  <label className="form-label text-light small fw-bold">เบอร์โทรศัพท์</label>
+                  <input type="tel" name="phone" className="form-control bg-dark text-white border-secondary py-2" required placeholder="081-234-5678" onChange={handleChange} style={{ borderRadius: "10px", borderColor: "#555" }} />
                 </div>
               </div>
 
-              <h5 className="mb-4 fw-bold d-flex align-items-center">
+              <h5 className="mb-4 fw-bold d-flex align-items-center text-white">
                 <span className="bg-primary rounded-circle d-flex align-items-center justify-content-center me-2" style={{ width: "24px", height: "24px", fontSize: "14px" }}>2</span>
                 รายละเอียดการจอง
               </h5>
               <div className="mb-4">
-                <label className="form-label text-secondary small fw-bold">ระบุเลขที่นั่ง หรือความต้องการพิเศษ</label>
-                <textarea name="seatPreference" className="form-control bg-dark text-white border-secondary py-2" rows={3} placeholder="เช่น แถว A ที่นั่ง 05 หรือ ขอใกล้ทางเดิน" onChange={handleChange} style={{ borderRadius: "10px", borderColor: "#444" }}></textarea>
+                <label className="form-label text-light small fw-bold">ระบุเลขที่นั่ง หรือความต้องการพิเศษ</label>
+                <textarea name="seatPreference" className="form-control bg-dark text-white border-secondary py-2" rows={3} placeholder="เช่น แถว A ที่นั่ง 05 หรือ ขอใกล้ทางเดิน" onChange={handleChange} style={{ borderRadius: "10px", borderColor: "#555" }}></textarea>
               </div>
               
-              <h5 className="mb-4 fw-bold d-flex align-items-center">
+              <h5 className="mb-4 fw-bold d-flex align-items-center text-white">
                 <span className="bg-primary rounded-circle d-flex align-items-center justify-content-center me-2" style={{ width: "24px", height: "24px", fontSize: "14px" }}>3</span>
                 วิธีการชำระเงิน
               </h5>
@@ -102,7 +102,7 @@ const CheckoutForm = () => {
                     style={{ 
                       cursor: "pointer", 
                       borderRadius: "15px", 
-                      backgroundColor: formData.paymentMethod === "qr" ? "rgba(13, 110, 253, 0.1)" : "#1a1a1a",
+                      backgroundColor: formData.paymentMethod === "qr" ? "rgba(13, 110, 253, 0.2)" : "#1a1a1a",
                       borderWidth: "2px"
                     }} 
                     onClick={() => setFormData({...formData, paymentMethod: "qr"})}
@@ -122,7 +122,7 @@ const CheckoutForm = () => {
                     style={{ 
                       cursor: "pointer", 
                       borderRadius: "15px", 
-                      backgroundColor: formData.paymentMethod === "credit" ? "rgba(13, 110, 253, 0.1)" : "#1a1a1a",
+                      backgroundColor: formData.paymentMethod === "credit" ? "rgba(13, 110, 253, 0.2)" : "#1a1a1a",
                       borderWidth: "2px"
                     }} 
                     onClick={() => setFormData({...formData, paymentMethod: "credit"})}
@@ -147,18 +147,18 @@ const CheckoutForm = () => {
 
         <div className="col-lg-4">
           <div className="card bg-dark border-secondary p-4 shadow-lg sticky-top" style={{ borderRadius: "20px", border: "1px solid rgba(255,255,255,0.1)", top: "100px" }}>
-            <h5 className="fw-bold mb-4 d-flex justify-content-between align-items-center">
+            <h5 className="fw-bold mb-4 d-flex justify-content-between align-items-center text-white">
               สรุปรายการจอง
-              <span className="badge bg-secondary rounded-pill fw-normal" style={{ fontSize: "0.7rem" }}>{cartItems.length} รายการ</span>
+              <span className="badge bg-secondary rounded-pill fw-normal text-white" style={{ fontSize: "0.7rem" }}>{cartItems.length} รายการ</span>
             </h5>
             <div className="cart-items-mini mb-4" style={{ maxHeight: "300px", overflowY: "auto" }}>
               {cartItems.map((item: any) => (
-                <div key={item.id} className="d-flex justify-content-between mb-3 align-items-center p-2 rounded" style={{ backgroundColor: "rgba(255,255,255,0.03)" }}>
+                <div key={item.id} className="d-flex justify-content-between mb-3 align-items-center p-2 rounded" style={{ backgroundColor: "rgba(255,255,255,0.05)" }}>
                   <div className="d-flex align-items-center">
                     <img src={item.image} className="rounded me-2" style={{ width: "60px", height: "35px", objectFit: "cover" }} alt="" />
                     <div style={{ fontSize: "0.85rem" }}>
-                      <div className="fw-bold text-truncate" style={{ maxWidth: "120px" }}>{item.courseName}</div>
-                      <div className="text-secondary small">1 ที่นั่ง</div>
+                      <div className="fw-bold text-truncate text-white" style={{ maxWidth: "120px" }}>{item.courseName}</div>
+                      <div className="text-light small">1 ที่นั่ง</div>
                     </div>
                   </div>
                   <div className="text-warning fw-bold" style={{ fontSize: "0.9rem" }}>฿{item.price?.toLocaleString()}</div>
@@ -167,17 +167,17 @@ const CheckoutForm = () => {
             </div>
             <hr className="border-secondary mb-4" />
             <div className="d-flex justify-content-between mb-2">
-              <span className="text-secondary small">ยอดรวมสินค้า:</span>
-              <span className="small">฿{totalPrice.toLocaleString()}</span>
+              <span className="text-light small">ยอดรวมสินค้า:</span>
+              <span className="small text-white">฿{totalPrice.toLocaleString()}</span>
             </div>
-            <div className="d-flex justify-content-between mb-4 fs-4 fw-bold">
+            <div className="d-flex justify-content-between mb-4 fs-4 fw-bold text-white">
               <span>รวมทั้งสิ้น:</span>
               <span className="text-warning">฿{totalPrice.toLocaleString()}</span>
             </div>
             <div className="alert alert-info py-2 px-3 border-0 bg-opacity-10" style={{ borderRadius: "10px", backgroundColor: "rgba(13, 202, 240, 0.1)", color: "#74defb", fontSize: "0.8rem" }}>
               <div className="d-flex">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-info-circle-fill me-2 mt-1" viewBox="0 0 16 16"><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
-                <div>กรุณาตรวจสอบข้อมูลชื่อ-นามสกุล และคอร์สที่เลือกให้ถูกต้องก่อนชำระเงิน</div>
+                <div className="text-white">กรุณาตรวจสอบข้อมูลชื่อ-นามสกุล และคอร์สที่เลือกให้ถูกต้องก่อนชำระเงิน</div>
               </div>
             </div>
           </div>
