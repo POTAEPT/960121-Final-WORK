@@ -3,18 +3,19 @@ import { useNavigate } from "react-router-dom";
 import Loading from "./components/Loading";
 import ErrorMessage from "./components/ErrorMessage";
 import CourseCard from "./components/CourseCard";
+import heroImage from "./assets/hero.png";
 import "./CSS/form.css";
 
 const Index = ({ filters, addToCart }) => {
   const [courses, setCourses] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     fetch("/src/data/courses.json")
       .then((res) => {
-        if (!res.ok) throw new Error("ระบบไม่สามารถเชื่อมต่อฐานข้อมูลคอร์สเรียนได้ในขณะนี้");    
+        if (!res.ok) throw new Error("ระบบไม่สามารถเชื่อมต่อฐานข้อมูลคอร์สเรียนได้ในขณะนี้");
         return res.json();
       })
       .then((data) => {
@@ -121,7 +122,7 @@ const Index = ({ filters, addToCart }) => {
     }
   };
 
-  if (loading) return <Loading message="กำลังค้นหาคอร์สเรียนที่เหมาะสำหรับคุณ..." />;
+  if (isLoading) return <Loading message="กำลังค้นหาคอร์สเรียนที่เหมาะสำหรับคุณ..." />;
   if (error) return <ErrorMessage message={error} />;
 
   return (
