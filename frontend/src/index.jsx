@@ -7,48 +7,29 @@ import "./CSS/form.css";
 
 const Index = ({ filters, addToCart }) => {
   const [courses, setCourses] = useState([]);
-  const [isLoading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    let isMounted = true;
-
-    const loadCourses = async () => {
-      try {
-        const res = await fetch("http://localhost:8080/api/classes");
-        if (!res.ok) {
-          throw new Error("ระบบไม่สามารถเชื่อมต่อฐานข้อมูลคอร์สเรียนได้ในขณะนี้");
-        }
-
-        const payload = await res.json();
-        const data = Array.isArray(payload.data) ? payload.data : [];
-
-        if (isMounted) {
-          setCourses(data);
-        }
-      } catch (err) {
-        if (isMounted) {
-          setError(err.message || "เกิดข้อผิดพลาดในการโหลดคอร์สเรียน");
-        }
-      } finally {
-        if (isMounted) {
-          setLoading(false);
-        }
-      }
-    };
-
-    loadCourses();
-
-    return () => {
-      isMounted = false;
-    };
+    fetch("/src/data/courses.json")
+      .then((res) => {
+        if (!res.ok) throw new Error("ระบบไม่สามารถเชื่อมต่อฐานข้อมูลคอร์สเรียนได้ในขณะนี้");    
+        return res.json();
+      })
+      .then((data) => {
+        setCourses(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        setError(err.message);
+        setLoading(false);
+      });
   }, []);
 
   const filteredCourses = useMemo(() => {
     return courses.filter(course => {
-      const title = course.title || course.course_name || course.courseName || "";
-      const matchSearch = title.toLowerCase().includes(filters.search.toLowerCase());
+      const matchSearch = course.courseName?.toLowerCase().includes(filters.search.toLowerCase());
       const matchCategory = filters.category === "All" || course.category === filters.category;  
       const matchPrice = (course.price || 0) <= filters.priceRange;
       return matchSearch && matchCategory && matchPrice;
@@ -111,10 +92,7 @@ const Index = ({ filters, addToCart }) => {
 
     const actionButton = e.target.closest("[data-action='add-to-cart']");
     if (actionButton) {
-      const max = course.max_capacity || course.maxSeats || 0;
-      const current = course.current_bookings || course.enrolled || 0;
-
-      if (max - current > 0) {
+      if (course.maxSeats - course.enrolled > 0) {
         const imgElement = cardElement.querySelector("img");
         if (imgElement) {
           createFlyingAnimation(imgElement, course.image);
@@ -138,7 +116,7 @@ const Index = ({ filters, addToCart }) => {
     }
   };
 
-  if (isLoading) return <Loading message="กำลังค้นหาคอร์สเรียนที่เหมาะสำหรับคุณ..." />;
+  if (loading) return <Loading message="กำลังค้นหาคอร์สเรียนที่เหมาะสำหรับคุณ..." />;
   if (error) return <ErrorMessage message={error} />;
 
   return (

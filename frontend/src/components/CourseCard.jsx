@@ -1,16 +1,13 @@
 ﻿import React from "react";
 
 const CourseCard = ({ course }) => {
-  // Safety Calculation (รองรับทั้งรูปแบบเก่าและใหม่จาก Backend)
-  const max = course.max_capacity || course.maxSeats || 1; 
-  const enrolled = course.current_bookings || course.enrolled || 0; 
+  // Safety Calculation
+  const max = course.maxSeats || 1;
+  const enrolled = course.enrolled || 0;
   const seatsLeft = Math.max(0, max - enrolled);
   const percentFull = Math.min(100, (enrolled / max) * 100);
   const isNearFull = percentFull >= 85;
   const isVeryPopular = enrolled >= 200; 
-
-  // รองรับชื่อคอร์สทั้งรูปแบบเก่าและใหม่
-  const courseTitle = course.title || course.course_name || course.courseName;
 
   return (
     <div
@@ -19,7 +16,7 @@ const CourseCard = ({ course }) => {
       data-course-id={course.id}
     >
       <div className="position-relative" style={{ aspectRatio: "16/9", width: "100%", overflow: "hidden" }}>
-        <img src={course.image} alt={courseTitle} className="w-100 h-100 object-fit-cover" loading="lazy" />
+        <img src={course.image} alt={course.courseName} className="w-100 h-100 object-fit-cover" loading="lazy" />
         <div className="position-absolute top-0 start-0 bg-danger text-white px-2 py-1 m-2 rounded small fw-bold shadow-sm">
           {course.category}
         </div>
@@ -38,10 +35,8 @@ const CourseCard = ({ course }) => {
       </div>
 
       <div className="card-body d-flex flex-column">
-        <h6 className="text-white fw-bold mb-2 text-truncate-2" style={{ minHeight: "2.8rem" }}>
-           {courseTitle}
-        </h6>
-        
+        <h6 className="text-white fw-bold mb-2 text-truncate-2" style={{ minHeight: "2.8rem" }}>{course.courseName}</h6>
+
         <div className="mb-3">
           <div className="d-flex justify-content-between mb-2 small align-items-center">
             <div className={`enrolled-badge ${isNearFull ? "near-full" : ""}`} style={{ color: "white" }}>
