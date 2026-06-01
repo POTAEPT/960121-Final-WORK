@@ -18,11 +18,25 @@ const CheckoutForm = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
+    
+    // Numeric-only validation for phone
+    if (name === "phone") {
+      const numericValue = value.replace(/[^0-9]/g, "");
+      if (numericValue.length <= 10) {
+        setFormData({ ...formData, [name]: numericValue });
+      }
+      return;
+    }
+
     setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (formData.phone.length < 9) {
+      alert("กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง");
+      return;
+    }
     alert("การชำระเงินและจองที่นั่งสำเร็จ!");
     localStorage.removeItem("bornToDoCart");
     navigate("/");
@@ -37,7 +51,7 @@ const CheckoutForm = () => {
             <path d="M7.354 5.646a.5.5 0 1 0-.708.708L7.793 7.5 6.646 8.646a.5.5 0 1 0 .708.708L8.5 8.207l1.146 1.147a.5.5 0 0 0 .708-.708L9.207 7.5l1.147-1.146a.5.5 0 0 0-.708-.708L8.5 6.793 7.354 5.646z"/>
             <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
           </svg>
-          <h2 className="mb-4 fw-bold">กรุณาเลือกคอร์สเรียนก่อนทำรายการ</h2>
+          <h2 className="mb-4 fw-bold text-white">กรุณาเลือกคอร์สเรียนก่อนทำรายการ</h2>
           <button className="btn btn-primary btn-lg px-5" style={{ borderRadius: "30px" }} onClick={() => navigate("/")}>กลับไปหน้าหลัก</button>
         </div>
       </div>
@@ -64,21 +78,21 @@ const CheckoutForm = () => {
               <div className="row g-3 mb-4">
                 <div className="col-md-6">
                   <label className="form-label text-light small fw-bold">ชื่อ</label>
-                  <input type="text" name="firstName" className="form-control bg-dark text-white border-secondary py-2" required placeholder="สมชาย" onChange={handleChange} style={{ borderRadius: "10px", borderColor: "#555" }} />
+                  <input type="text" name="firstName" className="form-control bg-dark text-white border-secondary py-2" required placeholder="สมชาย" value={formData.firstName} onChange={handleChange} style={{ borderRadius: "10px", borderColor: "#555" }} />
                 </div>
                 <div className="col-md-6">
                   <label className="form-label text-light small fw-bold">นามสกุล</label>
-                  <input type="text" name="lastName" className="form-control bg-dark text-white border-secondary py-2" required placeholder="ใจดี" onChange={handleChange} style={{ borderRadius: "10px", borderColor: "#555" }} />
+                  <input type="text" name="lastName" className="form-control bg-dark text-white border-secondary py-2" required placeholder="ใจดี" value={formData.lastName} onChange={handleChange} style={{ borderRadius: "10px", borderColor: "#555" }} />
                 </div>
               </div>
               <div className="row g-3 mb-4">
                 <div className="col-md-6">
                   <label className="form-label text-light small fw-bold">อีเมล</label>
-                  <input type="email" name="email" className="form-control bg-dark text-white border-secondary py-2" required placeholder="somchai@example.com" onChange={handleChange} style={{ borderRadius: "10px", borderColor: "#555" }} />
+                  <input type="email" name="email" className="form-control bg-dark text-white border-secondary py-2" required placeholder="somchai@example.com" value={formData.email} onChange={handleChange} style={{ borderRadius: "10px", borderColor: "#555" }} />
                 </div>
                 <div className="col-md-6">
-                  <label className="form-label text-light small fw-bold">เบอร์โทรศัพท์</label>
-                  <input type="tel" name="phone" className="form-control bg-dark text-white border-secondary py-2" required placeholder="081-234-5678" onChange={handleChange} style={{ borderRadius: "10px", borderColor: "#555" }} />
+                  <label className="form-label text-light small fw-bold">เบอร์โทรศัพท์ (ใส่เฉพาะตัวเลข)</label>
+                  <input type="tel" name="phone" className="form-control bg-dark text-white border-secondary py-2" required placeholder="0812345678" value={formData.phone} onChange={handleChange} style={{ borderRadius: "10px", borderColor: "#555" }} />
                 </div>
               </div>
 
@@ -88,7 +102,7 @@ const CheckoutForm = () => {
               </h5>
               <div className="mb-4">
                 <label className="form-label text-light small fw-bold">ระบุเลขที่นั่ง หรือความต้องการพิเศษ</label>
-                <textarea name="seatPreference" className="form-control bg-dark text-white border-secondary py-2" rows={3} placeholder="เช่น แถว A ที่นั่ง 05 หรือ ขอใกล้ทางเดิน" onChange={handleChange} style={{ borderRadius: "10px", borderColor: "#555" }}></textarea>
+                <textarea name="seatPreference" className="form-control bg-dark text-white border-secondary py-2" rows={3} placeholder="เช่น แถว A ที่นั่ง 05 หรือ ขอใกล้ทางเดิน" value={formData.seatPreference} onChange={handleChange} style={{ borderRadius: "10px", borderColor: "#555" }}></textarea>
               </div>
               
               <h5 className="mb-4 fw-bold d-flex align-items-center text-white">

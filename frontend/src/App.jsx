@@ -10,6 +10,7 @@ import Summary from "./Summary";
 import CheckoutForm from "./checkout";
 import "./CSS/form.css";
 import "./CSS/cart.css";
+import "./CSS/ui-enhancements.css";
 
 function Navigation({ searchInput, handleFilterChange, showFilters, setShowFilters, filters, handleResetFilters, cartItems, removeFromCart }) {
   const location = useLocation();
