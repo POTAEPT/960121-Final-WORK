@@ -7,10 +7,36 @@ const SignUp = () => {
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) return alert("Passwords don't match");
-    console.log("Sign Up Data:", formData);
+    
+    try {
+      // 1. ยิง Request ไปหา API สมัครสมาชิก
+      const response = await fetch("http://localhost:8080/api/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        // 🚨 Data Mapping: แปลง username หน้าบ้าน ให้กลายเป็น name ส่งไปให้หลังบ้าน
+        body: JSON.stringify({
+          name: formData.username, 
+          email: formData.email,
+          password: formData.password
+        })
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        alert("สมัครสมาชิกสำเร็จ! กรุณาเข้าสู่ระบบ");
+        // เด้งไปหน้า Login อัตโนมัติ (สมมติว่าใช้ useNavigate, หรือใช้ window.location ก็ได้)
+        window.location.href = "/signin"; 
+      } else {
+        alert(`เกิดข้อผิดพลาด: ${result.message}`);
+      }
+    } catch (error) {
+      console.error("Signup Error:", error);
+      alert("ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์ได้");
+    }
   };
 
   return (

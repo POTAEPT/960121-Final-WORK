@@ -7,9 +7,37 @@ const SignIn = () => {
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => {
+const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Sign In Data:", formData);
+    
+    try {
+      // 1. ยิง Request ไปหา API เข้าสู่ระบบ
+      const response = await fetch("http://localhost:8080/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        // ข้อมูลชุดนี้ชื่อตรงกันเป๊ะ โยนไปได้เลย
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password
+        })
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        // 2. 🚨 หัวใจของ State & Continuity: เก็บ JWT Token ลง localStorage
+        localStorage.setItem("token", result.data.token);
+        
+        alert("เข้าสู่ระบบสำเร็จ!");
+        // พากลับไปหน้าแรกสุด
+        window.location.href = "/"; 
+      } else {
+        alert(`เข้าสู่ระบบไม่สำเร็จ: ${result.message}`);
+      }
+    } catch (error) {
+      console.error("Login Error:", error);
+      alert("ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์ได้");
+    }
   };
 
   return (

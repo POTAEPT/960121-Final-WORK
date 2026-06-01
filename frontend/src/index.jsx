@@ -49,7 +49,7 @@ const Index = ({ filters, addToCart }) => {
 
   const filteredCourses = useMemo(() => {
     return courses.filter(course => {
-      const matchSearch = course.courseName?.toLowerCase().includes(filters.search.toLowerCase());
+      const matchSearch = course.title?.toLowerCase().includes(filters.search.toLowerCase());
       const matchCategory = filters.category === "All" || course.category === filters.category;  
       const matchPrice = (course.price || 0) <= filters.priceRange;
       return matchSearch && matchCategory && matchPrice;
@@ -115,7 +115,7 @@ const Index = ({ filters, addToCart }) => {
 
     const actionButton = e.target.closest("[data-action='add-to-cart']");
     if (actionButton) {
-      if (course.maxSeats - course.enrolled > 0) {
+      if (course.max_capacity - course.current_bookings > 0) {
         // Find the image element within the card
         const imgElement = cardElement.querySelector("img");
         if (imgElement) {

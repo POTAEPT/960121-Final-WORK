@@ -19,6 +19,16 @@ function Navigation({ searchInput, handleFilterChange, showFilters, setShowFilte
   const isDetailPage = location.pathname.startsWith("/course/");
   const isCheckoutPage = location.pathname === "/checkout" || location.pathname === "/checkout-form";
 
+  // 🚨 1. เช็ค Token (State & Continuity)
+  const token = localStorage.getItem("token");
+  const isLoggedIn = !!token; // ถ้ามี token จะเป็น true, ถ้าไม่มีจะเป็น false
+
+  // 🚨 2.ฟังก์ชันสำหรับออกจากระบบ (ลบทิ้งแล้วรีเฟรช)
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/"; // พากลับหน้าแรกพร้อมรีเฟรช State ใหม่
+  };
+
   return (
     <>
       <nav className="navbar navbar-expand-lg custom-navbar shadow sticky-top">
