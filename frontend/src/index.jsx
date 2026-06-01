@@ -14,7 +14,7 @@ const Index = ({ filters, addToCart }) => {
   useEffect(() => {
     fetch("/src/data/courses.json")
       .then((res) => {
-        if (!res.ok) throw new Error("ระบบไม่สามารถเชื่อมต่อฐานข้อมูลคอร์สเรียนได้ในขณะนี้");
+        if (!res.ok) throw new Error("ระบบไม่สามารถเชื่อมต่อฐานข้อมูลคอร์สเรียนได้ในขณะนี้");    
         return res.json();
       })
       .then((data) => {
@@ -30,11 +30,60 @@ const Index = ({ filters, addToCart }) => {
   const filteredCourses = useMemo(() => {
     return courses.filter(course => {
       const matchSearch = course.courseName?.toLowerCase().includes(filters.search.toLowerCase());
-      const matchCategory = filters.category === "All" || course.category === filters.category;
+      const matchCategory = filters.category === "All" || course.category === filters.category;  
       const matchPrice = (course.price || 0) <= filters.priceRange;
       return matchSearch && matchCategory && matchPrice;
     });
   }, [courses, filters]);
+
+  const createFlyingAnimation = (startElement, courseImage) => {
+    const cartIcon = document.querySelector(".cart-icon-wrapper");
+    if (!cartIcon) return;
+
+    const startRect = startElement.getBoundingClientRect();
+    const endRect = cartIcon.getBoundingClientRect();
+
+    // Create a ghost image for animation
+    const flyingImg = document.createElement("img");
+    flyingImg.src = courseImage;
+    flyingImg.style.position = "fixed";
+    flyingImg.style.zIndex = "10000";
+    flyingImg.style.width = `${startRect.width}px`;
+    flyingImg.style.height = `${startRect.height}px`;
+    flyingImg.style.left = `${startRect.left}px`;
+    flyingImg.style.top = `${startRect.top}px`;
+    flyingImg.style.borderRadius = "15px";
+    flyingImg.style.objectFit = "cover";
+    flyingImg.style.transition = "all 0.8s cubic-bezier(0.42, 0, 0.58, 1)";
+    flyingImg.style.pointerEvents = "none";
+    flyingImg.style.boxShadow = "0 10px 25px rgba(0,0,0,0.5)";
+    flyingImg.style.border = "2px solid var(--primary-color)";
+    
+    document.body.appendChild(flyingImg);
+
+    // Trigger animation to the cart (Removed rotation as requested)
+    setTimeout(() => {
+      flyingImg.style.left = `${endRect.left + (endRect.width / 2) - 20}px`;
+      flyingImg.style.top = `${endRect.top + (endRect.height / 2) - 15}px`;
+      flyingImg.style.width = "40px";
+      flyingImg.style.height = "25px";
+      flyingImg.style.opacity = "0.3";
+      flyingImg.style.transform = "scale(0.5)"; 
+    }, 10);
+
+    // Cleanup and trigger badge bounce
+    setTimeout(() => {
+      if (document.body.contains(flyingImg)) {
+        document.body.removeChild(flyingImg);
+      }
+      const badge = cartIcon.querySelector(".cart-badge");
+      if (badge) {
+        badge.classList.remove("bounce");
+        void badge.offsetWidth; // Trigger reflow
+        badge.classList.add("bounce");
+      }
+    }, 810);
+  };
 
   const handleListClick = (e) => {
     const cardElement = e.target.closest("[data-course-id]");
@@ -47,7 +96,25 @@ const Index = ({ filters, addToCart }) => {
     const actionButton = e.target.closest("[data-action='add-to-cart']");
     if (actionButton) {
       if (course.maxSeats - course.enrolled > 0) {
+        // Find the image element within the card
+        const imgElement = cardElement.querySelector("img");
+        if (imgElement) {
+          createFlyingAnimation(imgElement, course.image);
+        }
+
+        // Change button state temporarily for visual feedback
+        const originalText = actionButton.innerText;
+        actionButton.innerText = "เพิ่มแล้ว! ✓";
+        actionButton.classList.add("btn-added-success");
+        actionButton.disabled = true;
+
         addToCart(course);
+
+        setTimeout(() => {
+          actionButton.innerText = originalText;
+          actionButton.classList.remove("btn-added-success");
+          actionButton.disabled = false;
+        }, 1500);
       }
     } else {
       navigate(`/course/${courseId}`);
@@ -65,7 +132,7 @@ const Index = ({ filters, addToCart }) => {
           พบ {filteredCourses.length} รายการ
         </span>
       </div>
-      
+
       <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4" onClick={handleListClick}>
         {filteredCourses.map((course) => (
           <div className="col" key={course.id}>
