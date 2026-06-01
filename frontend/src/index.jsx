@@ -8,24 +8,43 @@ import "./CSS/form.css";
 
 const Index = ({ filters, addToCart }) => {
   const [courses, setCourses] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("/src/data/courses.json")
-      .then((res) => {
-        if (!res.ok) throw new Error("ระบบไม่สามารถเชื่อมต่อฐานข้อมูลคอร์สเรียนได้ในขณะนี้");
-        return res.json();
-      })
-      .then((data) => {
-        setCourses(data);
-        setLoading(false);
-      })
-      .catch(err => {
-        setError(err.message);
-        setLoading(false);
-      });
+    let isMounted = true;
+
+    const loadCourses = async () => {
+      // Integration: fetch catalog data from backend API and map payload.data to UI state
+      try {
+        const res = await fetch("http://localhost:8080/api/classes");
+        if (!res.ok) {
+          throw new Error("ระบบไม่สามารถเชื่อมต่อฐานข้อมูลคอร์สเรียนได้ในขณะนี้");
+        }
+
+        const payload = await res.json();
+        const data = Array.isArray(payload.data) ? payload.data : [];
+
+        if (isMounted) {
+          setCourses(data);
+        }
+      } catch (err) {
+        if (isMounted) {
+          setError(err.message || "เกิดข้อผิดพลาดในการโหลดคอร์สเรียน");
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    };
+
+    loadCourses();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   const filteredCourses = useMemo(() => {
