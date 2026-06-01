@@ -37,10 +37,10 @@ const CourseDetail = ({ addToCart }) => {
       });
   }, [id]);
 
-  if (loading) return <Loading message="กำลังเตรียมเนื้อหาบทเรียนที่เข้มข้นสำหรับคุณ..." />;
+  if (loading) return <Loading message="กำลังเตรียมเนื้อหาบทเรียนที่เข้มข้นสำหรับคุณ..." />;     
   if (error) return <ErrorMessage message={error} />;
 
-  const filteredCurriculum = course.curriculum?.filter(chap => 
+  const filteredCurriculum = course.curriculum?.filter(chap =>
     chap.chapter?.toLowerCase().includes(debouncedSearch.toLowerCase()) ||
     chap.lessons?.some(l => l.toLowerCase().includes(debouncedSearch.toLowerCase()))
   ) || [];
@@ -49,6 +49,7 @@ const CourseDetail = ({ addToCart }) => {
   const enr = course.enrolled || 0;
   const seatsLeft = Math.max(0, max - enr);
   const percentFull = Math.min(100, (enr / max) * 100);
+  const isNearFull = percentFull >= 85;
 
   const handleEnroll = () => {
     if (seatsLeft <= 0) return;
@@ -62,7 +63,7 @@ const CourseDetail = ({ addToCart }) => {
   };
 
   return (
-    <div className="container mt-5 pb-5 course-detail-container text-white animate-fade-in">
+    <div className="container mt-5 pb-5 course-detail-container text-white animate-fade-in">     
       <div className="row g-5">
         <div className="col-lg-8">
           <nav aria-label="breadcrumb" className="mb-4">
@@ -72,16 +73,19 @@ const CourseDetail = ({ addToCart }) => {
             </ol>
           </nav>
 
-          <h1 className="course-detail-title mb-3 display-5">{course.courseName}</h1>
-          <p className="lead mb-4 course-detail-desc">{course.fullDescription}</p>
+          <div className="d-flex align-items-center mb-3">
+            <h1 className="course-detail-title mb-0 display-5 fw-bold text-white">{course.courseName}</h1>
+            {enr > 200 && <span className="badge bg-primary ms-3 py-2 px-3 rounded-pill shadow-sm">⭐ คอร์สยอดนิยม</span>}
+          </div>
+          <p className="lead mb-4 course-detail-desc text-light opacity-75">{course.fullDescription}</p>
 
-          <div className="card curriculum-card p-4 mb-5 shadow-sm border-0">
+          <div className="card curriculum-card p-4 mb-5 shadow-sm border-0 bg-dark" style={{ borderRadius: "20px" }}>
             <h4 className="fw-bold mb-4 text-white border-start border-danger border-4 ps-3">สิ่งที่คุณจะได้เรียนรู้</h4>
             <div className="row row-cols-1 row-cols-md-2 g-3">
               {course.benefits?.map((b, i) => (
                 <div className="col d-flex align-items-start benefit-item" key={i}>
                   <span className="text-danger me-2">✔</span>
-                  <span style={{ color: "var(--text-muted)" }}>{b}</span>
+                  <span className="text-light opacity-75">{b}</span>
                 </div>
               ))}
             </div>
@@ -90,10 +94,10 @@ const CourseDetail = ({ addToCart }) => {
           <div className="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center mb-4 gap-3">
             <h4 className="fw-bold mb-0 text-white">เนื้อหาบทเรียน ({filteredCurriculum.length})</h4>
             <div className="input-group" style={{ maxWidth: "300px" }}>
-              <input 
-                type="text" 
-                className="form-control bg-black text-white border-secondary shadow-none" 
-                placeholder="ค้นหาบทเรียน..." 
+              <input
+                type="text"
+                className="form-control bg-black text-white border-secondary shadow-none"        
+                placeholder="ค้นหาบทเรียน..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 style={{ borderRadius: "20px 0 0 20px" }}
@@ -104,13 +108,13 @@ const CourseDetail = ({ addToCart }) => {
 
           {filteredCurriculum.length > 0 ? (
             filteredCurriculum.map((chap, i) => (
-              <div className="card curriculum-card mb-3 overflow-hidden border-0" key={i}>
-                <div className="card-header curriculum-header py-3 fw-bold bg-dark border-bottom border-secondary">
+              <div className="card curriculum-card mb-3 overflow-hidden border-0 bg-dark" key={i} style={{ borderRadius: "15px" }}>       
+                <div className="card-header curriculum-header py-3 fw-bold bg-dark border-bottom border-secondary text-white">
                   <span className="text-danger me-3">บทที่ {i+1}</span> {chap.chapter}
                 </div>
                 <ul className="list-group list-group-flush">
                   {chap.lessons?.map((lesson, li) => (
-                    <li className="list-group-item bg-transparent lesson-item py-3 ps-4 border-secondary" key={li}>
+                    <li className="list-group-item bg-transparent lesson-item py-3 ps-4 border-secondary text-light opacity-75" key={li}>
                       <span className="text-danger me-3">▶</span> {lesson}
                     </li>
                   ))}
@@ -125,57 +129,57 @@ const CourseDetail = ({ addToCart }) => {
         </div>
 
         <div className="col-lg-4">
-          <div className="card shadow-lg enroll-card overflow-hidden sticky-top" style={{ top: "100px", border: "1px solid #333", backgroundColor: "var(--form-bg)" }}>
+          <div className="card shadow-lg enroll-card overflow-hidden sticky-top" style={{ top: "100px", border: "1px solid #333", backgroundColor: "var(--form-bg)", borderRadius: "20px" }}>
             <div className="position-relative">
               <img src={course.image} className="w-100" style={{ aspectRatio: "16/9", objectFit: "cover" }} alt="Preview" />
               <div className="position-absolute top-50 start-50 translate-middle">
-                 <div className="bg-danger text-white rounded-circle d-flex align-items-center justify-content-center shadow-lg" style={{ width: "65px", height: "65px", cursor: "pointer" }}>
+                 <div className="bg-danger text-white rounded-circle d-flex align-items-center justify-content-center shadow-lg hover-scale" style={{ width: "65px", height: "65px", cursor: "pointer" }}>    
                    <span style={{ fontSize: "2rem", marginLeft: "4px" }}>▶</span>
                  </div>
               </div>
             </div>
             <div className="card-body p-4">
               <div className="d-flex align-items-center mb-4 border-bottom border-secondary pb-3">
-                <img src={course.instructorImage} className="rounded-circle me-3 border border-secondary p-1" style={{ width: "60px", height: "60px", objectFit: "cover" }} alt="Instructor" />
+                <img src={course.instructorImage} className="rounded-circle me-3 border border-secondary p-1" style={{ width: "60px", height: "60px", objectFit: "cover" }} alt="Instructor" />   
                 <div>
                   <div className="small text-muted">ผู้สอนโดย</div>
                   <div className="instructor-name fw-bold fs-5 text-white">{course.instructorName}</div>
                 </div>
               </div>
 
-              <div className="p-3 mb-4 rounded-4 bg-black border border-secondary">
-                <div className="d-flex justify-content-between mb-2">
-                  <span className="text-muted small">สถานะการสมัคร</span>
-                  <span className={`fw-bold small ${seatsLeft <= 5 ? "text-danger" : "text-success"}`}>
-                    {seatsLeft > 0 ? `ว่าง ${seatsLeft} ที่สุดท้าย` : "เต็มแล้ว"}
-                  </span>
+              <div className="p-3 mb-4 rounded-4 bg-black border border-secondary shadow-inner">
+                <div className="d-flex justify-content-between mb-2 align-items-center">
+                  <span className="text-muted small">ยอดผู้ลงทะเบียน</span>
+                  <div className={`enrolled-badge ${isNearFull ? "near-full" : ""}`} style={{ fontSize: "0.8rem" }}>
+                    ลงทะเบียนแล้ว {enr} / {max} คน
+                  </div>
                 </div>
-                <div className="progress mb-2 shadow-sm" style={{ height: "10px", backgroundColor: "#222", borderRadius: "10px" }}>
-                  <div 
-                    className={`progress-bar progress-bar-striped progress-bar-animated ${percentFull > 90 ? "bg-danger" : "bg-primary"}`} 
+                <div className="progress mb-2 shadow-sm" style={{ height: "10px", backgroundColor: "#111", borderRadius: "10px" }}>
+                  <div
+                    className={`progress-bar ${isNearFull ? "bg-danger" : "bg-primary"}`}
                     style={{ width: `${percentFull}%`, transition: "width 1s ease", borderRadius: "10px" }}
                   ></div>
                 </div>
-                <div className="text-center text-muted mt-1" style={{ fontSize: "0.75rem" }}>
-                  ลงทะเบียนแล้ว {enr.toLocaleString()} / {max.toLocaleString()} คน
+                <div className="text-center text-muted mt-2 fw-bold" style={{ fontSize: "0.8rem" }}>    
+                  {seatsLeft > 0 ? `🔥 คอร์สนี้เหลืออีกเพียง ${seatsLeft} ที่นั่ง!` : "คอร์สนี้เต็มแล้ว!"}
                 </div>
               </div>
 
               <h3 className="course-price fw-bold mb-4 fs-1 text-center" style={{ color: "var(--accent-yellow)" }}>
                 {course.price === 0 ? "FREE" : `฿${course.price.toLocaleString()}`}
               </h3>
-              
-              <button 
-                className={`btn ${seatsLeft > 0 ? "btn-danger" : "btn-secondary disabled"} btn-lg w-100 fw-bold mb-3 shadow-sm py-3 transition-all`} 
+
+              <button
+                className={`btn ${seatsLeft > 0 ? "btn-danger" : "btn-secondary disabled"} btn-lg w-100 fw-bold mb-3 shadow-lg py-3`}
                 onClick={handleEnroll}
                 style={{ borderRadius: "14px" }}
               >
-                {seatsLeft > 0 ? "จองที่นั่งตอนนี้" : "ที่นั่งเต็มแล้ว"}
+                {seatsLeft > 0 ? "ลงทะเบียนจองที่นั่ง" : "คอร์สนี้เต็มแล้ว"}
               </button>
-              
+
               <div className="text-center small text-muted">
-                <div className="mb-1"><span className="text-success me-1">✔</span> เข้าเรียนได้ตลอดชีพ</div>
-                <div><span className="text-success me-1">✔</span> รับใบประกาศนียบัตร</div>
+                <div className="mb-1 text-light opacity-75"><span className="text-success me-1">✔</span> เข้าเรียนได้ตลอดชีพ</div>
+                <div className="text-light opacity-75"><span className="text-success me-1">✔</span> รับใบประกาศนียบัตร</div>       
               </div>
             </div>
           </div>

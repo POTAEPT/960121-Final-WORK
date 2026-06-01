@@ -43,7 +43,6 @@ const Index = ({ filters, addToCart }) => {
     const startRect = startElement.getBoundingClientRect();
     const endRect = cartIcon.getBoundingClientRect();
 
-    // Create a ghost image for animation
     const flyingImg = document.createElement("img");
     flyingImg.src = courseImage;
     flyingImg.style.position = "fixed";
@@ -61,7 +60,6 @@ const Index = ({ filters, addToCart }) => {
     
     document.body.appendChild(flyingImg);
 
-    // Trigger animation to the cart (Removed rotation as requested)
     setTimeout(() => {
       flyingImg.style.left = `${endRect.left + (endRect.width / 2) - 20}px`;
       flyingImg.style.top = `${endRect.top + (endRect.height / 2) - 15}px`;
@@ -71,7 +69,6 @@ const Index = ({ filters, addToCart }) => {
       flyingImg.style.transform = "scale(0.5)"; 
     }, 10);
 
-    // Cleanup and trigger badge bounce
     setTimeout(() => {
       if (document.body.contains(flyingImg)) {
         document.body.removeChild(flyingImg);
@@ -79,7 +76,7 @@ const Index = ({ filters, addToCart }) => {
       const badge = cartIcon.querySelector(".cart-badge");
       if (badge) {
         badge.classList.remove("bounce");
-        void badge.offsetWidth; // Trigger reflow
+        void badge.offsetWidth; 
         badge.classList.add("bounce");
       }
     }, 810);
@@ -96,13 +93,11 @@ const Index = ({ filters, addToCart }) => {
     const actionButton = e.target.closest("[data-action='add-to-cart']");
     if (actionButton) {
       if (course.maxSeats - course.enrolled > 0) {
-        // Find the image element within the card
         const imgElement = cardElement.querySelector("img");
         if (imgElement) {
           createFlyingAnimation(imgElement, course.image);
         }
 
-        // Change button state temporarily for visual feedback
         const originalText = actionButton.innerText;
         actionButton.innerText = "เพิ่มแล้ว! ✓";
         actionButton.classList.add("btn-added-success");
@@ -128,7 +123,7 @@ const Index = ({ filters, addToCart }) => {
     <div className="container-fluid mt-4 px-4 pb-5 animate-fade-in">
       <div className="mb-4 d-flex justify-content-between align-items-center">
         <h4 className="text-white fw-bold m-0">คอร์สเรียนแนะนำสำหรับคุณ</h4>
-        <span className="badge bg-dark border border-secondary text-muted px-3 py-2">
+        <span className="badge bg-dark border border-secondary text-white px-3 py-2">
           พบ {filteredCourses.length} รายการ
         </span>
       </div>
@@ -148,8 +143,8 @@ const Index = ({ filters, addToCart }) => {
                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
              </svg>
            </div>
-           <h4 className="text-muted">ไม่พบคอร์สเรียนที่ตรงกับเงื่อนไขของคุณ</h4>
-           <p className="text-secondary">ลองปรับตัวกรองหรือใช้คำค้นหาอื่นดูนะครับ</p>
+           <h4 className="text-white fw-bold">ไม่พบคอร์สเรียนที่ตรงกับเงื่อนไขของคุณ</h4>
+           <p className="text-light opacity-75">ลองปรับตัวกรองหรือใช้คำค้นหาอื่นดูนะครับ</p>
         </div>
       )}
     </div>
