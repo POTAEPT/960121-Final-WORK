@@ -1,7 +1,7 @@
-﻿import React from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const ErrorMessage = ({ message, showHomeBtn = true }) => {
+const ErrorMessage = ({ message }) => {
   const navigate = useNavigate();
   return (
     <div className="container mt-5 text-center animate-fade-in">
@@ -11,11 +11,6 @@ const ErrorMessage = ({ message, showHomeBtn = true }) => {
           <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
         </svg>
         <h3 className="fw-bold mb-3">{message || "เกิดข้อผิดพลาดบางอย่าง"}</h3>
-        {showHomeBtn && (
-          <button onClick={() => navigate("/")} className="btn btn-outline-light px-4 mt-3 fw-bold" style={{ borderRadius: "10px" }}>
-            กลับสู่หน้าหลัก
-          </button>
-        )}
       </div>
     </div>
   );
