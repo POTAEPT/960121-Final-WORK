@@ -6,17 +6,18 @@ import IndexPage from "./index";
 import Filter from "./filter";
 import CourseDetail from "./CourseDetail";
 import Cart from "./cart";
-import Checkout from "./Checkout";
+import Summary from "./Summary";
+import CheckoutForm from "./checkout";
 import "./CSS/form.css";
 import "./CSS/cart.css";
 
 function Navigation({ searchInput, handleFilterChange, showFilters, setShowFilters, filters, handleResetFilters, cartItems, removeFromCart }) {
   const location = useLocation();
   const [isCartOpen, setIsCartOpen] = useState(false);
-  
+
   const isAuthPage = location.pathname === "/signin" || location.pathname === "/signup";
   const isDetailPage = location.pathname.startsWith("/course/");
-  const isCheckoutPage = location.pathname === "/checkout";
+  const isCheckoutPage = location.pathname === "/checkout" || location.pathname === "/checkout-form";
 
   return (
     <>
@@ -24,7 +25,7 @@ function Navigation({ searchInput, handleFilterChange, showFilters, setShowFilte
         <div className="container-fluid px-4">
           <Link className="navbar-brand fw-bold me-auto d-flex align-items-center" to="/" onClick={() => setIsCartOpen(false)}>
             <span className="text-white fs-3">Born to </span>
-            <span className="fs-3 ms-1" style={{ color: "var(--navbar-hover)" }}>Do</span>
+            <span className="fs-3 ms-1" style={{ color: "var(--navbar-hover)" }}>Do</span>       
           </Link>
 
           {!isAuthPage && (
@@ -52,7 +53,7 @@ function Navigation({ searchInput, handleFilterChange, showFilters, setShowFilte
                   <Cart cartItems={cartItems} removeFromCart={removeFromCart} isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
                 </div>
                 <button className="navbar-toggler border-white ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                  <span className="navbar-toggler-icon" style={{ filter: "invert(1)" }}></span>
+                  <span className="navbar-toggler-icon" style={{ filter: "invert(1)" }}></span>  
                 </button>
                 <div className="collapse navbar-collapse flex-grow-0" id="navbarNav">
                   <ul className="navbar-nav ms-auto align-items-center mt-3 mt-lg-0">
@@ -75,22 +76,20 @@ function Navigation({ searchInput, handleFilterChange, showFilters, setShowFilte
 function App() {
   const [showFilters, setShowFilters] = useState(false);
   const [searchInput, setSearchInput] = useState("");
-  
-  // 1. ดึงข้อมูลจาก localStorage ตอนเริ่มต้น (ถ้ามี)
+
   const [cartItems, setCartItems] = useState(() => {
     const savedCart = localStorage.getItem("bornToDoCart");
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
-  const [filters, setFilters] = useState({ search: "", category: "All", priceRange: 5000 });
+  const [filters, setFilters] = useState({ search: "", category: "All", priceRange: 5000 });     
 
-  // 2. บันทึกข้อมูลลง localStorage ทุกครั้งที่ cartItems เปลี่ยนแปลง
   useEffect(() => {
     localStorage.setItem("bornToDoCart", JSON.stringify(cartItems));
   }, [cartItems]);
 
   useEffect(() => {
-    const timer = setTimeout(() => setFilters(prev => ({ ...prev, search: searchInput })), 500);
+    const timer = setTimeout(() => setFilters(prev => ({ ...prev, search: searchInput })), 500); 
     return () => clearTimeout(timer);
   }, [searchInput]);
 
@@ -116,7 +115,7 @@ function App() {
   return (
     <Router>
       <div style={{ minHeight: "100vh", backgroundColor: "var(--bg-color)" }}>
-        <Navigation 
+        <Navigation
           searchInput={searchInput}
           handleFilterChange={handleFilterChange}
           showFilters={showFilters}
@@ -128,11 +127,12 @@ function App() {
         />
         <div className="container-fluid">
           <Routes>
-            <Route path="/" element={<IndexPage filters={filters} addToCart={addToCart} />} />
+            <Route path="/" element={<IndexPage filters={filters} addToCart={addToCart} />} />   
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/course/:id" element={<CourseDetail addToCart={addToCart} />} />
-            <Route path="/checkout" element={<Checkout cartItems={cartItems} removeFromCart={removeFromCart} />} />
+            <Route path="/course/:id" element={<CourseDetail addToCart={addToCart} />} />        
+            <Route path="/checkout" element={<Summary cartItems={cartItems} removeFromCart={removeFromCart} />} />
+            <Route path="/checkout-form" element={<CheckoutForm />} />
           </Routes>
         </div>
       </div>
