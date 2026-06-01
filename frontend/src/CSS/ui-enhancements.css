@@ -1,81 +1,49 @@
 ﻿@import "../theme/root.css";
 
-/* Button Hover & Active States (Global) */
-.btn, .auth-btn, .navbar-custom-btn {
+/* ... existing styles ... */
+
+/* Button Hover & Active States */
+.btn {
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  position: relative;
-  overflow: hidden;
 }
 
-.btn:hover, .auth-btn:hover, .navbar-custom-btn:hover {
-  transform: translateY(-3px);
-  filter: brightness(1.15);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4) !important;
+.btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
 }
 
-.btn:active, .auth-btn:active, .navbar-custom-btn:active {
-  transform: translateY(-1px) scale(0.97);
+.btn:active {
+  transform: translateY(0) scale(0.96);
   filter: brightness(0.9);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2) !important;
 }
 
-/* Specific Button Enhancements */
 .btn-danger:hover {
-  box-shadow: 0 8px 20px rgba(220, 53, 69, 0.4) !important;
+  background-color: #dc3545 !important;
+  border-color: #dc3545 !important;
+  box-shadow: 0 5px 15px rgba(220, 53, 69, 0.4) !important;
 }
 
 .btn-primary:hover {
-  box-shadow: 0 8px 20px rgba(13, 110, 253, 0.4) !important;
+  background-color: #0d6efd !important;
+  border-color: #0d6efd !important;
+  box-shadow: 0 5px 15px rgba(13, 110, 253, 0.4) !important;
 }
 
-/* Card Enhancements */
+/* Custom transitions for cards */
 .card {
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
 }
 
 .course-hover-card:hover {
-  transform: translateY(-12px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6) !important;
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5) !important;
   border-color: var(--primary-color) !important;
 }
 
-/* Enrolled Seats Display Polish */
-.enrolled-badge {
-  background: rgba(13, 110, 253, 0.15);
-  border: 1px solid rgba(13, 110, 253, 0.3);
-  color: #4da3ff;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-weight: bold;
-  display: inline-flex;
-  align-items: center;
-}
-
-.enrolled-badge.near-full {
-  background: rgba(220, 53, 69, 0.15);
-  border: 1px solid rgba(220, 53, 69, 0.3);
-  color: #ff4d4d;
-}
-
-/* Input Polish */
-.form-control:focus {
-  transform: scale(1.01);
-  background-color: #222 !important;
-}
-
+/* Numeric Input Styling */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
-
-/* Social Proof Animation */
-@keyframes pulse-soft {
-  0% { opacity: 0.8; }
-  50% { opacity: 1; }
-  100% { opacity: 0.8; }
-}
-
-.hot-label {
-  animation: pulse-soft 2s infinite;
 }
