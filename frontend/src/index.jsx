@@ -8,45 +8,11 @@ import "./CSS/form.css";
 
 const Index = ({ filters, addToCart }) => {
   const [courses, setCourses] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [isLoading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
-<<<<<<< HEAD
-    let isMounted = true;
-
-    const loadCourses = async () => {
-      // Integration: fetch catalog data from backend API and map payload.data to UI state
-      try {
-        const res = await fetch("http://localhost:8080/api/classes");
-        if (!res.ok) {
-          throw new Error("ระบบไม่สามารถเชื่อมต่อฐานข้อมูลคอร์สเรียนได้ในขณะนี้");
-        }
-
-        const payload = await res.json();
-        const data = Array.isArray(payload.data) ? payload.data : [];
-
-        if (isMounted) {
-          setCourses(data);
-        }
-      } catch (err) {
-        if (isMounted) {
-          setError(err.message || "เกิดข้อผิดพลาดในการโหลดคอร์สเรียน");
-        }
-      } finally {
-        if (isMounted) {
-          setLoading(false);
-        }
-      }
-    };
-
-    loadCourses();
-
-    return () => {
-      isMounted = false;
-    };
-=======
     fetch("/src/data/courses.json")
       .then((res) => {
         if (!res.ok) throw new Error("ระบบไม่สามารถเชื่อมต่อฐานข้อมูลคอร์สเรียนได้ในขณะนี้");    
@@ -60,16 +26,11 @@ const Index = ({ filters, addToCart }) => {
         setError(err.message);
         setLoading(false);
       });
->>>>>>> parent of 6b74b6a (feat: update CourseCard and ErrorMessage components for improved data handling and user feedback)
   }, []);
 
   const filteredCourses = useMemo(() => {
     return courses.filter(course => {
-<<<<<<< HEAD
-      const matchSearch = course.title?.toLowerCase().includes(filters.search.toLowerCase());
-=======
       const matchSearch = course.courseName?.toLowerCase().includes(filters.search.toLowerCase());
->>>>>>> parent of 6b74b6a (feat: update CourseCard and ErrorMessage components for improved data handling and user feedback)
       const matchCategory = filters.category === "All" || course.category === filters.category;  
       const matchPrice = (course.price || 0) <= filters.priceRange;
       return matchSearch && matchCategory && matchPrice;
@@ -132,12 +93,7 @@ const Index = ({ filters, addToCart }) => {
 
     const actionButton = e.target.closest("[data-action='add-to-cart']");
     if (actionButton) {
-<<<<<<< HEAD
-      if (course.max_capacity - course.current_bookings > 0) {
-        // Find the image element within the card
-=======
       if (course.maxSeats - course.enrolled > 0) {
->>>>>>> parent of 6b74b6a (feat: update CourseCard and ErrorMessage components for improved data handling and user feedback)
         const imgElement = cardElement.querySelector("img");
         if (imgElement) {
           createFlyingAnimation(imgElement, course.image);
@@ -161,7 +117,7 @@ const Index = ({ filters, addToCart }) => {
     }
   };
 
-  if (loading) return <Loading message="กำลังค้นหาคอร์สเรียนที่เหมาะสำหรับคุณ..." />;
+  if (isLoading) return <Loading message="กำลังค้นหาคอร์สเรียนที่เหมาะสำหรับคุณ..." />;
   if (error) return <ErrorMessage message={error} />;
 
   return (
