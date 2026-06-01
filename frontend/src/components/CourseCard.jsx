@@ -1,9 +1,9 @@
-﻿import React from "react";
+import React from "react";
 
 const CourseCard = ({ course }) => {
-  // Safety Calculation
-  const max = course.maxSeats || 1;
-  const enrolled = course.enrolled || 0;
+  // 🚨 1. แก้ไขชื่อตัวแปรตรงนี้ให้ตรงกับ Backend
+  const max = course.max_capacity || 1; 
+  const enrolled = course.current_bookings || 0; 
   const seatsLeft = Math.max(0, max - enrolled);
   const percentFull = Math.min(100, (enrolled / max) * 100);
   const isNearFull = percentFull >= 85;
@@ -16,7 +16,8 @@ const CourseCard = ({ course }) => {
       data-course-id={course.id}
     >
       <div className="position-relative" style={{ aspectRatio: "16/9", width: "100%", overflow: "hidden" }}>
-        <img src={course.image} alt={course.courseName} className="w-100 h-100 object-fit-cover" loading="lazy" />
+        {/* 🚨 2. เปลี่ยน course.courseName เป็น course.title หรือปล่อย course_name ไว้ถ้า Backend ส่งมา */}
+        <img src={course.image} alt={course.title || course.course_name} className="w-100 h-100 object-fit-cover" loading="lazy" />
         <div className="position-absolute top-0 start-0 bg-danger text-white px-2 py-1 m-2 rounded small fw-bold shadow-sm">
           {course.category}
         </div>
@@ -35,8 +36,11 @@ const CourseCard = ({ course }) => {
       </div>
 
       <div className="card-body d-flex flex-column">
-        <h6 className="text-white fw-bold mb-2 text-truncate-2" style={{ minHeight: "2.8rem" }}>{course.courseName}</h6>
-
+        {/* 🚨 3. ตรงนี้ก็ต้องแก้ให้ดึง title มาแสดงชื่อคอร์ส */}
+        <h6 className="text-white fw-bold mb-2 text-truncate-2" style={{ minHeight: "2.8rem" }}>
+           {course.title || course.course_name}
+        </h6>
+        
         <div className="mb-3">
           <div className="d-flex justify-content-between mb-2 small align-items-center">
             <div className={`enrolled-badge ${isNearFull ? "near-full" : ""}`} style={{ color: "white" }}>

@@ -5,5 +5,6 @@ const classController = require('../controllers/classControllers');
 // เมื่อมีคำสั่ง GET /api/classes เข้ามา ให้ส่งไปหา Controller
 router.get('/', classController.getClasses);
 router.get('/:id', classController.getClassById);
+router.post('/',classController.createClass);
 
 module.exports = router;

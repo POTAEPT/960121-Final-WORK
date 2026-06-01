@@ -2,7 +2,7 @@ const classService = require('../services/classServices');
 
 const getClasses = async (req, res, next) => {
     try {
-        const classes = await classService.getAllClasses();
+        const classes = await classService.getAllClasses(req.query);
         res.status(200).json({ success: true, data: classes });
     } catch (error) {
         next(error);
@@ -26,4 +26,17 @@ const getClassById = async (req, res, next) => {
     }
 };
 
-module.exports = { getClasses, getClassById };
+const createClass = async (req, res, next) => {
+    try {
+        const newCourseId = await classService.createClass(req.body);
+        res.status(201).json({ 
+            success: true, 
+            message: "สร้างคอร์สเรียนสำเร็จ!",
+            data: { id: newCourseId, ...req.body } 
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
+module.exports = { getClasses, getClassById, createClass };
