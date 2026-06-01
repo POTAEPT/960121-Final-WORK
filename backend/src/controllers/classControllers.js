@@ -26,4 +26,17 @@ const getClassById = async (req, res, next) => {
     }
 };
 
-module.exports = { getClasses, getClassById };
+const createClass = async (req, res, next) => {
+    try {
+        const newCourseId = await classService.createClass(req.body);
+        res.status(201).json({ 
+            success: true, 
+            message: "สร้างคอร์สเรียนสำเร็จ!",
+            data: { id: newCourseId, ...req.body } 
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
+module.exports = { getClasses, getClassById, createClass };
