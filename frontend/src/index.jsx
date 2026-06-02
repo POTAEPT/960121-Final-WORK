@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import Loading from "./components/Loading";
 import ErrorMessage from "./components/ErrorMessage";
@@ -13,43 +13,24 @@ const Index = ({ filters, addToCart }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    let isMounted = true;
-
-    const loadCourses = async () => {
-      // Integration: fetch catalog data from backend API and map payload.data to UI state
-      try {
-        const res = await fetch("http://localhost:8080/api/classes");
-        if (!res.ok) {
-          throw new Error("ระบบไม่สามารถเชื่อมต่อฐานข้อมูลคอร์สเรียนได้ในขณะนี้");
-        }
-
-        const payload = await res.json();
-        const data = Array.isArray(payload.data) ? payload.data : [];
-
-        if (isMounted) {
-          setCourses(data);
-        }
-      } catch (err) {
-        if (isMounted) {
-          setError(err.message || "เกิดข้อผิดพลาดในการโหลดคอร์สเรียน");
-        }
-      } finally {
-        if (isMounted) {
-          setLoading(false);
-        }
-      }
-    };
-
-    loadCourses();
-
-    return () => {
-      isMounted = false;
-    };
+    fetch("/src/data/courses.json")
+      .then((res) => {
+        if (!res.ok) throw new Error("ระบบไม่สามารถเชื่อมต่อฐานข้อมูลคอร์สเรียนได้ในขณะนี้");    
+        return res.json();
+      })
+      .then((data) => {
+        setCourses(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        setError(err.message);
+        setLoading(false);
+      });
   }, []);
 
   const filteredCourses = useMemo(() => {
     return courses.filter(course => {
-      const matchSearch = course.title?.toLowerCase().includes(filters.search.toLowerCase());
+      const matchSearch = course.courseName?.toLowerCase().includes(filters.search.toLowerCase());
       const matchCategory = filters.category === "All" || course.category === filters.category;  
       const matchPrice = (course.price || 0) <= filters.priceRange;
       return matchSearch && matchCategory && matchPrice;
@@ -63,7 +44,6 @@ const Index = ({ filters, addToCart }) => {
     const startRect = startElement.getBoundingClientRect();
     const endRect = cartIcon.getBoundingClientRect();
 
-    // Create a ghost image for animation
     const flyingImg = document.createElement("img");
     flyingImg.src = courseImage;
     flyingImg.style.position = "fixed";
@@ -81,7 +61,6 @@ const Index = ({ filters, addToCart }) => {
     
     document.body.appendChild(flyingImg);
 
-    // Trigger animation to the cart (Removed rotation as requested)
     setTimeout(() => {
       flyingImg.style.left = `${endRect.left + (endRect.width / 2) - 20}px`;
       flyingImg.style.top = `${endRect.top + (endRect.height / 2) - 15}px`;
@@ -91,7 +70,6 @@ const Index = ({ filters, addToCart }) => {
       flyingImg.style.transform = "scale(0.5)"; 
     }, 10);
 
-    // Cleanup and trigger badge bounce
     setTimeout(() => {
       if (document.body.contains(flyingImg)) {
         document.body.removeChild(flyingImg);
@@ -99,7 +77,7 @@ const Index = ({ filters, addToCart }) => {
       const badge = cartIcon.querySelector(".cart-badge");
       if (badge) {
         badge.classList.remove("bounce");
-        void badge.offsetWidth; // Trigger reflow
+        void badge.offsetWidth; 
         badge.classList.add("bounce");
       }
     }, 810);
@@ -115,14 +93,12 @@ const Index = ({ filters, addToCart }) => {
 
     const actionButton = e.target.closest("[data-action='add-to-cart']");
     if (actionButton) {
-      if (course.max_capacity - course.current_bookings > 0) {
-        // Find the image element within the card
+      if (course.maxSeats - course.enrolled > 0) {
         const imgElement = cardElement.querySelector("img");
         if (imgElement) {
           createFlyingAnimation(imgElement, course.image);
         }
 
-        // Change button state temporarily for visual feedback
         const originalText = actionButton.innerText;
         actionButton.innerText = "เพิ่มแล้ว! ✓";
         actionButton.classList.add("btn-added-success");
@@ -148,7 +124,7 @@ const Index = ({ filters, addToCart }) => {
     <div className="container-fluid mt-4 px-4 pb-5 animate-fade-in">
       <div className="mb-4 d-flex justify-content-between align-items-center">
         <h4 className="text-white fw-bold m-0">คอร์สเรียนแนะนำสำหรับคุณ</h4>
-        <span className="badge bg-dark border border-secondary text-muted px-3 py-2">
+        <span className="badge bg-dark border border-secondary text-white px-3 py-2">
           พบ {filteredCourses.length} รายการ
         </span>
       </div>
@@ -168,8 +144,8 @@ const Index = ({ filters, addToCart }) => {
                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
              </svg>
            </div>
-           <h4 className="text-muted">ไม่พบคอร์สเรียนที่ตรงกับเงื่อนไขของคุณ</h4>
-           <p className="text-secondary">ลองปรับตัวกรองหรือใช้คำค้นหาอื่นดูนะครับ</p>
+           <h4 className="text-white fw-bold">ไม่พบคอร์สเรียนที่ตรงกับเงื่อนไขของคุณ</h4>
+           <p className="text-light opacity-75">ลองปรับตัวกรองหรือใช้คำค้นหาอื่นดูนะครับ</p>
         </div>
       )}
     </div>
