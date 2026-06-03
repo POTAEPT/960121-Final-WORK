@@ -1,13 +1,17 @@
-import React from "react";
+﻿import React from "react";
 
 const CourseCard = ({ course }) => {
   // Safety Calculation
-  const max = course.maxSeats || 1;
-  const enrolled = course.enrolled || 0;
+  const max = course.max_capacity || course.maxSeats || 1; 
+  const enrolled = course.current_bookings || course.enrolled || 0;
   const seatsLeft = Math.max(0, max - enrolled);
   const percentFull = Math.min(100, (enrolled / max) * 100);
   const isNearFull = percentFull >= 85;
   const isVeryPopular = enrolled >= 200; 
+
+  // 🚨 Data Mapping: ดักจับชื่อคอร์สให้ตรงกับ Database 
+  // (ถ้าหา title ไม่เจอ จะสลับไปหา course_name แทน)
+  const title = course.title || course.course_name || course.courseName || "ไม่ระบุชื่อคอร์ส";
 
   return (
     <div
@@ -16,7 +20,8 @@ const CourseCard = ({ course }) => {
       data-course-id={course.id}
     >
       <div className="position-relative" style={{ aspectRatio: "16/9", width: "100%", overflow: "hidden" }}>
-        <img src={course.image} alt={course.courseName} className="w-100 h-100 object-fit-cover" loading="lazy" />
+        {/* เปลี่ยน alt ให้ใช้ตัวแปร title */}
+        <img src={course.image} alt={title} className="w-100 h-100 object-fit-cover" loading="lazy" />
         <div className="position-absolute top-0 start-0 bg-danger text-white px-2 py-1 m-2 rounded small fw-bold shadow-sm">
           {course.category}
         </div>
@@ -35,7 +40,9 @@ const CourseCard = ({ course }) => {
       </div>
 
       <div className="card-body d-flex flex-column">
-        <h6 className="text-white fw-bold mb-2 text-truncate-2" style={{ minHeight: "2.8rem" }}>{course.courseName}</h6>
+        
+        {/* 🚨 นำตัวแปร title มาแสดงผลตรงนี้ */}
+        <h6 className="text-white fw-bold mb-2 text-truncate-2" style={{ minHeight: "2.8rem" }}>{title}</h6>
 
         <div className="mb-3">
           <div className="d-flex justify-content-between mb-2 small align-items-center">

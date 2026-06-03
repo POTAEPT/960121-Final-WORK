@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import Loading from "./components/Loading";
 import ErrorMessage from "./components/ErrorMessage";
 import "./CSS/courseDetail.css";
+import Swal from "sweetalert2";
 
 const CourseDetail = ({ addToCart }) => {
   const { id } = useParams();
@@ -18,17 +19,19 @@ const CourseDetail = ({ addToCart }) => {
     return () => clearTimeout(timer);
   }, [searchTerm]);
 
+  // 🚨 1. รวมร่าง: ดึงข้อมูลจาก API จริง
   useEffect(() => {
     setLoading(true);
-    fetch("/src/data/courseDetails.json")
+    fetch(`http://localhost:8080/api/classes/${id}`)
       .then(res => {
         if (!res.ok) throw new Error("ไม่สามารถเข้าถึงฐานข้อมูลรายละเอียดคอร์สได้");
         return res.json();
       })
-      .then(data => {
-        const found = data.find(c => c.id === parseInt(id));
-        if (!found) throw new Error("ขออภัย! ไม่พบคอร์สเรียนที่คุณกำลังค้นหา");
-        setCourse(found);
+      .then(result => {
+        if (!result.success || !result.data) {
+          throw new Error("ขออภัย! ไม่พบคอร์สเรียนที่คุณกำลังค้นหา");
+        }
+        setCourse(result.data);
         setLoading(false);
       })
       .catch(err => {
@@ -40,25 +43,51 @@ const CourseDetail = ({ addToCart }) => {
   if (loading) return <Loading message="กำลังเตรียมเนื้อหาบทเรียนที่เข้มข้นสำหรับคุณ..." />;     
   if (error) return <ErrorMessage message={error} />;
 
-  const filteredCurriculum = course.curriculum?.filter(chap =>
+  // 🚨 2. รวมร่าง: Data Mapping ดักจับ Array ป้องกันหน้าเว็บขาว
+  const rawCurriculum = Array.isArray(course.curriculum) ? course.curriculum : [];
+  const rawBenefits = Array.isArray(course.benefits) ? course.benefits : [];
+
+  const filteredCurriculum = rawCurriculum.filter(chap => 
     chap.chapter?.toLowerCase().includes(debouncedSearch.toLowerCase()) ||
     chap.lessons?.some(l => l.toLowerCase().includes(debouncedSearch.toLowerCase()))
-  ) || [];
+  );
 
-  const max = course.maxSeats || 1;
-  const enr = course.enrolled || 0;
+  // 🚨 3. รวมร่าง: Data Mapping จับคู่ตัวเลขที่นั่งให้ตรงกับ Database
+  const max = course.max_capacity || 1;
+  const enr = course.current_bookings || 0;
   const seatsLeft = Math.max(0, max - enr);
   const percentFull = Math.min(100, (enr / max) * 100);
   const isNearFull = percentFull >= 85;
 
   const handleEnroll = () => {
+    // 🚨 1. ดักจับ Token ด้วย Popup SweetAlert2
+    const token = localStorage.getItem("token");
+    if (!token) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'กรุณาเข้าสู่ระบบ',
+        text: 'กรุณาเข้าสู่ระบบก่อนทำการจองคอร์สเรียนนี้ 🚀',
+        confirmButtonText: 'เข้าใจแล้ว',
+        confirmButtonColor: '#e63946', 
+        background: '#1a1a1a',
+        color: '#ffffff',
+      }).then(() => {
+        navigate("/signin");
+      });
+      return; // สั่ง return เพื่อหยุดการทำงาน ถ้าไม่มี Token ห้ามทำโค้ดด้านล่างต่อเด็ดขาด!
+    }
+
+    // 🚨 2. ลอจิกเดิม: ถ้ามี Token แล้ว ให้ทำการเช็คที่นั่งและโยนลงตะกร้าได้เลย
     if (seatsLeft <= 0) return;
+    
     addToCart({
       id: course.id,
-      courseName: course.courseName,
+      title: course.title || course.course_name, 
       image: course.image,
       price: course.price || 0
     });
+    
+    // พาไปหน้าตะกร้า
     navigate("/checkout");
   };
 
@@ -66,23 +95,21 @@ const CourseDetail = ({ addToCart }) => {
     <div className="container mt-5 pb-5 course-detail-container text-white animate-fade-in">     
       <div className="row g-5">
         <div className="col-lg-8">
+          
           <nav aria-label="breadcrumb" className="mb-4">
             <ol className="breadcrumb">
               <li className="breadcrumb-item"><Link to="/" className="text-danger text-decoration-none">Home</Link></li>
-              <li className="breadcrumb-item active text-white">{course.courseName}</li>
+              <li className="breadcrumb-item active text-white">{course.title || course.course_name}</li>
             </ol>
           </nav>
 
-          <div className="d-flex align-items-center mb-3">
-            <h1 className="course-detail-title mb-0 display-5 fw-bold text-white">{course.courseName}</h1>
-            {enr > 200 && <span className="badge bg-primary ms-3 py-2 px-3 rounded-pill shadow-sm"><i className="bi bi-star-fill me-1"></i> คอร์สยอดนิยม</span>}
-          </div>
-          <p className="lead mb-4 course-detail-desc text-light opacity-75">{course.fullDescription}</p>
+          <h1 className="course-detail-title mb-3 display-5">{course.title || course.course_name}</h1>
+          <p className="lead mb-4 course-detail-desc">{course.full_description || course.description}</p>
 
           <div className="card curriculum-card p-4 mb-5 shadow-sm border-0 bg-dark" style={{ borderRadius: "20px" }}>
             <h4 className="fw-bold mb-4 text-white border-start border-danger border-4 ps-3">สิ่งที่คุณจะได้เรียนรู้</h4>
             <div className="row row-cols-1 row-cols-md-2 g-3">
-              {course.benefits?.map((b, i) => (
+              {rawBenefits.map((b, i) => (
                 <div className="col d-flex align-items-start benefit-item" key={i}>
                   <i className="bi bi-check-circle-fill text-danger me-2"></i>
                   <span className="text-light opacity-75">{b}</span>
@@ -133,12 +160,18 @@ const CourseDetail = ({ addToCart }) => {
             <div className="position-relative">
               <img src={course.image} className="w-100" style={{ aspectRatio: "16/9", objectFit: "cover" }} alt="Preview" />
             </div>
+            
             <div className="card-body p-4">
               <div className="d-flex align-items-center mb-4 border-bottom border-secondary pb-3">
-                <img src={course.instructorImage} className="rounded-circle me-3 border border-secondary p-1" style={{ width: "60px", height: "60px", objectFit: "cover" }} alt="Instructor" />   
+                <img 
+                  src={course.instructor_image || "https://via.placeholder.com/60"} 
+                  className="rounded-circle me-3 border border-secondary p-1" 
+                  style={{ width: "60px", height: "60px", objectFit: "cover" }} 
+                  alt="Instructor" 
+                />
                 <div>
                   <div className="small text-muted">ผู้สอนโดย</div>
-                  <div className="instructor-name fw-bold fs-5 text-white">{course.instructorName}</div>
+                  <div className="instructor-name fw-bold fs-5 text-white">{course.instructor_name || "ไม่ระบุชื่อ"}</div>
                 </div>
               </div>
 
@@ -169,7 +202,7 @@ const CourseDetail = ({ addToCart }) => {
                 onClick={handleEnroll}
                 style={{ borderRadius: "14px" }}
               >
-                {seatsLeft > 0 ? "ลงทะเบียนจองที่นั่ง" : "คอร์สนี้เต็มแล้ว"}
+                 {seatsLeft === 0 ? "คอร์สเต็มแล้ว" : "เพิ่มลงตะกร้า"}
               </button>
 
               <div className="text-center small text-muted">
@@ -179,6 +212,7 @@ const CourseDetail = ({ addToCart }) => {
             </div>
           </div>
         </div>
+
       </div>
     </div>
   );

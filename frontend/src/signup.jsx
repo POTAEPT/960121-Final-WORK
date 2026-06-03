@@ -1,22 +1,41 @@
 ﻿import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import "./CSS/form.css";
 
 const SignUp = () => {
   const [formData, setFormData] = useState({ username: "", email: "", password: "", confirmPassword: "" });
+  const navigate = useNavigate();
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (formData.password !== formData.confirmPassword) return alert("Passwords don't match");
+    
+    // ดักจับรหัสผ่านไม่ตรงกัน
+    if (formData.password !== formData.confirmPassword) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'รหัสผ่านไม่ตรงกัน',
+        text: 'กรุณายืนยันรหัสผ่านให้ถูกต้องอีกครั้งครับ',
+        background: '#1a1a1a', color: '#ffffff', confirmButtonColor: '#e63946'
+      });
+      return;
+    }
     
     try {
-      // 1. ยิง Request ไปหา API สมัครสมาชิก
+      // โชว์ Loading ระหว่างส่งข้อมูล
+      Swal.fire({
+        title: "กำลังสร้างบัญชี...",
+        text: "โปรดรอสักครู่ ระบบกำลังลงทะเบียนให้คุณ",
+        allowOutsideClick: false,
+        background: '#1a1a1a', color: '#ffffff',
+        didOpen: () => { Swal.showLoading(); }
+      });
+
       const response = await fetch("http://localhost:8080/api/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        // 🚨 Data Mapping: แปลง username หน้าบ้าน ให้กลายเป็น name ส่งไปให้หลังบ้าน
         body: JSON.stringify({
           name: formData.username, 
           email: formData.email,
@@ -27,15 +46,30 @@ const SignUp = () => {
       const result = await response.json();
 
       if (response.ok) {
-        alert("สมัครสมาชิกสำเร็จ! กรุณาเข้าสู่ระบบ");
-        // เด้งไปหน้า Login อัตโนมัติ (สมมติว่าใช้ useNavigate, หรือใช้ window.location ก็ได้)
-        window.location.href = "/signin"; 
+        Swal.fire({
+          icon: 'success',
+          title: 'สมัครสมาชิกสำเร็จ! 🎉',
+          text: 'ยินดีต้อนรับสู่ Born to Do กรุณาเข้าสู่ระบบเพื่อเริ่มใช้งาน',
+          background: '#1a1a1a', color: '#ffffff', confirmButtonColor: '#0d6efd'
+        }).then(() => {
+          navigate("/signin"); // พาไปหน้าล็อกอินแบบสมูทๆ
+        });
       } else {
-        alert(`เกิดข้อผิดพลาด: ${result.message}`);
+        Swal.fire({
+          icon: 'error',
+          title: 'ไม่สามารถสมัครได้',
+          text: result.message || 'เกิดข้อผิดพลาดบางอย่าง',
+          background: '#1a1a1a', color: '#ffffff', confirmButtonColor: '#d33'
+        });
       }
     } catch (error) {
       console.error("Signup Error:", error);
-      alert("ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์ได้");
+      Swal.fire({
+        icon: 'error',
+        title: 'ระบบขัดข้อง',
+        text: 'ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์ได้ในขณะนี้',
+        background: '#1a1a1a', color: '#ffffff', confirmButtonColor: '#d33'
+      });
     }
   };
 
