@@ -11,6 +11,8 @@ import CheckoutForm from "./checkout";
 import "./CSS/form.css";
 import "./CSS/cart.css";
 import "./CSS/ui-enhancements.css";
+import ProtectedRoute from "./components/ProtectedRoute";
+import MyCourses from "./MyCourses";
 
 // ==========================================
 // 1. Navigation Component (แถบเมนูด้านบน)
@@ -102,15 +104,18 @@ function Navigation({
                 <div className="collapse navbar-collapse flex-grow-0" id="navbarNav">
                   <ul className="navbar-nav ms-auto align-items-center mt-3 mt-lg-0">
                     {isLoggedIn ? (
-                      // โชว์ปุ่ม Sign Out ถ้ามี Token
-                      <li className="nav-item">
-                            <button 
-                              onClick={handleLogout} 
-                              className="btn btn-light mx-1 fw-bold shadow-sm" 
-                              style={{ borderRadius: "10px", color: "#e63946" }}
-                            >
-                              Sign Out
-                            </button>
+                      // โชว์ปุ่ม "คอร์สของฉัน" และ "Sign Out" ถ้ามี Token
+                      <li className="nav-item d-flex align-items-center">
+                        <Link to="/my-courses" className="nav-link text-white fw-bold mx-3 transition-all" style={{ color: "var(--navbar-hover)" }}>
+                          📚 คอร์สของฉัน
+                        </Link>
+                        <button 
+                          onClick={handleLogout} 
+                          className="btn btn-light mx-1 fw-bold shadow-sm" 
+                          style={{ borderRadius: "10px", color: "#e63946" }}
+                        >
+                          Sign Out
+                        </button>
                       </li>
                     ) : (
                       // โชว์ปุ่ม Sign In / Sign Up ถ้าไม่มี Token
@@ -201,8 +206,30 @@ function App() {
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/course/:id" element={<CourseDetail addToCart={addToCart} />} />        
-            <Route path="/checkout" element={<Summary cartItems={cartItems} removeFromCart={removeFromCart} />} />
-            <Route path="/checkout-form" element={<CheckoutForm />} />
+          <Route 
+              path="/checkout" 
+              element={
+                <ProtectedRoute>
+                  <Summary cartItems={cartItems} removeFromCart={removeFromCart} />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/checkout-form" 
+              element={
+                <ProtectedRoute>
+                  <CheckoutForm />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/my-courses" 
+              element={
+                <ProtectedRoute>
+                  <MyCourses />
+                </ProtectedRoute>
+              } 
+            />
           </Routes>
         </div>
 

@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import Loading from "./components/Loading";
 import ErrorMessage from "./components/ErrorMessage";
 import "./CSS/courseDetail.css";
+import Swal from "sweetalert2";
 
 const CourseDetail = ({ addToCart }) => {
   const { id } = useParams();
@@ -18,7 +19,7 @@ const CourseDetail = ({ addToCart }) => {
     return () => clearTimeout(timer);
   }, [searchTerm]);
 
-  //  1. Integration Logic: ดึงข้อมูลจาก Backend API (GET /api/classes/:id)
+  // 🚨 1. รวมร่าง: ดึงข้อมูลจาก API จริง
   useEffect(() => {
     setLoading(true);
     fetch(`http://localhost:8080/api/classes/${id}`)
@@ -30,7 +31,6 @@ const CourseDetail = ({ addToCart }) => {
         if (!result.success || !result.data) {
           throw new Error("ขออภัย! ไม่พบคอร์สเรียนที่คุณกำลังค้นหา");
         }
-        // เก็บข้อมูลดิบลง State
         setCourse(result.data);
         setLoading(false);
       })
@@ -43,9 +43,7 @@ const CourseDetail = ({ addToCart }) => {
   if (loading) return <Loading message="กำลังเตรียมเนื้อหาบทเรียนที่เข้มข้นสำหรับคุณ..." />;     
   if (error) return <ErrorMessage message={error} />;
 
-  //  2. Data Mapping (ดักไว้เผื่อเป็น String หรือ Array)
-  // เนื่องจากฟิลด์พวกนี้ใน Database เป็น JSON String "[]" (ตอนสร้างคอร์ส)
-  // เราต้องเช็คให้ชัวร์ว่าเป็น Array ก่อนถึงจะใช้ .filter ได้
+  // 🚨 2. รวมร่าง: Data Mapping ดักจับ Array ป้องกันหน้าเว็บขาว
   const rawCurriculum = Array.isArray(course.curriculum) ? course.curriculum : [];
   const rawBenefits = Array.isArray(course.benefits) ? course.benefits : [];
 
@@ -54,7 +52,7 @@ const CourseDetail = ({ addToCart }) => {
     chap.lessons?.some(l => l.toLowerCase().includes(debouncedSearch.toLowerCase()))
   );
 
-  //  3. Data Mapping: จับคู่ตัวแปรการคำนวณที่นั่งให้ตรงกับ Backend
+  // 🚨 3. รวมร่าง: Data Mapping จับคู่ตัวเลขที่นั่งให้ตรงกับ Database
   const max = course.max_capacity || 1;
   const enr = course.current_bookings || 0;
   const seatsLeft = Math.max(0, max - enr);
@@ -62,15 +60,34 @@ const CourseDetail = ({ addToCart }) => {
   const isNearFull = percentFull >= 85;
 
   const handleEnroll = () => {
+    // 🚨 1. ดักจับ Token ด้วย Popup SweetAlert2
+    const token = localStorage.getItem("token");
+    if (!token) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'กรุณาเข้าสู่ระบบ',
+        text: 'กรุณาเข้าสู่ระบบก่อนทำการจองคอร์สเรียนนี้ 🚀',
+        confirmButtonText: 'เข้าใจแล้ว',
+        confirmButtonColor: '#e63946', 
+        background: '#1a1a1a',
+        color: '#ffffff',
+      }).then(() => {
+        navigate("/signin");
+      });
+      return; // สั่ง return เพื่อหยุดการทำงาน ถ้าไม่มี Token ห้ามทำโค้ดด้านล่างต่อเด็ดขาด!
+    }
+
+    // 🚨 2. ลอจิกเดิม: ถ้ามี Token แล้ว ให้ทำการเช็คที่นั่งและโยนลงตะกร้าได้เลย
     if (seatsLeft <= 0) return;
     
-    //  4. Data Mapping: ส่งข้อมูลลงตะกร้าให้ตรงฟอร์ม
     addToCart({
       id: course.id,
-      title: course.title || course.course_name, // รองรับทั้งชื่อฟิลด์ใหม่และเก่า
+      title: course.title || course.course_name, 
       image: course.image,
       price: course.price || 0
     });
+    
+    // พาไปหน้าตะกร้า
     navigate("/checkout");
   };
 
@@ -82,7 +99,6 @@ const CourseDetail = ({ addToCart }) => {
           <nav aria-label="breadcrumb" className="mb-4">
             <ol className="breadcrumb">
               <li className="breadcrumb-item"><Link to="/" className="text-danger text-decoration-none">Home</Link></li>
-              {/* เปลี่ยน courseName เป็น title */}
               <li className="breadcrumb-item active text-white">{course.title || course.course_name}</li>
             </ol>
           </nav>
@@ -102,7 +118,6 @@ const CourseDetail = ({ addToCart }) => {
             </div>
           </div>
 
-          {/* ... ส่วนค้นหาบทเรียน คงเดิม ... */}
           <div className="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center mb-4 gap-3">
             <h4 className="fw-bold mb-0 text-white">เนื้อหาบทเรียน ({filteredCurriculum.length})</h4>
             <div className="input-group" style={{ maxWidth: "300px" }}>
@@ -118,7 +133,6 @@ const CourseDetail = ({ addToCart }) => {
             </div>
           </div>
 
-          {/* ส่วนแสดงบทเรียน */}
           {filteredCurriculum.length > 0 ? (
             filteredCurriculum.map((chap, i) => (
               <div className="card curriculum-card mb-3 overflow-hidden border-0 bg-dark" key={i} style={{ borderRadius: "15px" }}>       
@@ -141,7 +155,6 @@ const CourseDetail = ({ addToCart }) => {
           )}
         </div>
 
-        {/* แถบด้านขวา (ราคา & ผู้สอน) */}
         <div className="col-lg-4">
           <div className="card shadow-lg enroll-card overflow-hidden sticky-top" style={{ top: "100px", border: "1px solid #333", backgroundColor: "var(--form-bg)", borderRadius: "20px" }}>
             <div className="position-relative">
@@ -150,7 +163,6 @@ const CourseDetail = ({ addToCart }) => {
             
             <div className="card-body p-4">
               <div className="d-flex align-items-center mb-4 border-bottom border-secondary pb-3">
-                {/* เปลี่ยน instructorImage เป็น instructor_image */}
                 <img 
                   src={course.instructor_image || "https://via.placeholder.com/60"} 
                   className="rounded-circle me-3 border border-secondary p-1" 
@@ -159,7 +171,6 @@ const CourseDetail = ({ addToCart }) => {
                 />
                 <div>
                   <div className="small text-muted">ผู้สอนโดย</div>
-                  {/* เปลี่ยน instructorName เป็น instructor_name */}
                   <div className="instructor-name fw-bold fs-5 text-white">{course.instructor_name || "ไม่ระบุชื่อ"}</div>
                 </div>
               </div>
@@ -191,7 +202,7 @@ const CourseDetail = ({ addToCart }) => {
                 onClick={handleEnroll}
                 style={{ borderRadius: "14px" }}
               >
-                {seatsLeft > 0 ? "ลงทะเบียนจองที่นั่ง" : "คอร์สนี้เต็มแล้ว"}
+                 {seatsLeft === 0 ? "คอร์สเต็มแล้ว" : "เพิ่มลงตะกร้า"}
               </button>
 
               <div className="text-center small text-muted">

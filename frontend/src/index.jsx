@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useMemo } from "react";
+﻿import React, { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import Loading from "./components/Loading";
 import ErrorMessage from "./components/ErrorMessage";
 import CourseCard from "./components/CourseCard";
 import heroImage from "./assets/hero.png";
 import "./CSS/form.css";
+import Swal from "sweetalert2";
 
 const Index = ({ filters, addToCart }) => {
   const [courses, setCourses] = useState([]);
@@ -12,14 +13,20 @@ const Index = ({ filters, addToCart }) => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  // 🚨 1. Integration: เปลี่ยนมายิง API จริง
   useEffect(() => {
-    fetch("/src/data/courses.json")
+    fetch("http://localhost:8080/api/classes")
       .then((res) => {
         if (!res.ok) throw new Error("ระบบไม่สามารถเชื่อมต่อฐานข้อมูลคอร์สเรียนได้ในขณะนี้");    
         return res.json();
       })
-      .then((data) => {
-        setCourses(data);
+      .then((result) => {
+        // Backend ส่งมาเป็น { success: true, data: [...] } ต้องดึง result.data ไปใช้
+        if (result.success && Array.isArray(result.data)) {
+          setCourses(result.data);
+        } else {
+          throw new Error("รูปแบบข้อมูลจากเซิร์ฟเวอร์ไม่ถูกต้อง");
+        }
         setLoading(false);
       })
       .catch(err => {
@@ -28,9 +35,11 @@ const Index = ({ filters, addToCart }) => {
       });
   }, []);
 
+  // 🚨 2. Data Mapping: ปรับตัวแปรค้นหาให้ตรงกับ Backend
   const filteredCourses = useMemo(() => {
     return courses.filter(course => {
-      const matchSearch = course.courseName?.toLowerCase().includes(filters.search.toLowerCase());
+      const courseTitle = course.title || course.course_name || "";
+      const matchSearch = courseTitle.toLowerCase().includes(filters.search.toLowerCase());
       const matchCategory = filters.category === "All" || course.category === filters.category;  
       const matchPrice = (course.price || 0) <= filters.priceRange;
       return matchSearch && matchCategory && matchPrice;
@@ -93,7 +102,31 @@ const Index = ({ filters, addToCart }) => {
 
     const actionButton = e.target.closest("[data-action='add-to-cart']");
     if (actionButton) {
-      if (course.maxSeats - course.enrolled > 0) {
+      
+      // 🚨 1. ดักจับ Token ตรงนี้เลย! ถ้าไม่ได้ Login ให้แจ้งเตือนและพาไปหน้า Sign In
+      const token = localStorage.getItem("token");
+   if (!token) {
+     Swal.fire({
+       icon: 'info',
+       title: 'ยังไม่ได้เข้าสู่ระบบ!',
+       text: 'กรุณาเข้าสู่ระบบก่อนจะหยิบคอร์สลงตะกร้า🛒',
+       confirmButtonText: 'ตกลง',
+       confirmButtonColor: '#0d6efd', // สีน้ำเงิน
+       background: '#1a1a1a',
+       color: '#ffffff',
+       timer: 3000, // ปิดอัตโนมัติใน 3 วินาที
+       timerProgressBar: true
+     }).then(() => {
+       navigate("/signin");
+     });
+     return; 
+   }
+
+      // 🚨 ลอจิกเดิม: ปรับลอจิกเช็คที่นั่งว่าง
+      const max = course.max_capacity || 1;
+      const enrolled = course.current_bookings || 0;
+
+      if (max - enrolled > 0) {
         const imgElement = cardElement.querySelector("img");
         if (imgElement) {
           createFlyingAnimation(imgElement, course.image);
