@@ -47,7 +47,7 @@ function Navigation({
           {/* Logo */}
           <Link className="navbar-brand fw-bold me-auto d-flex align-items-center" to="/" onClick={() => setIsCartOpen(false)}>
             <span className="text-white fs-3">Born to </span>
-            <span className="fs-3 ms-1" style={{ color: "var(--navbar-hover)" }}>Do</span>       
+            <span className="fs-3 ms-1 logo-highlight">Do</span>       
           </Link>
 
           {/* ถ้าไม่ใช่หน้า Login/Signup ให้แสดงส่วนค้นหาและตะกร้า */}
@@ -58,26 +58,23 @@ function Navigation({
                 <div className="d-flex mx-auto d-none d-lg-flex align-items-center" style={{ width: "40%", maxWidth: "600px" }}>
                   <div className="input-group" style={{ height: "40px" }}>
                     <input 
-                      className="form-control shadow-none" 
+                      className="form-control shadow-none navbar-search-input" 
                       type="search" 
                       name="search" 
                       placeholder="ค้นหาคอร์สเรียน..." 
                       value={searchInput} 
                       onChange={handleFilterChange} 
-                      style={{ backgroundColor: "#121212", color: "white", border: "1px solid #303030", borderTopLeftRadius: "40px", borderBottomLeftRadius: "40px", paddingLeft: "20px" }} 
                     />
                     <button 
-                      className="btn btn-dark d-flex align-items-center justify-content-center" 
+                      className="btn btn-dark d-flex align-items-center justify-content-center navbar-search-btn" 
                       type="button" 
-                      style={{ width: "50px", backgroundColor: "#222", border: "1px solid #303030", borderLeft: "none", borderTopRightRadius: "40px", borderBottomRightRadius: "40px" }}
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#888" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg>
                     </button>
                   </div>
                   <button 
-                    className={`btn ms-2 d-flex align-items-center justify-content-center shadow-none transition-all ${showFilters ? "btn-primary" : ""}`} 
+                    className={`btn ms-2 shadow-none transition-all filter-toggle-btn ${showFilters ? 'active' : ''}`} 
                     onClick={() => setShowFilters(!showFilters)} 
-                    style={{ borderRadius: "50%", width: "38px", height: "38px", padding: 0, backgroundColor: showFilters ? "var(--primary-color)" : "#222", border: "1px solid #303030", color: showFilters ? "white" : "#888" }}
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z"/></svg>
                   </button>
@@ -106,13 +103,12 @@ function Navigation({
                     {isLoggedIn ? (
                       // โชว์ปุ่ม "คอร์สของฉัน" และ "Sign Out" ถ้ามี Token
                       <li className="nav-item d-flex align-items-center">
-                        <Link to="/my-courses" className="nav-link text-white fw-bold mx-3 transition-all" style={{ color: "var(--navbar-hover)" }}>
+                        <Link to="/my-courses" className="nav-link text-white fw-bold mx-3 transition-all nav-link-highlight">
                           📚 คอร์สของฉัน
                         </Link>
                         <button 
                           onClick={handleLogout} 
-                          className="btn btn-light mx-1 fw-bold shadow-sm" 
-                          style={{ borderRadius: "10px", color: "#e63946" }}
+                          className="btn btn-light mx-1 fw-bold shadow-sm btn-signout" 
                         >
                           Sign Out
                         </button>
