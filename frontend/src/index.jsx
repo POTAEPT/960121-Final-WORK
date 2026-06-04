@@ -35,13 +35,24 @@ const Index = ({ filters, addToCart }) => {
       });
   }, []);
 
-  // 🚨 2. Data Mapping: ปรับตัวแปรค้นหาให้ตรงกับ Backend
+  // 🚨 2. Data Mapping: ปรับตัวแปรค้นหาให้ครอบคลุมชื่อและแท็ก (หมวดหมู่/เนื้อหา)
   const filteredCourses = useMemo(() => {
     return courses.filter(course => {
-      const courseTitle = course.title || course.course_name || "";
-      const matchSearch = courseTitle.toLowerCase().includes(filters.search.toLowerCase());
+      const searchLower = filters.search.toLowerCase();
+      
+      // รวมข้อมูลที่ต้องการค้นหาเข้าด้วยกัน (ชื่อ, หมวดหมู่, และเนื้อหาในคอร์ส)
+      const courseTitle = (course.title || course.course_name || "").toLowerCase();
+      const courseCategory = (course.category || "").toLowerCase();
+      const courseContents = Array.isArray(course.contents) ? course.contents.join(" ").toLowerCase() : "";
+      
+      const matchSearch = 
+        courseTitle.includes(searchLower) || 
+        courseCategory.includes(searchLower) || 
+        courseContents.includes(searchLower);
+
       const matchCategory = filters.category === "All" || course.category === filters.category;  
       const matchPrice = (course.price || 0) <= filters.priceRange;
+      
       return matchSearch && matchCategory && matchPrice;
     });
   }, [courses, filters]);
