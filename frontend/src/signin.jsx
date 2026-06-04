@@ -1,5 +1,6 @@
 ﻿import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import "./CSS/form.css";
 
 const SignIn = () => {
@@ -7,15 +8,21 @@ const SignIn = () => {
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     try {
-      // 1. ยิง Request ไปหา API เข้าสู่ระบบ
+      // โชว์ Loading ระหว่างตรวจ Token
+      Swal.fire({
+        title: "กำลังตรวจสอบข้อมูล...",
+        allowOutsideClick: false,
+        background: '#1a1a1a', color: '#ffffff',
+        didOpen: () => { Swal.showLoading(); }
+      });
+
       const response = await fetch("http://localhost:8080/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        // ข้อมูลชุดนี้ชื่อตรงกันเป๊ะ โยนไปได้เลย
         body: JSON.stringify({
           email: formData.email,
           password: formData.password
@@ -25,18 +32,37 @@ const handleSubmit = async (e) => {
       const result = await response.json();
 
       if (response.ok) {
-        // 2. 🚨 หัวใจของ State & Continuity: เก็บ JWT Token ลง localStorage
+        // เก็บ Token
         localStorage.setItem("token", result.data.token);
         
-        alert("เข้าสู่ระบบสำเร็จ!");
-        // พากลับไปหน้าแรกสุด
-        window.location.href = "/"; 
+        // แจ้งเตือนสำเร็จ แล้วปล่อยให้ปิดเองใน 1.5 วินาที
+        Swal.fire({
+          icon: 'success',
+          title: 'เข้าสู่ระบบสำเร็จ! 🚀',
+          text: 'ยินดีต้อนรับกลับมาครับ',
+          timer: 1500,
+          showConfirmButton: false,
+          background: '#1a1a1a', color: '#ffffff'
+        }).then(() => {
+          // บังคับรีเฟรช 1 รอบเพื่อให้ Navbar เปลี่ยนปุ่มเป็น Sign Out ทันที
+          window.location.href = "/"; 
+        });
       } else {
-        alert(`เข้าสู่ระบบไม่สำเร็จ: ${result.message}`);
+        Swal.fire({
+          icon: 'error',
+          title: 'เข้าสู่ระบบไม่สำเร็จ',
+          text: result.message || 'อีเมลหรือรหัสผ่านไม่ถูกต้อง',
+          background: '#1a1a1a', color: '#ffffff', confirmButtonColor: '#e63946'
+        });
       }
     } catch (error) {
       console.error("Login Error:", error);
-      alert("ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์ได้");
+      Swal.fire({
+        icon: 'error',
+        title: 'ระบบขัดข้อง',
+        text: 'ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์ได้',
+        background: '#1a1a1a', color: '#ffffff', confirmButtonColor: '#d33'
+      });
     }
   };
 

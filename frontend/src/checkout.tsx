@@ -1,5 +1,6 @@
 ﻿import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const CheckoutForm = () => {
   const navigate = useNavigate();
@@ -31,16 +32,94 @@ const CheckoutForm = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+ const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // 1. ตรวจสอบเบอร์โทร
     if (formData.phone.length < 9) {
-      alert("กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง");
+      Swal.fire({
+        icon: 'warning',
+        title: 'ข้อมูลไม่ครบถ้วน',
+        text: 'กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้องนะครับ',
+        background: '#1a1a1a',
+        color: '#ffffff'
+      });
       return;
     }
-    alert("การชำระเงินและจองที่นั่งสำเร็จ!");
-    localStorage.removeItem("bornToDoCart");
-    navigate("/");
-    window.location.reload();
+
+    // 2. ดึง Token เพื่อยืนยันตัวตน
+    const token = localStorage.getItem("token");
+    if (!token) {
+      Swal.fire({
+        icon: 'error',
+        title: 'เซสชันหมดอายุ',
+        text: 'กรุณาเข้าสู่ระบบใหม่อีกครั้งก่อนทำรายการ',
+        background: '#1a1a1a',
+        color: '#ffffff'
+      }).then(() => {
+        navigate("/signin");
+      });
+      return;
+    }
+
+    // 3. โชว์ Loading สวยๆ ระหว่างรอเซิร์ฟเวอร์
+    Swal.fire({
+      title: "กำลังประมวลผลการจอง...",
+      text: "ระบบกำลังจัดสรรที่นั่งให้คุณ กรุณารอสักครู่",
+      background: '#1a1a1a',
+      color: '#ffffff',
+      allowOutsideClick: false,
+      didOpen: () => { Swal.showLoading(); }
+    });
+
+    try {
+      // 4. ลอจิกยิง API: ใช้ Loop ยิงจองทีละคอร์สตามของในตะกร้า
+      for (const item of cartItems) {
+        const response = await fetch("http://localhost:8080/api/bookings", { // 🚨 เช็ค PORT ให้ตรงกับ Backend ของเต้ด้วยนะครับ
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify({ classId: item.id }) // ส่ง ID คอร์สไปให้หลังบ้าน
+        });
+
+        const result = await response.json();
+
+        // ดัก Error จาก Gatekeeper หลังบ้าน
+        if (response.status === 409) {
+          throw new Error(`คอร์ส "${item.courseName || item.title}" ที่นั่งเต็มแล้ว!`);
+        } else if (!response.ok) {
+          throw new Error(result.message || `เกิดข้อผิดพลาดในการจองคอร์ส ${item.courseName || item.title}`);
+        }
+      }
+
+      // 5. ถ้า Loop จบโดยไม่ error แสดงว่าจองสำเร็จหมด!
+      Swal.fire({
+        icon: "success",
+        title: "ชำระเงินและจองที่นั่งสำเร็จ! 🎉",
+        text: "ขอบคุณที่เลือกเรียนกับเรา ลิงก์เข้าเรียนถูกส่งไปที่อีเมลแล้วครับ",
+        confirmButtonColor: "#e63946",
+        background: '#1a1a1a',
+        color: '#ffffff'
+      }).then(() => {
+        // เคลียร์ตะกร้า และพากลับหน้าแรก
+        localStorage.removeItem("bornToDoCart");
+        navigate("/");
+        window.location.reload(); // รีเฟรชให้ Navbar รีเซ็ตตะกร้าเป็น 0
+      });
+
+    } catch (err: any) {
+      // 6. ถ้าเจอ Error (เช่นที่นั่งเต็มระหว่างทาง) ให้เด้งบอก
+      Swal.fire({
+        icon: "error",
+        title: "จองไม่สำเร็จ",
+        text: err.message || "ระบบขัดข้อง ไม่สามารถดำเนินการได้ในขณะนี้",
+        confirmButtonColor: "#d33",
+        background: '#1a1a1a',
+        color: '#ffffff'
+      });
+    }
   };
 
   if (cartItems.length === 0) {
