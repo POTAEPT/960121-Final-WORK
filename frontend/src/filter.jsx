@@ -30,21 +30,30 @@ const Filter = ({ filters, onFilterChange, onReset }) => {
             </div>
           </div>
 
-          {/* ช่วงราคา - ปรับ Layout ให้ดูสมมาตรกับ Dropdown */}
+          {/* ช่วงราคา - ปรับ Layout ให้มีช่องกรอกตัวเลข */}
           <div className="col-md-4 col-lg-4">
             <div className="filter-item">
               <div className="d-flex justify-content-between align-items-center mb-2">
                 <label className="text-secondary small fw-bold text-uppercase tracking-wider">ราคา (ไม่เกิน)</label>
-                <span className="badge bg-danger rounded-pill px-3 py-2">
-                  ฿{filters.priceRange.toLocaleString()}
-                </span>
+                <div className="d-flex align-items-center bg-danger rounded-pill px-2 py-1">
+                  <span className="text-white me-1 small">฿</span>
+                  <input 
+                    type="number" 
+                    name="priceRange"
+                    value={filters.priceRange}
+                    onChange={onFilterChange}
+                    className="bg-transparent text-white border-0 text-center fw-bold"
+                    style={{ width: "70px", outline: "none", fontSize: "0.9rem" }}
+                    min="0"
+                  />
+                </div>
               </div>
               <div className="px-1" style={{ height: "45px", display: "flex", alignItems: "center" }}>
                 <input 
                   type="range" 
                   className="form-range custom-range w-100" 
                   name="priceRange" 
-                  min="0" max="5000" step="100" 
+                  min="0" max="10000" step="100" 
                   value={filters.priceRange} 
                   onChange={onFilterChange}
                 />
