@@ -75,7 +75,7 @@ const CheckoutForm = () => {
     try {
       // 4. ลอจิกยิง API: ใช้ Loop ยิงจองทีละคอร์สตามของในตะกร้า
       for (const item of cartItems) {
-        const response = await fetch("http://localhost:8080/api/bookings", { // 🚨 เช็ค PORT ให้ตรงกับ Backend ของเต้ด้วยนะครับ
+        const response = await fetch("/api/bookings", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

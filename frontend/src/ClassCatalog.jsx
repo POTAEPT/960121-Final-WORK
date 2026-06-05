@@ -10,7 +10,7 @@ const ClassCatalog = () => {
 
         const loadClasses = async () => {
             try {
-                const response = await fetch('http://localhost:8080/api/classes');
+                const response = await fetch('/api/classes');
                 if (!response.ok) {
                     throw new Error(`Request failed with status ${response.status}`);
                 }

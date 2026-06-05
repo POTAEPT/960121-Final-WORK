@@ -9,6 +9,13 @@ export default defineConfig({
      mkcert()
   ],
   server: {
-    https: true // บังคับให้ใช้ HTTPS
+    https: true, // บังคับให้ใช้ HTTPS
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+        secure: false,
+      },
+    },
   }
 })

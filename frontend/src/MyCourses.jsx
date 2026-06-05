@@ -20,7 +20,7 @@ const MyCourses = () => {
 
       try {
         // 🚨 ยิง GET Request ไปหา API เพื่อดึงประวัติการจอง
-        const response = await fetch("http://localhost:8080/api/bookings", {
+        const response = await fetch("/api/bookings", {
           method: "GET",
           headers: {
             "Authorization": `Bearer ${token}`

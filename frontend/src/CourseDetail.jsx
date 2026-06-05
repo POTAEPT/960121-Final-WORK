@@ -22,7 +22,7 @@ const CourseDetail = ({ addToCart }) => {
   // 🚨 1. รวมร่าง: ดึงข้อมูลจาก API จริง
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:8080/api/classes/${id}`)
+    fetch(`/api/classes/${id}`)
       .then(res => {
         if (!res.ok) throw new Error("ไม่สามารถเข้าถึงฐานข้อมูลรายละเอียดคอร์สได้");
         return res.json();

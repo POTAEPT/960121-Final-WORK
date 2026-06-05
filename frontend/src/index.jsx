@@ -15,7 +15,7 @@ const Index = ({ filters, addToCart }) => {
 
   // 🚨 1. Integration: เปลี่ยนมายิง API จริง
   useEffect(() => {
-    fetch("http://localhost:8080/api/classes")
+    fetch("/api/classes")
       .then((res) => {
         if (!res.ok) throw new Error("ระบบไม่สามารถเชื่อมต่อฐานข้อมูลคอร์สเรียนได้ในขณะนี้");    
         return res.json();

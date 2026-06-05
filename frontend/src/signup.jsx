@@ -33,7 +33,7 @@ const SignUp = () => {
         didOpen: () => { Swal.showLoading(); }
       });
 
-      const response = await fetch("http://localhost:8080/api/auth/signup", {
+      const response = await fetch("/api/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
